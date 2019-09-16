@@ -3,6 +3,75 @@ name: 开始
 route: /
 ---
 
-# 开始使用
+@sinoui/theme 主要提供了主题定制的基本对象，需要结合[styled-components](https://github.com/styled-components/styled-components)
+使用。
 
-在这里写项目使用文档。
+## 安装
+
+执行以下命令即可快速安装：
+
+- 使用 npm
+
+```shell
+npm install --save @sinoui/theme
+```
+
+- 使用 yarn
+
+```shell
+yarn add @sinoui/theme
+```
+
+## 自定义主题
+
+@sinoui/theme 提供了默认的主题对象`defaultTheme`。但在实际开发过程中，默认主题可能不满足我们的需求，此时就需要我们自定义主题以满足主题切换的效果。
+
+主题对象主要包括以下可定制的点：
+
+- palette 调色板。包括字体颜色、背景色、分隔符颜色等。调色板中色系的色值可以参考[Material Design | color](https://material.io/design/color/#tools-for-picking-colors)
+- typography 字体。包括字体大小、字体类型、字重、字体颜色等。
+- shadows 阴影。
+- transitions css 变换表达式。
+- spacing 间距
+
+我们可以调用 createTheme 来创建主题：
+
+```ts
+import { createTheme } from '@sinoui/theme/theme';
+
+const theme = createTheme(options);
+```
+
+上述示例中，options 表示自定义主题配置，其中可包含上述提到的所有主题定制的点。例如我们需要把主色系`primary`改成粉色，背景色变成暗色，只需要按照
+下面的方式重新创建主题即可：
+
+```ts
+import { createTheme } from '@sinoui/theme/theme';
+import { pink, green } from '@sinoui/theme/color';
+
+const theme = createTheme({
+  palette: {
+    type: 'dark', //渲染黑色背景，
+    primary: pink, // 将主色调设定为`pink`
+    accent: green, //将强调色设为绿色
+  },
+});
+```
+
+上述示例中，我们指定`pink`色系为主题色系，`green`色系为强调色，背景为`dark`。在我们的主题色系中，有跟[Material Design | color](https://material.io/design/color/#tools-for-picking-colors)同样的色系可供选择，背景色有亮色和暗色可选，关于背景色的定制，只需要改变
+palette 的 type 属性即可。
+
+关于字体、阴影、间距等的定制方式同上。
+
+## 组件的主题定制开发
+
+如果我们需要对一个组件进行主题定制，首先需要考虑有哪些样式需要主题定制，比如文本颜色、背景色。主题定制主要提供了以下可定制属性：
+
+- 文本颜色
+- 背景色
+- 分隔符颜色
+- 字体大小
+- 字重
+- 间距大小
+- 阴影
+- css 变换
