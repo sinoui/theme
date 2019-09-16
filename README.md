@@ -2,6 +2,15 @@
 
 用来处理主题定制的框架。
 
+## 颜色
+
+通过文本背景获取文本颜色，需要符合[WACG 推荐的对比度值 3:1](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast)。
+
+本模块中提供的`getContrastText()`方法采用的算法参考了下面的实现：
+
+- [Bootstrap](https://github.com/twbs/bootstrap/blob/1d6e3710dd447de1a200f29e8fa521f8a0908f70/scss/_functions.scss#L59)
+- [material-components-web](https://github.com/material-components/material-components-web/blob/ac46b8863c4dab9fc22c4c662dc6bd1b65dd652f/packages/mdc-theme/_functions.scss#L54)
+
 ## 本地开发
 
 项目中有以下有用的命令。
