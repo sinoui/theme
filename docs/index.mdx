@@ -3,6 +3,8 @@ name: 开始
 route: /
 ---
 
+# 主题定制
+
 @sinoui/theme 主要提供了主题定制的基本对象，需要结合[styled-components](https://github.com/styled-components/styled-components)
 使用。
 
@@ -75,3 +77,67 @@ palette 的 type 属性即可。
 - 间距大小
 - 阴影
 - css 变换
+
+组件的主题定制，一般结合`styled-components`使用：
+
+```tsx
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  height: 400px;
+  width: 400px;
+  padding: ${(props) => props.theme.spacing * 2}px; // 定制间距
+  background-color: ${(props) =>
+    props.theme.palette.background.paper}; //定制背景色
+  color: ${(props) => props.theme.palette.text.primary}; // 定制字体颜色
+  font-size: ${(props) =>
+    props.theme.typography.body1.fontSize}; // 定制字体大小
+`;
+```
+
+如果色系中的颜色都不满足需求，我们也可以自定义文本颜色，但在自定义时一定要考虑在明亮和黑色背景下文本颜色是否需要改变。如果需要改变，可以按照下面的方式定制：
+
+```tsx
+import styled from 'styled-components';
+
+const fontColor = {
+  light: 'rgba(0,0,0,0.54)',
+  dark: 'rgba(255,255,255,0.6)',
+};
+
+const Wrapper = styled.div`
+  height: 400px;
+  width: 400px;
+  padding: ${(props) => props.theme.spacing * 2}px; // 定制间距
+  background-color: ${(props) =>
+    props.theme.palette.background.paper}; //定制背景色
+  color: ${(props) => fontColor[props.theme.palette.type]}; // 定制字体颜色
+  font-size: ${(props) =>
+    props.theme.typography.body1.fontSize}; // 定制字体大小
+`;
+```
+
+## 主题定制的 ts 语法提示支持
+
+在 @types 中创建 theme-styled-components/index.d.ts 文件，内容如下：
+
+```ts
+/* eslint-disable @typescript-eslint/no-empty-interface */
+import 'styled-components';
+import { Theme } from 'sinoui-components/styles';
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme {}
+}
+```
+
+然后在项目根目录中的 tsconfig.json 中自动导入上面定义的 .d.ts。
+
+```json
+{
+  "compilerOptions": {
+    "types": ["theme-styled-components"],
+    "typeRoots": ["./@types"]
+  }
+}
+```
