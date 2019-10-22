@@ -39,7 +39,7 @@ yarn add @sinoui/theme
 我们可以调用 createTheme 来创建主题：
 
 ```ts
-import { createTheme } from '@sinoui/theme/theme';
+import { createTheme } from '@sinoui/theme';
 
 const theme = createTheme(options);
 ```
@@ -48,15 +48,15 @@ const theme = createTheme(options);
 下面的方式重新创建主题即可：
 
 ```ts
-import { createTheme } from '@sinoui/theme/theme';
-import { pink, green } from '@sinoui/theme/color';
+import { createTheme, createPalette } from '@sinoui/theme';
+import { pink, green } from '@sinoui/theme/colors';
 
 const theme = createTheme({
-  palette: {
+  palette: createPalette({
     type: 'dark', //渲染黑色背景，
     primary: pink, // 将主色调设定为`pink`
     accent: green, //将强调色设为绿色
-  },
+  }),
 });
 ```
 
@@ -127,7 +127,7 @@ const Wrapper = styled.div`
 ```ts
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import 'styled-components';
-import { Theme } from 'sinoui-components/styles';
+import { Theme } from '@sinoui/theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}
