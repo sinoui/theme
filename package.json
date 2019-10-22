@@ -48,7 +48,16 @@
   },
   "files": [
     "dist",
-    "assets"
+    "assets",
+    "colors.js",
+    "defaultTheme.js",
+    "palette.js",
+    "shadows.js",
+    "spacing.js",
+    "theme.js",
+    "transitions.js",
+    "typography.js",
+    "zIndex.js"
   ],
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
