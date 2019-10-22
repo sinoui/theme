@@ -317,16 +317,62 @@ export interface ThemeOptions {
   shadows?: ThemeShadows;
 }
 
+interface Breakpoints {
+  /**
+   * 超小尺寸断点。手机。
+   */
+  xs: number;
+  /**
+   * 小尺寸断点。平板。
+   */
+  sm: number;
+  /**
+   * 中等尺寸断点。笔记本电脑。
+   */
+  md: number;
+  /**
+   * 大尺寸断点。台式机电脑屏幕。
+   */
+  lg: number;
+  /**
+   * 超大尺寸断点。
+   */
+  xl: number;
+  [other: string]: number;
+}
+
 /**
  * 主题
  */
 export interface Theme {
+  /**
+   * 调色板
+   */
   palette: Palette;
+  /**
+   * 字体
+   */
   typography: ThemeTypography;
+  /**
+   * 阴影
+   */
   shadows: ThemeShadows;
+  /**
+   * 过度动画
+   */
   transitions: ThemeTransitions;
+  /**
+   * 层叠
+   */
   zIndex: ThemeZIndex;
+  /**
+   * 间距
+   */
   spacing: ThemeSpacing;
+  /**
+   * 断点
+   */
+  breakpoints: Breakpoints;
 }
 
 /**

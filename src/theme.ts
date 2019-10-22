@@ -5,6 +5,7 @@ import transitions from './transitions';
 import zIndex from './zIndex';
 import spacing from './spacing';
 import { ThemeOptions, Theme } from './types';
+import breakpoints from './breakpoints';
 
 /**
  * 创建主题
@@ -19,6 +20,7 @@ export default function createTheme(options: ThemeOptions = {}): Theme {
     transitions,
     zIndex,
     spacing,
+    breakpoints,
     ...options,
     palette,
     typography,

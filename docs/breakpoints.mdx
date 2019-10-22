@@ -1,0 +1,277 @@
+---
+name: 断点
+route: /breakpoints
+---
+
+import { Playground } from 'docz';
+import styled, { ThemeProvider, ThemeContext } from 'styled-components';
+import { createTheme } from '../src';
+import BreakpointIndicator from './BreakpointIndicator';
+import { useContext } from 'react';
+import { useMediaQuery } from 'react-responsive';
+
+# 断点 Breakpoints
+
+**在主题上下文中可以使用断点的 API。**
+
+为了获得优质的用户体验， 我们的组件、页面需要在各种屏幕尺寸的设备上自适应布局。这就是常说的“响应性设计”。sinoui 实现了 [material design 断点规范](https://material.io/design/layout/responsive-layout-grid.html#breakpoints) 的简化版本。
+
+## 断点范围
+
+我们常用的手机、平板、笔记本电脑、台式机电脑的屏幕尺寸有一定的范围，我们通过**断点**来划分屏幕尺寸范围。在日常开发中，我们常常需要考虑下面 5 个尺寸范围：
+
+- `xs` - 手机。范围：`[0px, 600px)`
+- `sm` - 平板。范围：`[600px, 960px)`
+- `md` - 笔记本电脑。范围：`[960px, 1280px)`
+- `lg` - 大尺寸屏幕电脑。范围：`[1280px, 1920px)`
+- `xl` - 超大尺寸屏幕电脑。范围：`>= 1920px`
+
+这些尺寸范围的起始点我们称之为**断点**，如下所示：
+
+- `xs` - 超小。 `0px`
+- `sm` - 小。 `600px`
+- `md` - 中等。 `960px`
+- `lg` - 大。 `1280px`
+- `xl` - 超大。 `1920px`
+
+尺寸范围与断点的关系如下所示：
+
+```js
+值        |0px     600px    960px    1280px   1920px
+断点      |xs      sm       md       lg       xl
+屏幕宽度  |--------|--------|--------|--------|-------->
+范围      |   xs   |   sm   |   md   |   lg   |   xl
+```
+
+这些值可以从 `theme` 对象中获取到，也可以自定义。
+
+从 `theme` 对象中获取断点值：
+
+```tsx
+import styled from 'styled-components';
+
+const Demo = styled.div`
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    ...;
+  }
+`;
+```
+
+自定义断点：
+
+```tsx
+import { ThemeProvider } from 'styled-components';
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  breakpoints: {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+  },
+}); // bootstrap 4 断点规范
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Demo />
+    </ThemeProvider>
+  );
+};
+```
+
+如上所示，我们可以在组件中使用断点来做响应性要求，可以在应用中使用断点控制布局。
+
+## CSS 媒体查询
+
+CSS 媒体查询是做响应式开发的常用技术。我们可以使用 [styled-components-breakpoint](https://github.com/jameslnewell/styled-components-breakpoint) 来简化 CSS 媒体查询的开发。
+
+首先安装 [styled-components-breakpoint](https://github.com/jameslnewell/styled-components-breakpoint)：
+
+```shell
+yarn add styled-components-breakpoint
+```
+
+如下方式使用：
+
+```tsx
+import breakpoint from 'styled-components-breakpoint';
+
+const Header = sytled.h1`
+  color: #444;
+  font-family: sans-serif;
+  font-size: 10px;
+  
+  ${breakpoint('sm')`
+    font-size: 12px;
+  `}
+  
+  ${breakpoint('md')`
+    font-size: 16px;
+  `}
+  
+  ${breakpoint('lg')`
+    font-size: 24px;
+  `}
+`;
+```
+
+生成的 CSS 如下：
+
+```css
+.cESAFm {
+  font-size: 12px;
+}
+
+@media (min-width: 600px) {
+  .cESAFm {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 960px) {
+  .cESAFm {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cESAFm {
+    font-size: 24px;
+  }
+}
+```
+
+`breakpoint(minWidth, maxWidth)` 函数有两个参数，第一个参数 `minWidth` 用来指定最小宽度（包含），第二个参数 `maxWidth` 用来指定最大宽度（不包含），如下所示：
+
+```tsx
+breakpoint('sm', 'lg');
+```
+
+对应的 CSS 如下：
+
+```css
+@media (min-width: 600px) and (max-width: 1279px);
+```
+
+看看效果：
+
+<Playground>
+  {() => {
+    const Header = styled.h1(props => ({
+      color: '#444',
+      fontFamily: 'sans-serif',
+      fontSize: 10,
+      [`@media (min-width: ${props.theme.breakpoints.sm}px)`]: {
+        fontSize: 12,
+      },
+      [`@media (min-width: ${props.theme.breakpoints.md}px)`]: {
+        fontSize: 16,
+      },
+      [`@media (min-width: ${props.theme.breakpoints.lg}px)`]: {
+        fontSize: 24,
+      },
+    }));
+
+    const theme = createTheme();
+
+    return <ThemeProvider theme={theme}>
+      <Header>不同屏幕尺寸，字体大小不一样：
+        <BreakpointIndicator className="xs">xs(10px)</BreakpointIndicator>
+        <BreakpointIndicator className="sm">sm(12px)</BreakpointIndicator>
+        <BreakpointIndicator className="md">md(16px)</BreakpointIndicator>
+        <BreakpointIndicator className="lg">lg(24px)</BreakpointIndicator>
+        <BreakpointIndicator className="xl">xl(24px)</BreakpointIndicator>
+      </Header>
+    </ThemeProvider>
+
+}}
+
+</Playground>
+
+## JavaScript 媒体查询
+
+借助 [react-responsive](https://www.npmjs.com/package/react-responsive)，我们可以很便捷地在 JavaScript 代码中应用媒体查询。
+
+安装 [react-responsive](https://www.npmjs.com/package/react-responsive)：
+
+```shell
+yarn add react-responsive
+```
+
+我们可以写一个 `useMediaQuery()` hook，用来获取媒体查询的结果：
+
+```tsx
+import { ThemeContext } from 'styled-components';
+import React, { useContext } from 'react';
+import { useMediaQuery } from 'react-responsive';
+
+function useMediaQuery(minWidth, maxWidth) {
+  const theme = useContext(ThemeContext);
+
+  const query = {};
+
+  if (minWidth) {
+    query[minWidth] = theme.breakpoints[minWidth];
+  }
+
+  if (maxWidth) {
+    query[maxWidth] = theme.breakpoints[maxWidth] - 1;
+  }
+
+  return useMediaQuery(query);
+}
+
+export default useMediaQuery;
+```
+
+`Demo.tsx`:
+
+```tsx
+import React from 'react';
+import useMediaQuery from './useMediaQuery';
+
+function Demo() {
+  const isXs = useMediaQuery('xs', 'sm');
+  const isXl = useMediaQuery('xl');
+  return (
+    <>
+      <div>xs尺寸范围：{`${isXs}`}</div>
+      <div>xl尺寸范围：{`${isXl}`}</div>
+    </>
+  );
+}
+```
+
+效果如下：
+
+<Playground>
+  {() => {
+    function Demo() {
+      const theme = useContext(ThemeContext);
+      const isXs = useMediaQuery({
+        minWidth: theme.breakpoints.xs,
+        maxWidth: theme.breakpoints.sm - 1,
+      });
+
+      const isXl = useMediaQuery({
+        minWidth: theme.breakpoints.xl,
+      });
+
+      return <>
+        <div>xs尺寸范围：{`${isXs}`}</div>
+        <div>xl尺寸范围：{`${isXl}`}</div>
+      </>
+    }
+
+    const theme = createTheme();
+
+    return <ThemeProvider theme={theme}>
+      <Demo />
+    </ThemeProvider>
+
+}}
+
+</Playground>
