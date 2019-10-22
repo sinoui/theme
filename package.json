@@ -62,6 +62,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
+    "polished": "^1.9.2",
     "warning": "^4.0.3"
   },
   "devDependencies": {
