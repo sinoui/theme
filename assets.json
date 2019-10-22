@@ -1,0 +1,12 @@
+{
+  "vendors.js": "/theme/static/js/vendors.e5c41993.js",
+  "vendors.js.map": "/theme/static/js/vendors.06e6556696e2d80400ae.js.map",
+  "app.js": "/theme/static/js/app.06e6556696e2d80400ae.js",
+  "app.js.map": "/theme/static/js/app.06e6556696e2d80400ae.js.map",
+  "docs-breakpoints.js": "/theme/static/js/docs-breakpoints.3c9d2f9e.js",
+  "docs-breakpoints.js.map": "/theme/static/js/docs-breakpoints.06e6556696e2d80400ae.js.map",
+  "docs-index.js": "/theme/static/js/docs-index.cd7bf0d2.js",
+  "docs-index.js.map": "/theme/static/js/docs-index.06e6556696e2d80400ae.js.map",
+  "404.html": "/theme/404.html",
+  "index.html": "/theme/index.html"
+}
