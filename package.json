@@ -1,11 +1,20 @@
 {
   "name": "@sinoui/theme",
   "version": "0.3.3",
+  "description": "sinoui 主题定制库。",
   "license": "MIT",
   "main": "dist/index.js",
   "umd:main": "dist/theme.umd.production.js",
   "module": "dist/theme.esm.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://sinoui.github.io/theme",
+  "bugs": {
+    "url": "https://github.com/sinoui/theme/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinoui/theme.git"
+  },
   "scripts": {
     "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
