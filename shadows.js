@@ -1,3 +1,1 @@
-const { shadows } = require('./dist/index');
-
-module.exports = shadows;
+module.exports = require('./dist/index').shadows;

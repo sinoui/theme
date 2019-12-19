@@ -1,3 +1,1 @@
-const { defaultTheme } = require('./dist/index');
-
-module.exports = defaultTheme;
+module.exports = require('./dist/index').defaultTheme;

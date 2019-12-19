@@ -1,3 +1,1 @@
-const { createPalette } = require('./dist/index');
-
-module.exports = createPalette;
+module.exports = require('./dist/index').createPalette;

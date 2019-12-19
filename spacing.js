@@ -1,3 +1,1 @@
-const { spacing } = require('./dist/index');
-
-module.exports = spacing;
+module.exports = require('./dist/index').spacing;

@@ -1,3 +1,1 @@
-const { colors } = require('./dist/index');
-
-module.exports = colors;
+module.exports = require('./dist/index');

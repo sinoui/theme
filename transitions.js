@@ -1,3 +1,1 @@
-const { transitions } = require('./dist/index');
-
-module.exports = transitions;
+module.exports = require('./dist/index').transitions;

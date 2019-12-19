@@ -1,3 +1,1 @@
-const { createTheme } = require('./dist/index');
-
-module.exports = createTheme;
+module.exports = require('./dist/index').createTheme;

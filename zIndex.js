@@ -1,3 +1,1 @@
-const { zIndex } = require('./dist/index');
-
-module.exports = zIndex;
+module.exports = require('./dist/index').zIndex;
