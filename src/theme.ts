@@ -13,7 +13,7 @@ import breakpoints from './breakpoints';
  */
 export default function createTheme(options: ThemeOptions = {}): Theme {
   const palette = options.palette || createPalette();
-  const typography = options.typography || createTypography(palette);
+  const typography = options.typography || createTypography();
 
   return {
     shadows,

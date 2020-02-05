@@ -163,20 +163,18 @@ export interface Palette {
  * 字重
  */
 export type FontWeight =
-  | string
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900'
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
   | 'normal'
   | 'bold'
   | 'bolder'
-  | 'light'
   | 'lighter';
 
 /**
@@ -194,44 +192,46 @@ export interface TypographyItem {
 /**
  * 字体配置项
  */
-export interface TypographyConstants {
-  fontFamily?: string;
-  fontSize?: number;
-  fontWeightLight?: FontWeight;
-  fontWeightRegular?: FontWeight;
-  fontWeightMedium?: FontWeight;
-  button?: TypographyItem;
-  caption?: TypographyItem;
-  body1?: TypographyItem;
-  body2?: TypographyItem;
-  subheading?: TypographyItem;
-  title?: TypographyItem;
-  headline?: TypographyItem;
-  display1?: TypographyItem;
-  display2?: TypographyItem;
-  display3?: TypographyItem;
-  display4?: TypographyItem;
-}
+export type TypographyConstants = Partial<ThemeTypography>;
 
 /**
  * 文本主题
  */
 export interface ThemeTypography {
   fontFamily: string;
+  /**
+   * 极细字重
+   */
   fontWeightLight: FontWeight;
+  /**
+   * 正常字重
+   */
   fontWeightRegular: FontWeight;
+  /**
+   * 中等字重
+   */
   fontWeightMedium: FontWeight;
-  button: TypographyItem;
-  caption: TypographyItem;
-  body1: TypographyItem;
-  body2: TypographyItem;
-  subheading: TypographyItem;
-  title: TypographyItem;
-  headline: TypographyItem;
-  display1: TypographyItem;
-  display2: TypographyItem;
-  display3: TypographyItem;
-  display4: TypographyItem;
+  /**
+   * 粗体字重
+   */
+  fontWeightBold: FontWeight;
+  /**
+   * 1rem相对的默认字体大小。默认为 `16px`。
+   */
+  fontSize: number;
+  h1: React.CSSProperties;
+  h2: React.CSSProperties;
+  h3: React.CSSProperties;
+  h4: React.CSSProperties;
+  h5: React.CSSProperties;
+  h6: React.CSSProperties;
+  subtitle1: React.CSSProperties;
+  subtitle2: React.CSSProperties;
+  body1: React.CSSProperties;
+  body2: React.CSSProperties;
+  button: React.CSSProperties;
+  caption: React.CSSProperties;
+  overline: React.CSSProperties;
 }
 
 /**

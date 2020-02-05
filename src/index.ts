@@ -5,7 +5,7 @@ import createPalette from './palette';
 import shadows from './shadows';
 import spacing from './spacing';
 import transitions from './transitions';
-import typography from './typography';
+import createTypography from './typography';
 import zIndex from './zIndex';
 import defaultTheme from './defaultTheme';
 
@@ -17,7 +17,7 @@ export {
   shadows,
   spacing,
   transitions,
-  typography,
+  createTypography,
   zIndex,
   defaultTheme,
 };

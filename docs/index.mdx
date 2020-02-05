@@ -3,6 +3,8 @@ name: 开始
 route: /
 ---
 
+import TypographyDemo from './components/TypographyDemo';
+
 # 主题定制
 
 @sinoui/theme 主要提供了主题定制的基本对象，需要结合[styled-components](https://github.com/styled-components/styled-components)
@@ -67,6 +69,84 @@ palette 的 type 属性即可。
 这些色系所对应的颜色值都可以通过上述方式自定义。
 
 字体、阴影效果、间距等都可以通过上述方式自定义。
+
+## 字体排版 typography
+
+sinoui 字体排版遵循 [Material Design Typography](https://material.io/design/typography/the-type-system.html#type-scale)。
+
+Material Design 的文字大小和样式是为了在典型使用条件下平衡内容密度和阅读舒适度而开发的。提供了以下分类：
+
+| 类别名称           | 字体大小(px) | 字重    | 字间距 |
+| ------------------ | ------------ | ------- | ------ |
+| 一级标题 H1        | 96           | light   | -1.5   |
+| 二级标题 H2        | 60           | light   | -0.5   |
+| 三级标题 H3        | 48           | regular | 0      |
+| 四级标题 H4        | 34           | regular | 0.25   |
+| 五级标题 H5        | 24           | regular | 0      |
+| 六级标题 H6        | 20           | medium  | 0.15   |
+| 副标题 1 Subtitle1 | 16           | regular | 0.15   |
+| 副标题 2 Subtitle2 | 14           | medium  | 0.1    |
+| 段落 1 Body1       | 16           | regular | 0.15   |
+| 段落 2 Body2       | 14           | regular | 0.15   |
+| 按钮 Button        | 15           | meidum  | 0.4    |
+| 说明 caption       | 12           | regular | 0.4    |
+| Overline           | 12           | regular | 1      |
+
+### 字重
+
+建议应用不要采用过多的字重范围。sinoui 推荐采用以下字重范围：
+
+| 字重名称                                         | 字重 |
+| ------------------------------------------------ | ---- |
+| <span style={{ fontWeight: 300 }}>light</span>   | 300  |
+| <span style={{ fontWeight: 400 }}>regular</span> | 400  |
+| <span style={{ fontWeight: 500 }}>medium</span>  | 500  |
+| <span style={{ fontWeight: 700 }}>bold</span>    | 700  |
+
+### 字体家族
+
+Material Design 推荐采用 Roboto 字体。但是 Roboto 是西文字体，不包括 CJK（中日韩）。对于中文，可以选择开源的[思源黑体](https://github.com/adobe-fonts/source-han-sans)、[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源等宽](https://github.com/adobe-fonts/source-han-mono)。
+
+sinoui 采纳的字体家族如下：
+
+```css
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+  'Hiragino Sans GB', 'Microsoft YaHei', Roboto, 'Noto Sans SC',
+  'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol';
+```
+
+上面的字体家族设置，会达到以下效果：
+
+| 操作系统    | 中文                     | 西文                |
+| ----------- | ------------------------ | ------------------- |
+| windows     | 微软雅黑 Microsoft YaHei | Segoe UI            |
+| Android     | 思源黑体 Noto Sans SC    | Roboto              |
+| MacOS / iOS | 苹方黑体 PingFang SC     | San Francisco Fonts |
+
+这些字体都是由系统内置的，能保证你的应用程序采用的字体与操作系统一致。
+
+`Apple Color Emoji`, `Segoe UI Emoji`, `Segoe UI Symbol` 是为了更好地显示 emoji 文字（表情文字）。
+
+党政公文系统推荐采用 `仿宋_GB2312` 作为中文字体。
+
+在中后台系统中，数字经常需要进行纵向对比展示，所以 sinoui 将数字设置为等宽字体：
+
+```css
+font-variant: tabular-nums;
+```
+
+如果你在 windows 下遇到中文排版高低不齐的情况，这很可能是`微软雅黑`字体导致的。这种情况下可以采用其他中文字体代替，如思源黑体。
+
+// TODO: 下载 web fonts，如 Roboto、思源黑体。
+
+### 字体大小
+
+对于中文系统，推荐主字体大小为 `14px`，对应 `body2`。
+
+### 示例
+
+<TypographyDemo />
 
 ## 组件的主题定制开发
 
