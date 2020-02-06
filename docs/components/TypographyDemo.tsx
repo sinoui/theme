@@ -1,7 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import { createTypography } from '../../src';
 
-const scaleCategory = [
+const scaleCategory: {
+  category: string;
+  description?: string;
+  component: React.ReactType;
+}[] = [
   {
     category: 'h1',
     description: '一级标题',
@@ -70,16 +75,31 @@ const scaleCategory = [
   },
 ];
 
+const Wrapper = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.38);
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  font-family: ${(props) => props.theme.typography.fontFamily};
+
+  > div {
+    width: 100%;
+    max-width: 560px;
+  }
+`;
+
 export default function TypographyDemo() {
   const typography = createTypography();
 
   return (
-    <div>
-      {scaleCategory.map(({ category, description, component: Comp }) => (
-        <Comp style={typography[category]} key={category}>
-          {category} {description}
-        </Comp>
-      ))}
-    </div>
+    <Wrapper>
+      <div>
+        {scaleCategory.map(({ category, description, component: Comp }) => (
+          <Comp style={typography[category]} key={category}>
+            {category}. {description}
+          </Comp>
+        ))}
+      </div>
+    </Wrapper>
   );
 }

@@ -1,6 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
 import url from 'url';
+import math from 'remark-math';
+import katex from 'remark-html-katex';
+import html from 'remark-html';
 import packageInfo from './package.json';
 
 /**
@@ -27,9 +30,10 @@ export default {
   typescript: true,
   files: ['**/*.mdx'],
   public: './docs/assets',
-  menu: ['首页'],
+  menu: ['开始', '字体排版', '断点'],
   wrapper: 'docs/Wrapper.tsx',
   indexHtml: 'docs/index.html',
+  mdPlugins: [math, html, katex],
   base: getBaseUrl(),
   onCreateWebpackChain: (config) => {
     // 配置webpack的方式：[webpack-chain](https://github.com/neutrinojs/webpack-chain)
@@ -69,8 +73,8 @@ export default {
       .end();
 
     config.watchOptions({
-        ignored: ['node_modules', 'dist', '.cache', 'coverage', '.docz']
-      });
+      ignored: ['node_modules', 'dist', '.cache', 'coverage', '.docz'],
+    });
 
     return config;
   },

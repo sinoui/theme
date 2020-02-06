@@ -5,12 +5,14 @@ import createPalette from './palette';
 import shadows from './shadows';
 import spacing from './spacing';
 import transitions from './transitions';
-import createTypography from './typography';
+import createTypography from './createTypography';
 import zIndex from './zIndex';
 import defaultTheme from './defaultTheme';
+import ThemeStyle from './ThemeStyle';
 
 export {
   Theme,
+  ThemeStyle,
   createTheme,
   colors,
   createPalette,

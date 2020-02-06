@@ -1,0 +1,233 @@
+---
+name: 字体排版
+route: /typography
+---
+
+import TypographyDemo from './components/TypographyDemo';
+import FontSizeTool from './components/FontSizeTool';
+
+# 字体排版 typography
+
+sinoui 字体排版遵循 [Material Design Typography](https://material.io/design/typography/the-type-system.html#type-scale)。
+
+Material Design 的文字大小和样式是为了在典型使用条件下平衡内容密度和阅读舒适度而开发的。提供了以下分类：
+
+| 类别名称           | 字体大小(px) | 字重    | 字间距 |
+| ------------------ | ------------ | ------- | ------ |
+| 一级标题 H1        | 96           | light   | -1.5   |
+| 二级标题 H2        | 60           | light   | -0.5   |
+| 三级标题 H3        | 48           | regular | 0      |
+| 四级标题 H4        | 34           | regular | 0.25   |
+| 五级标题 H5        | 24           | regular | 0      |
+| 六级标题 H6        | 20           | medium  | 0.15   |
+| 副标题 1 Subtitle1 | 16           | regular | 0.15   |
+| 副标题 2 Subtitle2 | 14           | medium  | 0.1    |
+| 段落 1 Body1       | 16           | regular | 0.15   |
+| 段落 2 Body2       | 14           | regular | 0.15   |
+| 按钮 Button        | 14           | meidum  | 0.4    |
+| 说明 Caption       | 12           | regular | 0.4    |
+| Overline           | 12           | regular | 1      |
+
+可以通过 `theme.typography` 获取、设置分类对应的 css 样式，如 `theme.typography.h1` 对应 `H1` 的样式：
+
+获取样式：
+
+```ts
+import styled from 'styled-components';
+
+const H1 = styled.h1((props) => props.theme.typography.h1);
+```
+
+自定义 H1 样式：
+
+```ts
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  typography: {
+    h1: {
+      fontSize: '3rem',
+    },
+  },
+});
+```
+
+## 字重
+
+建议应用不要采用过多的字重范围。sinoui 推荐采用以下字重范围：
+
+| 字重名称                                         | 字重 |
+| ------------------------------------------------ | ---- |
+| <span style={{ fontWeight: 300 }}>light</span>   | 300  |
+| <span style={{ fontWeight: 400 }}>regular</span> | 400  |
+| <span style={{ fontWeight: 500 }}>medium</span>  | 500  |
+| <span style={{ fontWeight: 700 }}>bold</span>    | 700  |
+
+通过 `theme.typography` 可以获取、自定义字重：
+
+- light - `theme.typography.fontWeightLight`
+- regular - `theme.typography.fontWeightRegular`
+- medium - `theme.typography.fontWeightMedium`
+- bold - `theme.typography.fontWeightBold`
+
+应用程序使用字重尽量克制，保持在 3 ~ 5 种。
+
+## 字体家族
+
+Material Design 推荐采用 Roboto 字体。但是 Roboto 是西文字体，不包括 CJK（中日韩）。对于中文，可以选择开源的[思源黑体](https://github.com/adobe-fonts/source-han-sans)、[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源等宽](https://github.com/adobe-fonts/source-han-mono)。
+
+通过 `theme.typography.fontFamily` 可以获取、自定义字体家族。
+
+sinoui 采纳系统默认的字体家族。如下：
+
+```css
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+  'Hiragino Sans GB', 'Microsoft YaHei', Roboto, 'Noto Sans SC',
+  'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol';
+```
+
+上面的字体家族设置，会达到以下效果：
+
+| 操作系统    | 中文                     | 西文                |
+| ----------- | ------------------------ | ------------------- |
+| windows     | 微软雅黑 Microsoft YaHei | Segoe UI            |
+| Android     | 思源黑体 Noto Sans SC    | Roboto              |
+| MacOS / iOS | 苹方黑体 PingFang SC     | San Francisco Fonts |
+
+这些字体都是由系统内置的，能保证你的应用程序采用的字体与操作系统一致。
+
+`Apple Color Emoji`, `Segoe UI Emoji`, `Segoe UI Symbol` 是为了更好地显示 emoji 文字（表情文字）。
+
+党政公文系统推荐采用 `仿宋_GB2312` 作为中文字体。
+
+在中后台系统中，数字经常需要进行纵向对比展示，所以 sinoui 将数字设置为等宽字体：
+
+```css
+font-variant: tabular-nums;
+```
+
+微软雅黑字体有以下缺点：
+
+- 部分中文排版会出现高低不齐的情况（可以尝试设置字重为 300 或者变更一下字体大小来规避此缺陷）
+- 没有 Medium 档的字重（即 500 字重）
+
+如果你的应用程序对这两个 bug 不能忍受，那么可以使用思源黑体。
+
+您需要设置字体家族：
+
+```tsx
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif`,
+  },
+});
+```
+
+操作系统一般不会内置思源黑体，且 sinoui 也不会自动加载思源黑体字体。所以开发人员负责加载应用程序中使用的所有字体。思源黑体有几种简单的加载方式。
+
+## 思源黑体 CDN
+
+在应用程序中添加以下 link 标签，即会从 CDN 中加载需要思源黑体字体：
+
+```html
+<link
+  href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,500,700&display=swap&subset=chinese-simplified"
+  rel="stylesheet"
+/>
+```
+
+## 通过 NPM 安装思源黑体
+
+通过在终端中键入以下命令, 可以安装思源黑体：
+
+```shell
+yarn add @sinoui/noto-sans-sc
+```
+
+然后，您可以将其导入到您的入口点文件：
+
+```tsx
+import '@sinoui/noto-sans-sc';
+```
+
+通过这种方式安装的思源黑体，可以解决在内网使用 Web 程序不能访问公网 CDN 的问题。但是会显著增加前端打包的大小。
+
+## 字体大小
+
+对于中文系统，推荐主字体大小为 `14px`，对应 `body2`。
+
+sinoui 统一采用 `rem` 作为字体大小的单位。`1rem` 等于浏览器默认字体大小（即`16px`，可以通过 `theme.typography.htmlFontSize` 定制）。你可以通过 `theme.typography.fontSize` 来控制实际字体大小。实际字体大小的计算公式如下：
+
+$x=y \times \frac{typography.fontSize}{14} \times \frac{htmlFontSize}{typography.htmlFontSize}$
+
+`x` 为实际字体大小，`y` 为指定的字体大小。`htmlFontSize` 指的是浏览器默认字体大小，可以通过下面的 css 代码来设置：
+
+```css
+html {
+  font-size: 62.5%; /* 62.5% * 16px = 10px */
+}
+```
+
+不推荐通过 `typography.htmlFontSize` 来控制实际字体大小。一般需要保证 `theme.typography.fontSize` 和 `html` 标签字体大小一致，如上例对应的设置为：
+
+```ts
+const theme = createTheme({
+  typography: {
+    htmlFontSize: 10,
+  },
+});
+```
+
+字体大小控制公式演示：
+
+<FontSizeTool />
+
+## 字体分类示例
+
+<TypographyDemo />
+
+## 主题定制
+
+可以通过`createTheme`自定义应用程序的字体排版。你可以设置默认字重、默认字体大小和默认字体家族，如下所示：
+
+```tsx
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  typography: {
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+    fontSize: 16,
+    fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+  'Hiragino Sans GB', 'Microsoft YaHei', Roboto, 'Noto Sans SC',
+  'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol'`,
+  },
+});
+```
+
+也可以分别对每一个字体排版分类自定义样式：
+
+```ts
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  typography: {
+    h1: {
+      fontSize: '3rem',
+    },
+    h2: {
+      fontSize: '1.75rem',
+    },
+    body2: {
+      fontSize: '1rem',
+      margin: '8px 0',
+    },
+  },
+});
+```

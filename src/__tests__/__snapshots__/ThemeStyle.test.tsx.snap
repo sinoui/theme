@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`不产生字体分类样式 1`] = `
+"html{font-size:16px;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,'Noto Sans SC','Helvetica Neue',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-size:0.875rem;color:rgba(0,0,0,0.87);font-variant:tabular-nums;}"
+`;
+
+exports[`产生全局样式 1`] = `
+"html{font-size:16px;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,'Noto Sans SC','Helvetica Neue',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-size:0.875rem;color:rgba(0,0,0,0.87);font-variant:tabular-nums;}
+h1{font-weight:300;font-size:6rem;line-height:1.167;-webkit-letter-spacing:-0.01562em;-moz-letter-spacing:-0.01562em;-ms-letter-spacing:-0.01562em;letter-spacing:-0.01562em;}
+h2{font-weight:300;font-size:3.75rem;line-height:1.2;-webkit-letter-spacing:-0.00833em;-moz-letter-spacing:-0.00833em;-ms-letter-spacing:-0.00833em;letter-spacing:-0.00833em;}
+h3{font-weight:400;font-size:3rem;line-height:1.167;-webkit-letter-spacing:0em;-moz-letter-spacing:0em;-ms-letter-spacing:0em;letter-spacing:0em;}
+h4{font-weight:400;font-size:2.125rem;line-height:1.235;-webkit-letter-spacing:0.00735em;-moz-letter-spacing:0.00735em;-ms-letter-spacing:0.00735em;letter-spacing:0.00735em;}
+h5{font-weight:400;font-size:1.5rem;line-height:1.334;-webkit-letter-spacing:0em;-moz-letter-spacing:0em;-ms-letter-spacing:0em;letter-spacing:0em;}
+h6{font-weight:500;font-size:1.25rem;line-height:1.6;-webkit-letter-spacing:0.0075em;-moz-letter-spacing:0.0075em;-ms-letter-spacing:0.0075em;letter-spacing:0.0075em;}
+.subtitle1{font-weight:400;font-size:1rem;line-height:1.75;-webkit-letter-spacing:0.00938em;-moz-letter-spacing:0.00938em;-ms-letter-spacing:0.00938em;letter-spacing:0.00938em;}
+.subtitle2{font-weight:500;font-size:0.875rem;line-height:1.57;-webkit-letter-spacing:0.00714em;-moz-letter-spacing:0.00714em;-ms-letter-spacing:0.00714em;letter-spacing:0.00714em;}
+.body1{font-weight:400;font-size:1rem;line-height:1.5;-webkit-letter-spacing:0.00938em;-moz-letter-spacing:0.00938em;-ms-letter-spacing:0.00938em;letter-spacing:0.00938em;}
+.body2{font-weight:400;font-size:0.875rem;line-height:1.43;-webkit-letter-spacing:0.01071em;-moz-letter-spacing:0.01071em;-ms-letter-spacing:0.01071em;letter-spacing:0.01071em;}
+.caption{font-weight:400;font-size:0.75rem;line-height:1.66;-webkit-letter-spacing:0.03333em;-moz-letter-spacing:0.03333em;-ms-letter-spacing:0.03333em;letter-spacing:0.03333em;}
+.overline{font-weight:400;font-size:0.75rem;line-height:2.66;-webkit-letter-spacing:0.08333em;-moz-letter-spacing:0.08333em;-ms-letter-spacing:0.08333em;letter-spacing:0.08333em;text-transform:uppercase;}"
+`;

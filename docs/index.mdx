@@ -3,12 +3,9 @@ name: 开始
 route: /
 ---
 
-import TypographyDemo from './components/TypographyDemo';
-
 # 主题定制
 
-@sinoui/theme 主要提供了主题定制的基本对象，需要结合[styled-components](https://github.com/styled-components/styled-components)
-使用。
+sinoui 遵循 [Material Design](https://material.io/) 设计标准。@sinoui/theme 提供了对标准样式进行自定义的能力。
 
 ## 安装
 
@@ -17,13 +14,69 @@ import TypographyDemo from './components/TypographyDemo';
 - 使用 npm
 
 ```shell
-npm install --save @sinoui/theme
+npm install --save @sinoui/theme styled-components
 ```
 
 - 使用 yarn
 
 ```shell
-yarn add @sinoui/theme
+yarn add @sinoui/theme styled-components
+```
+
+## 主题上下文
+
+要想在应用程序中使用主题，则需要在应用程序入口点文件中定义主题上下文：
+
+```tsx
+import { ThemeProvider } from 'styled-components';
+import { createTheme, ThemeStyle } from '@sinoui/theme';
+
+const theme = createTheme(); // 创建主题
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <ThemeStyle />
+        {/**应用程序代码**/}
+      </>
+    </ThemeProvider>
+  );
+}
+```
+
+`ThemeStyle`组件提供了与主题相关的全局样式。
+
+查看[自定义主题](#自定义主题)，了解更多关于主题定制的细节。
+
+## 在组件中使用主题
+
+我们可以在定义样式组件时使用主题对象：
+
+```tsx
+import styled from 'styled-components';
+
+const Title = styled.h6((props) => ({
+  ...props.theme.typography.subtitle1,
+  color: props.theme.palette.text.primary,
+}));
+```
+
+程序中的 `props.theme` 即是主题上下文中的主题对象。
+
+也可以在普通组件通过上下文获取到主题对象：
+
+```tsx
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+
+function MyComponent() {
+  const theme = useContext(ThemeContext);
+
+  console.log('current theme: ', theme);
+
+  // ...
+}
 ```
 
 ## 自定义主题
@@ -32,177 +85,40 @@ yarn add @sinoui/theme
 
 主题对象主要包括以下可定制的点：
 
-- palette 调色板。包括字体颜色、背景色、分隔符颜色等。调色板中色系的色值可以参考[Material Design | color](https://material.io/design/color/#tools-for-picking-colors)
-- typography 字体。包括字体大小、字体类型、字重、字体颜色等。
-- shadows 阴影。
-- transitions css 变换表达式。
-- spacing 间距
+- [palette 颜色](/palette)。包括字体颜色、背景色、分隔符颜色等。
+- [typography 字体排版](/typography)。包括字体大小、字体类型、字重、字体颜色等。
+- [shadows 阴影](/shadows)。
+- [transitions 动效](/transitions)。
+- [spacing 间距](/spacing)。
 
 我们可以调用 createTheme 来创建主题：
 
 ```ts
 import { createTheme } from '@sinoui/theme';
 
-const theme = createTheme(options);
-```
-
-上述示例中，options 表示自定义主题配置，其中可包含上述提到的所有主题定制的点。例如我们需要把主色系`primary`改成粉色，背景色变成暗色，只需要按照
-下面的方式重新创建主题即可：
-
-```ts
-import { createTheme, createPalette } from '@sinoui/theme';
-import { pink, green } from '@sinoui/theme/colors';
-
 const theme = createTheme({
-  palette: createPalette({
-    type: 'dark', //渲染黑色背景，
-    primary: pink, // 将主色调设定为`pink`
-    accent: green, //将强调色设为绿色
-  }),
+  palette: {
+    type: 'dark',
+    primary: pink,
+    accent: green,
+  },
+  typography: {
+    fontSize: 16,
+    fontWeightMedium: 600,
+    h1: {
+      fontSize: '3rem',
+      fontWeight: 600,
+    },
+  },
+  spacing: 12,
 });
 ```
 
-上述示例中，我们指定`pink`色系为主题色系，`green`色系为强调色，背景为`dark`。在我们的主题色系中，有跟[Material Design | color](https://material.io/design/color/#tools-for-picking-colors)同样的色系可供选择，背景色有亮色和暗色可选，关于背景色的定制，只需要改变
-palette 的 type 属性即可。
+## TypeScript 支持
 
-主题定制部分我们不仅支持`Material Design`的主色调`primary`和辅色调`accent`,还支持`bootstrap`的`error`、`success`、`info`、 `warning`、`danger`五个色系。
-这些色系所对应的颜色值都可以通过上述方式自定义。
+@sinoui/theme 本身由 typescript 开发。
 
-字体、阴影效果、间距等都可以通过上述方式自定义。
-
-## 字体排版 typography
-
-sinoui 字体排版遵循 [Material Design Typography](https://material.io/design/typography/the-type-system.html#type-scale)。
-
-Material Design 的文字大小和样式是为了在典型使用条件下平衡内容密度和阅读舒适度而开发的。提供了以下分类：
-
-| 类别名称           | 字体大小(px) | 字重    | 字间距 |
-| ------------------ | ------------ | ------- | ------ |
-| 一级标题 H1        | 96           | light   | -1.5   |
-| 二级标题 H2        | 60           | light   | -0.5   |
-| 三级标题 H3        | 48           | regular | 0      |
-| 四级标题 H4        | 34           | regular | 0.25   |
-| 五级标题 H5        | 24           | regular | 0      |
-| 六级标题 H6        | 20           | medium  | 0.15   |
-| 副标题 1 Subtitle1 | 16           | regular | 0.15   |
-| 副标题 2 Subtitle2 | 14           | medium  | 0.1    |
-| 段落 1 Body1       | 16           | regular | 0.15   |
-| 段落 2 Body2       | 14           | regular | 0.15   |
-| 按钮 Button        | 14           | meidum  | 0.4    |
-| 说明 Caption       | 12           | regular | 0.4    |
-| Overline           | 12           | regular | 1      |
-
-### 字重
-
-建议应用不要采用过多的字重范围。sinoui 推荐采用以下字重范围：
-
-| 字重名称                                         | 字重 |
-| ------------------------------------------------ | ---- |
-| <span style={{ fontWeight: 300 }}>light</span>   | 300  |
-| <span style={{ fontWeight: 400 }}>regular</span> | 400  |
-| <span style={{ fontWeight: 500 }}>medium</span>  | 500  |
-| <span style={{ fontWeight: 700 }}>bold</span>    | 700  |
-
-### 字体家族
-
-Material Design 推荐采用 Roboto 字体。但是 Roboto 是西文字体，不包括 CJK（中日韩）。对于中文，可以选择开源的[思源黑体](https://github.com/adobe-fonts/source-han-sans)、[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[思源等宽](https://github.com/adobe-fonts/source-han-mono)。
-
-sinoui 采纳的字体家族如下：
-
-```css
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-  'Hiragino Sans GB', 'Microsoft YaHei', Roboto, 'Noto Sans SC',
-  'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol';
-```
-
-上面的字体家族设置，会达到以下效果：
-
-| 操作系统    | 中文                     | 西文                |
-| ----------- | ------------------------ | ------------------- |
-| windows     | 微软雅黑 Microsoft YaHei | Segoe UI            |
-| Android     | 思源黑体 Noto Sans SC    | Roboto              |
-| MacOS / iOS | 苹方黑体 PingFang SC     | San Francisco Fonts |
-
-这些字体都是由系统内置的，能保证你的应用程序采用的字体与操作系统一致。
-
-`Apple Color Emoji`, `Segoe UI Emoji`, `Segoe UI Symbol` 是为了更好地显示 emoji 文字（表情文字）。
-
-党政公文系统推荐采用 `仿宋_GB2312` 作为中文字体。
-
-在中后台系统中，数字经常需要进行纵向对比展示，所以 sinoui 将数字设置为等宽字体：
-
-```css
-font-variant: tabular-nums;
-```
-
-如果你在 windows 下遇到中文排版高低不齐的情况，这很可能是`微软雅黑`字体导致的。这种情况下可以采用其他中文字体代替，如思源黑体。
-
-// TODO: 下载 web fonts，如 Roboto、思源黑体。
-
-### 字体大小
-
-对于中文系统，推荐主字体大小为 `14px`，对应 `body2`。
-
-### 示例
-
-<TypographyDemo />
-
-## 组件的主题定制开发
-
-如果我们需要对一个组件进行主题定制，首先需要考虑有哪些样式需要主题定制，比如文本颜色、背景色。主题定制主要提供了以下可定制属性：
-
-- 文本颜色
-- 背景色
-- 分隔符颜色
-- 字体大小
-- 字重
-- 间距大小
-- 阴影
-- css 变换
-
-组件的主题定制，一般结合`styled-components`使用：
-
-```tsx
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  height: 400px;
-  width: 400px;
-  padding: ${(props) => props.theme.spacing * 2}px; // 定制间距
-  background-color: ${(props) =>
-    props.theme.palette.background.paper}; //定制背景色
-  color: ${(props) => props.theme.palette.text.primary}; // 定制字体颜色
-  font-size: ${(props) =>
-    props.theme.typography.body1.fontSize}; // 定制字体大小
-`;
-```
-
-如果色系中的颜色都不满足需求，我们也可以自定义文本颜色，但在自定义时一定要考虑在明亮和黑色背景下文本颜色是否需要改变。如果需要改变，可以按照下面的方式定制：
-
-```tsx
-import styled from 'styled-components';
-
-const fontColor = {
-  light: 'rgba(0,0,0,0.54)',
-  dark: 'rgba(255,255,255,0.6)',
-};
-
-const Wrapper = styled.div`
-  height: 400px;
-  width: 400px;
-  padding: ${(props) => props.theme.spacing * 2}px; // 定制间距
-  background-color: ${(props) =>
-    props.theme.palette.background.paper}; //定制背景色
-  color: ${(props) => fontColor[props.theme.palette.type]}; // 定制字体颜色
-  font-size: ${(props) =>
-    props.theme.typography.body1.fontSize}; // 定制字体大小
-`;
-```
-
-## 主题定制的 ts 语法提示支持
-
-在 @types 中创建 theme-styled-components/index.d.ts 文件，内容如下：
+在项目的 `src/env.d.ts` 文件中添加以下内容，即可支持 theme 对象的 ts 类型：
 
 ```ts
 /* eslint-disable @typescript-eslint/no-empty-interface */
@@ -211,16 +127,5 @@ import { Theme } from '@sinoui/theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}
-}
-```
-
-然后在项目根目录中的 tsconfig.json 中自动导入上面定义的 .d.ts。
-
-```json
-{
-  "compilerOptions": {
-    "types": ["theme-styled-components"],
-    "typeRoots": ["./@types"]
-  }
 }
 ```

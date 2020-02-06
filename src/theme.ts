@@ -1,5 +1,5 @@
 import createPalette from './palette';
-import createTypography from './typography';
+import createTypography from './createTypography';
 import shadows from './shadows';
 import transitions from './transitions';
 import zIndex from './zIndex';
@@ -13,7 +13,7 @@ import breakpoints from './breakpoints';
  */
 export default function createTheme(options: ThemeOptions = {}): Theme {
   const palette = options.palette || createPalette();
-  const typography = options.typography || createTypography();
+  const typography = createTypography(options.typography);
 
   return {
     shadows,

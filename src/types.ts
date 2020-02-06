@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+
 /**
  * 色系
  */
@@ -132,7 +134,13 @@ export interface PaletteShade {
  * 主题调色板
  */
 export interface PaletteShades {
+  /**
+   * 在亮模式下的颜色设置
+   */
   light: PaletteShade;
+  /**
+   * 在暗模式下的颜色设置
+   */
   dark: PaletteShade;
 }
 
@@ -140,8 +148,17 @@ export interface PaletteShades {
  * 调色板
  */
 export interface Palette {
+  /**
+   * 主题类型
+   */
   type: 'light' | 'dark';
+  /**
+   * 在不同模式下的颜色设置
+   */
   shades: PaletteShades;
+  /**
+   * 文本颜色
+   */
   text: PaletteText;
   input: PaletteInput;
   action: PaletteAction;
@@ -159,35 +176,12 @@ export interface Palette {
   getContrastText: (color: string) => string;
 }
 
+/* ---------------typography----------------*/
+
 /**
  * 字重
  */
-export type FontWeight =
-  | 100
-  | 200
-  | 300
-  | 400
-  | 500
-  | 600
-  | 700
-  | 800
-  | 900
-  | 'normal'
-  | 'bold'
-  | 'bolder'
-  | 'lighter';
-
-/**
- * 文本项
- */
-export interface TypographyItem {
-  fontSize: number;
-  fontWeight: FontWeight;
-  fontFamily: string;
-  lineHeight: number | 'normal' | 'inherit';
-  color: string;
-  letterSpacing?: string;
-}
+export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 /**
  * 字体配置项
@@ -198,6 +192,9 @@ export type TypographyConstants = Partial<ThemeTypography>;
  * 文本主题
  */
 export interface ThemeTypography {
+  /**
+   * 字体家族
+   */
   fontFamily: string;
   /**
    * 极细字重
@@ -216,22 +213,70 @@ export interface ThemeTypography {
    */
   fontWeightBold: FontWeight;
   /**
-   * 1rem相对的默认字体大小。默认为 `16px`。
+   * 控制字体大小的参考值。默认为 `14px`。
    */
   fontSize: number;
+  /**
+   * `<html>`标签的字体大小，即浏览器默认字体大小。默认为 `16px`。
+   */
+  htmlFontSize: number;
+  /**
+   * 一级标题样式
+   */
   h1: React.CSSProperties;
+  /**
+   * 二级标题样式
+   */
   h2: React.CSSProperties;
+  /**
+   * 三级标题样式
+   */
   h3: React.CSSProperties;
+  /**
+   * 四级标题样式
+   */
   h4: React.CSSProperties;
+  /**
+   * 五级标题样式
+   */
   h5: React.CSSProperties;
+  /**
+   * 六级标题样式
+   */
   h6: React.CSSProperties;
+  /**
+   * 副标题1样式
+   */
   subtitle1: React.CSSProperties;
+  /**
+   * 副标题2样式
+   */
   subtitle2: React.CSSProperties;
+  /**
+   * 主体文本1样式
+   */
   body1: React.CSSProperties;
+  /**
+   * 主体文本2样式
+   */
   body2: React.CSSProperties;
+  /**
+   * 按钮文本样式
+   */
   button: React.CSSProperties;
+  /**
+   * 说明文本样式
+   */
   caption: React.CSSProperties;
+  /**
+   * overline 样式
+   */
   overline: React.CSSProperties;
+
+  /**
+   * 将 px 值转换为 rem 值
+   */
+  pxToRem: (px: number) => string;
 }
 
 /**
@@ -313,7 +358,7 @@ export interface ThemeSpacing {
  */
 export interface ThemeOptions {
   palette?: Palette;
-  typography?: ThemeTypography;
+  typography?: TypographyConstants;
   shadows?: ThemeShadows;
 }
 
@@ -399,3 +444,7 @@ export type ColorProp =
   | 'currentColor'
   | 'none'
   | string;
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme {}
+}

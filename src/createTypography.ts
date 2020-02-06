@@ -1,3 +1,4 @@
+import deepMerge from 'deepmerge';
 import { TypographyConstants, ThemeTypography, FontWeight } from './types';
 
 const DEFAULT_FONT_FAMILY = `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
@@ -12,9 +13,8 @@ const getStandardTypography = (
   fontWeightLight: FontWeight,
   fontWeightRegular: FontWeight,
   fontWeightMedium: FontWeight,
-  fontSize: number,
+  pxToRem: (size: number) => string,
 ) => {
-  const pxToRem = (size: number) => `${size / fontSize}rem`;
   const buildStyle = (
     fontWeight: FontWeight,
     size: number,
@@ -49,9 +49,9 @@ const getStandardTypography = (
 };
 
 /**
- * 创建文本主题
+ * 创建文本排版
  *
- * @param constants 文本主题配置
+ * @param constants 文本排版配置
  */
 export default function createTypography(
   constants: TypographyConstants = {},
@@ -62,24 +62,30 @@ export default function createTypography(
     fontWeightRegular = 400,
     fontWeightMedium = 500,
     fontWeightBold = 700,
-    fontSize = 16,
+    fontSize = 14,
+    htmlFontSize = 16,
+    pxToRem = (size: number) => `${((size / 14) * fontSize) / htmlFontSize}rem`,
   } = constants;
 
   const theme = getStandardTypography(
     fontWeightLight,
     fontWeightRegular,
     fontWeightMedium,
-    fontSize,
+    pxToRem,
   );
 
-  return {
-    ...theme,
-    ...constants,
-    fontFamily,
-    fontWeightRegular,
-    fontWeightLight,
-    fontWeightMedium,
-    fontWeightBold,
-    fontSize,
-  };
+  return deepMerge(
+    {
+      ...theme,
+      fontFamily,
+      fontWeightRegular,
+      fontWeightLight,
+      fontWeightMedium,
+      fontWeightBold,
+      fontSize,
+      htmlFontSize,
+      pxToRem,
+    },
+    constants,
+  );
 }
