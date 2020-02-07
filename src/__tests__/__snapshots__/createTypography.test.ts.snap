@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`创建默认的字体排版 1`] = `
+exports[`创建默认的文字排版 1`] = `
 Object {
   "body1": Object {
     "fontSize": "1rem",

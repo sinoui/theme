@@ -2,15 +2,15 @@
 
 ## v1.0.0-beta.0
 
-- feat(typography): 采用新的 Material Design 标准设置字体排版分类
-- feat(typography): 简化自定义字体排版的方式
+- feat(typography): 采用新的 Material Design 标准设置文字排版分类
+- feat(typography): 简化自定义文字排版的方式
 - feat(typography): `typography` 新增 `pxToRem` 函数，用来转换 px 到 rem
-- feat(typography): 可以定制字体排版分类样式
+- feat(typography): 可以定制文字排版分类样式
 - feat: 新增 ThemeStyle 组件，用来定义全局 css 样式
 
 ### 破坏性变更
 
-字体排版分类发生变化，之前的分类是：
+文字排版分类发生变化，之前的分类是：
 
 - dispay4
 - display3
@@ -24,7 +24,7 @@
 - caption
 - button
 
-新的字体排版分类：
+新的文字排版分类：
 
 - h1
 - h2
@@ -39,7 +39,7 @@
 - caption
 - button
 
-自定义字体排版方式简化了。
+自定义文字排版方式简化了。
 
 旧的方式：
 

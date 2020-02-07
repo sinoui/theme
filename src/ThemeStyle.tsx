@@ -28,7 +28,7 @@ const typographyStyles = css(({ theme }) =>
 
 interface Props {
   /**
-   * 如果设置为 `true`，则不会产生字体排版相关的css。
+   * 如果设置为 `true`，则不会产生文字排版相关的css。
    */
   disableTypography?: boolean;
 }

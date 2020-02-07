@@ -14,14 +14,10 @@ export interface ColorSeries {
   700: string;
   800: string;
   900: string;
-  A100: string;
-  A200: string;
-  A400: string;
-  A700: string;
-  W1?: string;
-  W2?: string;
-  W3?: string;
-  contrastDefaultColor: 'light' | 'dark';
+  A100?: string;
+  A200?: string;
+  A400?: string;
+  A700?: string;
 }
 
 /**

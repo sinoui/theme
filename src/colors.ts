@@ -1,5 +1,3 @@
-import { ColorSeries } from './types';
-
 export const black = '#000000';
 export const white = '#ffffff';
 
@@ -13,7 +11,7 @@ export const fullWhite = 'rgba(255, 255, 255, 1)';
 export const darkWhite = 'rgba(255, 255, 255, 0.87)';
 export const lightWhite = 'rgba(255, 255, 255, 0.54)';
 
-export const red: ColorSeries = {
+export const red = {
   50: '#ffebee',
   100: '#ffcdd2',
   200: '#ef9a9a',
@@ -28,10 +26,9 @@ export const red: ColorSeries = {
   A200: '#ff5252',
   A400: '#ff1744',
   A700: '#d50000',
-  contrastDefaultColor: 'light',
 };
 
-export const pink: ColorSeries = {
+export const pink = {
   50: '#fce4ec',
   100: '#f8bbd0',
   200: '#f48fb1',
@@ -46,13 +43,9 @@ export const pink: ColorSeries = {
   A200: '#ff4081',
   A400: '#f50057',
   A700: '#c51162',
-  W1: '#E91E63',
-  W2: '#FF8358',
-  W3: '#D54FDF',
-  contrastDefaultColor: 'light',
 };
 
-export const purple: ColorSeries = {
+export const purple = {
   50: '#f3e5f5',
   100: '#e1bee7',
   200: '#ce93d8',
@@ -67,10 +60,9 @@ export const purple: ColorSeries = {
   A200: '#e040fb',
   A400: '#d500f9',
   A700: '#aa00ff',
-  contrastDefaultColor: 'light',
 };
 
-export const deepPurple: ColorSeries = {
+export const deepPurple = {
   50: '#ede7f6',
   100: '#d1c4e9',
   200: '#b39ddb',
@@ -85,13 +77,9 @@ export const deepPurple: ColorSeries = {
   A200: '#7c4dff',
   A400: '#651fff',
   A700: '#6200ea',
-  W1: '#4527A1',
-  W2: '#A351CE',
-  W3: '#587ACE',
-  contrastDefaultColor: 'light',
 };
 
-export const indigo: ColorSeries = {
+export const indigo = {
   50: '#e8eaf6',
   100: '#c5cae9',
   200: '#9fa8da',
@@ -106,14 +94,9 @@ export const indigo: ColorSeries = {
   A200: '#536dfe',
   A400: '#3d5afe',
   A700: '#304ffe',
-  W1: '#4527A1',
-  W2: '#A351CE',
-  W3: '#587ACE',
-  contrastDefaultColor: 'light',
 };
 
-export const blue: ColorSeries = {
-  //
+export const blue = {
   50: '#e3f2fd',
   100: '#bbdefb',
   200: '#90caf9',
@@ -128,13 +111,9 @@ export const blue: ColorSeries = {
   A200: '#448aff',
   A400: '#2979ff',
   A700: '#2962ff',
-  W1: '#2196F3',
-  W2: '#8E8EFA',
-  W3: '#38B781',
-  contrastDefaultColor: 'light',
 };
 
-export const lightBlue: ColorSeries = {
+export const lightBlue = {
   50: '#e1f5fe',
   100: '#b3e5fc',
   200: '#81d4fa',
@@ -149,13 +128,9 @@ export const lightBlue: ColorSeries = {
   A200: '#40c4ff',
   A400: '#00b0ff',
   A700: '#0091ea',
-  W1: '#0288D1',
-  W2: '#6D79E8',
-  W3: '#00CA63',
-  contrastDefaultColor: 'dark',
 };
 
-export const cyan: ColorSeries = {
+export const cyan = {
   50: '#e0f7fa',
   100: '#b2ebf2',
   200: '#80deea',
@@ -170,13 +145,9 @@ export const cyan: ColorSeries = {
   A200: '#18ffff',
   A400: '#00e5ff',
   A700: '#00b8d4',
-  W1: '#00BBD3',
-  W2: '#2BAB41',
-  W3: '#3B68ED',
-  contrastDefaultColor: 'dark',
 };
 
-export const teal: ColorSeries = {
+export const teal = {
   50: '#e0f2f1',
   100: '#b2dfdb',
   200: '#80cbc4',
@@ -191,13 +162,9 @@ export const teal: ColorSeries = {
   A200: '#64ffda',
   A400: '#1de9b6',
   A700: '#00bfa5',
-  W1: '#009688',
-  W2: '#4375D0',
-  W3: '#71B566',
-  contrastDefaultColor: 'dark',
 };
 
-export const green: ColorSeries = {
+export const green = {
   50: '#e8f5e9',
   100: '#c8e6c9',
   200: '#a5d6a7',
@@ -212,13 +179,9 @@ export const green: ColorSeries = {
   A200: '#69f0ae',
   A400: '#00e676',
   A700: '#00c853',
-  W1: '#2F7D34',
-  W2: '#5EACB0',
-  W3: '#A9C96B',
-  contrastDefaultColor: 'dark',
 };
 
-export const lightGreen: ColorSeries = {
+export const lightGreen = {
   50: '#f1f8e9',
   100: '#dcedc8',
   200: '#c5e1a5',
@@ -233,11 +196,9 @@ export const lightGreen: ColorSeries = {
   A200: '#b2ff59',
   A400: '#76ff03',
   A700: '#64dd17',
-  contrastDefaultColor: 'dark',
 };
 
-export const lime: ColorSeries = {
-  // kelly
+export const lime = {
   50: '#f9fbe7',
   100: '#f0f4c3',
   200: '#e6ee9c',
@@ -252,13 +213,9 @@ export const lime: ColorSeries = {
   A200: '#eeff41',
   A400: '#c6ff00',
   A700: '#aeea00',
-  W1: '#CDDC39',
-  W2: '#9E9E9E',
-  W3: '#8BCD35',
-  contrastDefaultColor: 'dark',
 };
 
-export const yellow: ColorSeries = {
+export const yellow = {
   50: '#fffde7',
   100: '#fff9c4',
   200: '#fff59d',
@@ -273,10 +230,9 @@ export const yellow: ColorSeries = {
   A200: '#ffff00',
   A400: '#ffea00',
   A700: '#ffd600',
-  contrastDefaultColor: 'dark',
 };
 
-export const amber: ColorSeries = {
+export const amber = {
   50: '#fff8e1',
   100: '#ffecb3',
   200: '#ffe082',
@@ -291,10 +247,9 @@ export const amber: ColorSeries = {
   A200: '#ffd740',
   A400: '#ffc400',
   A700: '#ffab00',
-  contrastDefaultColor: 'dark',
 };
 
-export const orange: ColorSeries = {
+export const orange = {
   50: '#fff3e0',
   100: '#ffe0b2',
   200: '#ffcc80',
@@ -309,13 +264,9 @@ export const orange: ColorSeries = {
   A200: '#ffab40',
   A400: '#ff9100',
   A700: '#ff6d00',
-  W1: '#FF9800',
-  W2: '#A66300',
-  W3: '#FF8040',
-  contrastDefaultColor: 'dark',
 };
 
-export const deepOrange: ColorSeries = {
+export const deepOrange = {
   50: '#fbe9e7',
   100: '#ffccbc',
   200: '#ffab91',
@@ -330,11 +281,9 @@ export const deepOrange: ColorSeries = {
   A200: '#ff6e40',
   A400: '#ff3d00',
   A700: '#dd2c00',
-  contrastDefaultColor: 'light',
 };
 
-export const brown: ColorSeries = {
-  // 棕色
+export const brown = {
   50: '#efebe9',
   100: '#d7ccc8',
   200: '#bcaaa4',
@@ -345,18 +294,9 @@ export const brown: ColorSeries = {
   700: '#5d4037',
   800: '#4e342e',
   900: '#3e2723',
-  A100: '#d7ccc8',
-  A200: '#bcaaa4',
-  A400: '#8d6e63',
-  A700: '#5d4037',
-  W1: '#795548',
-  W2: '#BCAC83',
-  W3: '#B58D9A',
-  contrastDefaultColor: 'dark',
 };
 
-export const grey: ColorSeries = {
-  // lightGray
+export const grey = {
   50: '#fafafa',
   100: '#f5f5f5',
   200: '#eeeeee',
@@ -367,18 +307,9 @@ export const grey: ColorSeries = {
   700: '#616161',
   800: '#424242',
   900: '#212121',
-  A100: '#d5d5d5',
-  A200: '#aaaaaa',
-  A400: '#303030',
-  A700: '#616161',
-  W1: '#9E9E9E',
-  W2: '#674B33',
-  W3: '#522940',
-  contrastDefaultColor: 'dark',
 };
 
-export const blueGrey: ColorSeries = {
-  // 深灰
+export const blueGrey = {
   50: '#eceff1',
   100: '#cfd8dc',
   200: '#b0bec5',
@@ -389,120 +320,4 @@ export const blueGrey: ColorSeries = {
   700: '#455a64',
   800: '#37474f',
   900: '#263238',
-  A100: '#cfd8dc',
-  A200: '#b0bec5',
-  A400: '#78909c',
-  A700: '#455a64',
-  W1: '#607D8B',
-  W2: '#A0A5CB',
-  W3: '#9CCEB1',
-  contrastDefaultColor: 'light',
-};
-
-export const colorLigntYellow: ColorSeries = {
-  50: '#fff8e1',
-  100: '#ffecb3',
-  200: '#ffe082',
-  300: '#ffd54f',
-  400: '#ffca28',
-  500: '#ffc107',
-  600: '#ffb300',
-  700: '#ffa000',
-  800: '#ff8f00',
-  900: '#ff6f00',
-  A100: '#ffe57f',
-  A200: '#ffd740',
-  A400: '#ffc400',
-  A700: '#ffab00',
-  contrastDefaultColor: 'dark',
-};
-
-export const colorKelly: ColorSeries = {
-  50: '#e8f5e9',
-  100: '#c8e6c9',
-  200: '#a5d6a7',
-  300: '#81c784',
-  400: '#66bb6a',
-  500: '#D4DF61',
-  600: '#43a047',
-  700: '#388e3c',
-  800: '#2e7d32',
-  900: '#1b5e20',
-  A100: '#b9f6ca',
-  A200: '#69f0ae',
-  A400: '#00e676',
-  A700: '#00c853',
-  contrastDefaultColor: 'dark',
-};
-
-export const colorGray: ColorSeries = {
-  50: '#e8f5e9',
-  100: '#c8e6c9',
-  200: '#a5d6a7',
-  300: '#81c784',
-  400: '#66bb6a',
-  500: '#BDBDBD',
-  600: '#43a047',
-  700: '#388e3c',
-  800: '#2e7d32',
-  900: '#1b5e20',
-  A100: '#b9f6ca',
-  A200: '#69f0ae',
-  A400: '#00e676',
-  A700: '#00c853',
-  contrastDefaultColor: 'dark',
-};
-
-export const colorBrown: ColorSeries = {
-  50: '#e8f5e9',
-  100: '#c8e6c9',
-  200: '#a5d6a7',
-  300: '#81c784',
-  400: '#66bb6a',
-  500: '#8C6E64',
-  600: '#43a047',
-  700: '#388e3c',
-  800: '#2e7d32',
-  900: '#1b5e20',
-  A100: '#b9f6ca',
-  A200: '#69f0ae',
-  A400: '#00e676',
-  A700: '#00c853',
-  contrastDefaultColor: 'dark',
-};
-
-export const colorDeepGray: ColorSeries = {
-  50: '#e8f5e9',
-  100: '#c8e6c9',
-  200: '#a5d6a7',
-  300: '#81c784',
-  400: '#66bb6a',
-  500: '#79909B',
-  600: '#43a047',
-  700: '#388e3c',
-  800: '#2e7d32',
-  900: '#1b5e20',
-  A100: '#b9f6ca',
-  A200: '#69f0ae',
-  A400: '#00e676',
-  A700: '#00c853',
-  contrastDefaultColor: 'dark',
-};
-
-export const colorBlack: ColorSeries = {
-  50: '#e8f5e9',
-  100: '#c8e6c9',
-  200: '#a5d6a7',
-  300: '#81c784',
-  400: '#66bb6a',
-  500: '#393939',
-  600: '#43a047',
-  700: '#388e3c',
-  800: '#2e7d32',
-  900: '#1b5e20',
-  A100: '#b9f6ca',
-  A200: '#69f0ae',
-  A400: '#00e676',
-  A700: '#00c853',
-  contrastDefaultColor: 'dark',
 };

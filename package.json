@@ -73,7 +73,7 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
     "deepmerge": "^4.2.2",
-    "polished": "^3.4.1",
+    "polished": "^3.4.4",
     "warning": "^4.0.3"
   },
   "devDependencies": {

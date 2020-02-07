@@ -1,6 +1,6 @@
 import createTypography from '../createTypography';
 
-it('创建默认的字体排版', () => {
+it('创建默认的文字排版', () => {
   const typography = createTypography();
 
   expect(typography).toMatchSnapshot();
