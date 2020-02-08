@@ -111,5 +111,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "resolutions": {
+    "typescript": "^3.7.5"
   }
 }

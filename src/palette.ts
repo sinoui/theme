@@ -118,6 +118,7 @@ export default function createPalette(options: PaletteOptions = {}): Palette {
    * @param background 文本的背景色
    */
   function getContrastText(background: string) {
+    console.log(background);
     const contrastText =
       getContrastRatio(background, dark.text.primary) >= contrastThreshold
         ? dark.text.primary

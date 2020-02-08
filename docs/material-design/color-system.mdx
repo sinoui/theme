@@ -11,6 +11,10 @@ import subtlecolorPlaceholder from './color-system-images/color-hierarchybrand-b
 import Video from '../components/Video';
 import ColorPalettes from '../components/ColorPalettes';
 import Sep from '../components/Sep';
+import Col2Section from '../components/Col2Section';
+import Row from '../components/Row';
+import Col from '../components/Col';
+import ImageWithTitle from '../components/ImageWithTitle';
 
 # 颜色系统 Color system
 
@@ -270,13 +274,18 @@ Material Design 颜色系统内置了以下调色板：
 
 <Sep></Sep>
 
-当卡片中的文字和图标出现在图像的前面时，可能很难阅读。为了提高阅读性，您可以为文本和图标创建有颜色的表面。
+import cardLegibility from './color-system-images/color-applyingcolorui-surfaces-cards-legibility-baseline-1a.png';
 
-<Sep></Sep>
-
-![md-image](color-system-images/color-applyingcolorui-surfaces-cards-legibility-baseline-1a.png)
-
-这个卡片使用了有颜色的遮罩层来确保文字清晰可读。
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <p>当卡片中的文字和图标出现在图像的前面时，可能很难阅读。为了提高阅读性，您可以为文本和图标创建有颜色的表面。</p>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={cardLegibility} noGutter>
+      <p>这个卡片使用了有颜色的遮罩层来确保文字清晰可读。</p>
+    </ImageWithTitle>
+  </Col>
+</Row>
 
 ### 按钮、选项卡和选择控件 Buttons, chips and selection controls
 
@@ -337,13 +346,21 @@ Material Design 颜色系统内置了以下调色板：
 
 这个应用在标签页上使用了主颜色（绿色 800），使用字重变化来指示选定和未选定状态。
 
-![md-image](color-system-images/color-applyingcolorui-typography-headlinetabs-do-owl-1.png)
+import headlinetabsDoOwl1 from './color-system-images/color-applyingcolorui-typography-headlinetabs-do-owl-1.png';
+import headlinetabsDoOwl2 from './color-system-images/color-applyingcolorui-typography-headlinetabs-do-owl-2.png';
 
-可以使用主颜色或辅助色强调简短的文本，如标题。
-
-![md-image](color-system-images/color-applyingcolorui-typography-headlinetabs-do-owl-2.png)
-
-您可以使用主颜色或辅助色来突出显示链接。
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={headlinetabsDoOwl1}>
+      <p>可以使用主颜色或辅助色强调简短的文本，如标题。</p>
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+  <ImageWithTitle img={headlinetabsDoOwl2}>
+      <p>您可以使用主颜色或辅助色来突出显示链接。</p>
+    </ImageWithTitle>
+  </Col>
+</Row>
 
 ### 文字清晰 Text legibility
 
@@ -377,33 +394,42 @@ Material Design 颜色系统内置了以下调色板：
 
 例如，当黑色图标放置在白色背景上时，它们显得特别醒目。有颜色的卡片放置在单色卡片旁边时，会引起注意。
 
-#### 表面对比度 Surface contrast
+import surfacecontrastCrane from './color-system-images/color-hierarchybrand-hierarchy-surfacecontrast-crane.png';
 
-为了引起对重要事件的注意，请在元素之间使用更强的颜色对比。
+<Col2Section
+  title="表面对比度 Surface contrast"
+  mediaTitle="紫色背景与白色表面形成强烈反差，强调了列表项的选择——这是该旅行软件的重点。"
+  img={surfacecontrastCrane}
+>
+  为了引起对重要事件的注意，请在元素之间使用更强的颜色对比。
+</Col2Section>
 
-![md-image](color-system-images/color-hierarchybrand-hierarchy-surfacecontrast-crane.png)
+import colorshapeOwl from './color-system-images/color-hierarchybrand-hierarchy-colorshape-owl.png';
 
-紫色背景与白色表面形成强烈反差，强调了列表项的选择——这是该旅行软件的重点。
-
-#### 颜色和形状 Color and shape
-
-同时更改元素的颜色和形状，会吸引视觉注意。使用这种强调表示已选择某项内容或需要立即注意。
-
-![md-image](color-system-images/color-hierarchybrand-hierarchy-colorshape-owl.png)
-
-带有圆角的、粉红色的左侧区域的选项卡指示它们被用户选中了。
+<Col2Section
+  title="颜色和形状 Color and shape"
+  mediaTitle="带有圆角的、粉红色的左侧区域的选项卡指示它们被用户选中了。"
+  img={colorshapeOwl}
+>
+  同时更改元素的颜色和形状，会吸引视觉注意。使用这种强调表示已选择某项内容或需要立即注意。
+</Col2Section>
 
 #### 限制使用颜色 Limiting color
 
-通过限制在您的应用程序中使用颜色，可以使接受颜色的区域获得更多关注，例如文本、图像或者按钮等单个元素。
+import limitingcolorPosivibes from './color-system-images/color-hierarchybrand-hierarchy-limitingcolor-posivibes.png';
 
-![md-image](color-system-images/color-hierarchybrand-hierarchy-limitingcolor-posivibes.png)
+<Col2Section img={limitingcolorPosivibes}>
+  <p>
+    通过限制在您的应用程序中使用颜色，可以使接受颜色的区域获得更多关注，例如文本、图像或者按钮等单个元素。
+  </p>
+  <p>因为这个产品中的内容颜色鲜艳，所以在浮动操作按钮上使用了黑色，使它更容易被注意到。</p>
+</Col2Section>
 
-因为这个产品中的内容颜色鲜艳，所以在浮动操作按钮上使用了黑色，使它更容易被注意到。
+import limitingcolorFortnightly from './color-system-images/color-hierarchybrand-hierarchy-limitingcolor-fortnightly.png';
 
-![md-image](color-system-images/color-hierarchybrand-hierarchy-limitingcolor-fortnightly.png)
-
-灰度调色板最适合于突出图像和文字。
+<Col2Section img={limitingcolorFortnightly}>
+  灰度调色板最适合于突出图像和文字。
+</Col2Section>
 
 ### 品牌 Brand
 
@@ -415,62 +441,148 @@ Material Design 颜色系统内置了以下调色板：
 
 希望传达能量和兴奋感的品牌通常会以大胆的方式使用颜色。他们的应用应反映相同的方法，同时保留内容的可读性和整体可用性。
 
-![md-image](color-system-images/color-hierarchybrand-brand-boldcolor-owl.png)
+import boldcolorOwl from './color-system-images/color-hierarchybrand-brand-boldcolor-owl.png';
+import boldcolorBasil from './color-system-images/color-hierarchybrand-brand-boldcolor-basil.png';
 
-这款教育软件以鲜明的方式使用大胆、饱和的品牌颜色（黄色、蓝色、洋红色），以符合品牌精神。
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={boldcolorOwl}>
+      这款教育软件以鲜明的方式使用大胆、饱和的品牌颜色（黄色、蓝色、洋红色），以符合品牌精神。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={boldcolorBasil}>
+      这款烹饪应用程序对颜色和版式的大胆创新的用法，既充满活力又令人兴奋，同时又清晰易用。
+    </ImageWithTitle>
+  </Col>
+</Row>
 
-<Sep></Sep>
+import launchscreenRally from './color-system-images/color-hierarchybrand-brand-boldcolor-launchscreen-rally.png';
 
-![md-image](color-system-images/color-hierarchybrand-brand-boldcolor-basil.png)
+<Col2Section title="启动页 Launch screens" img={launchscreenRally}>
+  启动屏幕可以是庆祝时刻，以大胆的方式使用颜色。
+</Col2Section>
 
-这款烹饪应用程序对颜色和版式的大胆创新的用法，既充满活力又令人兴奋，同时又清晰易用。
+import onboardingBaseline from './color-system-images/color-hierarchybrand-brand-boldcolor-onboarding-baseline.png';
 
-#### 启动页 Launch screens
+<Col2Section title="引导页 Onboarding" img={onboardingBaseline}>
+  在引导页使用的颜色可以将内容与品牌联系起来。
+</Col2Section>
 
-启动屏幕可以是庆祝时刻，以大胆的方式使用颜色。
+import featurediscDesign from './color-system-images/useredu-er-featuredisc-design-01.png';
 
-![md-image](color-system-images/color-hierarchybrand-brand-boldcolor-launchscreen-rally.png)
-
-#### 引导页 Onboarding
-
-在引导页使用的颜色可以将内容与品牌联系起来。
-
-![md-image](color-system-images/color-hierarchybrand-brand-boldcolor-onboarding-baseline.png)
-
-#### 功能发现 Feature discovery
-
-可以使用颜色突出显示新功能，以引导用户聚焦而看到它们。
-
-![md-image](color-system-images/useredu-er-featuredisc-design-01.png)
+<Col2Section title="功能发现 Feature discovery" img={featurediscDesign}>
+  可以使用颜色突出显示新功能，以引导用户聚焦而看到它们。
+</Col2Section>
 
 #### 微妙使用颜色 Subtle use of color
 
 可以以微妙的方式使用品牌颜色，这意味着传达复杂性、强调内容或者以其他方式适配内容。当以微妙方式使用色彩时，请确保交互区域和状态更改保持可识别且易于查看。
 
-![md-image](color-system-images/color-hierarchybrand-brand-subtlecolor-rally.png)
+import subtlecolorRally from './color-system-images/color-hierarchybrand-brand-subtlecolor-rally.png';
+import subtlecolorFortnightly from './color-system-images/color-hierarchybrand-brand-subtlecolor-fortnightly.png';
 
-该金融应用程序使用少量颜色来显示信息，例如图形中的数据。以这种方式使用颜色会将信息连接到品牌颜色上。
+<Row gutter={24}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={subtlecolorRally}>
+      <p>该金融应用程序使用少量颜色来显示信息，例如图形中的数据。以这种方式使用颜色会将信息连接到品牌颜色上。</p>
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={subtlecolorFortnightly}>
+      <p>这款新闻应用程序使用少量的辅助色（紫色）。它会突出使用颜色的元素。以这种方式使用颜色的内容会成为页面上最重要的元素。</p>
+    </ImageWithTitle>
+  </Col>
+</Row>
 
 <Sep></Sep>
 
-![md-image](color-system-images/color-hierarchybrand-brand-subtlecolor-fortnightly.png)
-
-这款新闻应用程序使用少量的辅助色（紫色）。它会突出使用颜色的元素。以这种方式使用颜色的内容会成为页面上最重要的元素。
-
 通过将品牌颜色用于加载占位符 UI、进度指示器、状态变更之上时，可以巧妙地维护品牌形象。
 
-#### 占位符 UI / Placeholder UI
+<Col2Section title="占位符 UI / Placeholder UI" video={subtlecolorPlaceholder} noGutter>
+  <p>屏幕内容加载时，将显示一个占位符 UI。在此处使用品牌颜色课确保用户在加载应用程序时仍驻留在该应用程序。</p>
+</Col2Section>
 
-屏幕内容加载时，将显示一个占位符 UI。在此处使用品牌颜色课确保用户在加载应用程序时仍驻留在该应用程序。
+import subtlecolorProgress from './color-system-images/color-hierarchybrand-brand-subtlecolor-progress-baseline.png';
 
-<Video src={subtlecolorPlaceholder}></Video>
+<Col2Section title="进度指示器 Progress indicators" img={subtlecolorProgress}>
+  <p>进度指示器是使用品牌颜色的微妙而强大的场景，因为它们将应用程序的功能与品牌联系在一起。</p>
+</Col2Section>
 
-#### 进度指示器 Progress indicators
+import subtlecolorState from './color-system-images/color-hierarchybrand-brand-subtlecolor-state.png';
 
-进度指示器是使用品牌颜色的微妙而强大的场景，因为它们将应用程序的功能与品牌联系在一起。
+<Col2Section title="状态变更 State Change" img={subtlecolorState}>
+  <p>在状态变更中使用品牌颜色，会巧妙地增强品牌影响力。</p>
+</Col2Section>
 
-![md-image](color-system-images/color-hierarchybrand-brand-subtlecolor-progress-baseline.png)
+### 传达含义 Meaning
 
-#### 状态变更 State Change
+颜色可以传达不同 UI 元素的含义。例如，天气应用程序可以会用不同的颜色指示不同的天气，导航应用程序可能会使用红色和绿色指示道路交通状态。
 
-在状态变更中使用品牌颜色，会巧妙地增强品牌影响力。
+import meaningBaselineWeather from './color-system-images/color-hierarchybrand-meaning-baseline-weather.png';
+import meaningBaselineMaps from './color-system-images/color-hierarchybrand-meaning-baseline-maps.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={meaningBaselineWeather}>
+      这个天气软件将颜色与天气条件配对。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={meaningBaselineMaps}>
+      这个导航应用使用颜色来表示交通状况。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+#### 一致性和上下文 Consistency and context
+
+import meaningConsistencycontextCrane from './color-system-images/color-hierarchybrand-meaning-consistencycontext-crane.png';
+
+<Col2Section
+  mediaTitle="日期选择使用了红色，背景使用了紫色，将品牌的主颜色（红色）与选择旅行日期相关联。"
+  img={meaningConsistencycontextCrane}
+>
+  在一个产品中颜色的使用应具有一致性，以便即使上下文发生了变化，某些颜色也始终表示同一件事。还应注意具有本土化或文化意义的颜色。例如，有一些地区，用红色代表警告，而其他地区则不同。
+</Col2Section>
+
+import meaningConsistencycontextDontCrane from './color-system-images/color-hierarchybrand-meaning-consistencycontext-dont-crane.png';
+import meaningConsistencycontextDoCrane from './color-system-images/color-hierarchybrand-meaning-consistencycontext-do-crane.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={meaningConsistencycontextDontCrane} status="no">
+      因为红色是品牌色，所以不要使用红色代表错误状态。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={meaningConsistencycontextDoCrane} status="ok">
+      使用其他的颜色代表警告，而不是使用品牌色。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 状态 State
+
+颜色可以提供有关应用程序、组件和元素的状态。这包括：
+
+* 元素或者组件的**当前状态 (current state)**，比如按钮是可用的还是禁用的
+* 应用程序、组件或者元素的**状态变化 (changes in state)**
+
+当状态发生变化时，对应的颜色变化应很明显，因为细微的颜色差异往往会被忽视掉。最好使用多种方式来指示状态变更，例如显示一个图标或者移动元素的位置。
+
+#### 指示互动 Indicating interaction
+
+import stateInteractionFortnightly from './color-system-images/color-hierarchybrand-state-interaction-fortnightly.png';
+
+<Col2Section img={stateInteractionFortnightly} mediaTitle="这张图片使用颜色指示用户正在与其进行交互。">
+  为了强调特定的互动，请在用户互动的元素上使用相对于未互动周围元素有强烈对比的颜色。
+</Col2Section>
+
+#### 指示选择 Indicating selection
+
+import stateSelectionReply from './color-system-images/color-hierarchybrand-state-selection-reply.png';
+
+<Col2Section img={stateSelectionReply} mediaTitle="使用品牌色圆角表示列表中已经选中的邮件。">
+  使用高对比度的颜色来强调已经选中的元素。
+</Col2Section>
