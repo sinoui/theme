@@ -1,0 +1,129 @@
+---
+name: 文本可读性
+route: /md-text-legibility
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+import Row from '@/Row';
+import Col from '@/Col';
+
+# 文本可读性 Text legibility
+
+颜色在文本可读性上扮演着重要的角色。
+
+## 可读性标准 Legibility standards
+
+所有文本必须清晰可辨并且符合可访问性标准。[WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) 规定：
+
+* 普通文本的颜色需要与其背景色达到 **4.5:1** 的标准，
+* 大文本的颜色需要与其背景色达到 **3:1** 的标准。
+
+## 文本与背景 Text backgrounds
+
+### 在有颜色背景上的文本 Text on colored backgrounds
+
+黑色文本用于浅色背景上，而白色文本用于深色背景上。如果您的应用有浅色主题和深色主题，则需要确保文本颜色与这些颜色主题的对比度。
+
+有颜色的背景或者文本还会更改有关文本不透明度和状态的规则。
+
+### 使用文本不透明度 Using text opacity
+
+不要在有颜色的背景上使用灰色文本和图标，而是通过降低白色或者黑色文本的不透明度来创建更好的对比度。
+
+例如：在绿色背景上以 75% 不透明度显示的黑色文本使该文本显示为黑色，并带有绿色提示。
+
+或者，您可以通过下面的步骤计算出文本的颜色：
+
+- 降低在绿色背景上显示的黑色文本的不透明度
+- 确定产生的深绿色的十六进制值
+- 使用这个十六进制值作为文本颜色
+
+在这种情况下，如果背景颜色发生了更改，则还必须更新十六进制颜色。
+
+import legibilityOpacityBasilineDo from './color-system-images/color-legibility-opacity-baseline-do.png';
+import legibilityOpacityBasilineDont from './color-system-images/color-legibility-opacity-baseline-dont.png';
+
+<ImageWithTitle status="ok" img={legibilityOpacityBasilineDo}>
+  在彩色表面上使用透明的黑色文本以保持可读性。
+</ImageWithTitle>
+
+<ImageWithTitle status="no" img={legibilityOpacityBasilineDont}>
+  不要在彩色表面上使用不透明灰色文本，因为这样不清晰。
+</ImageWithTitle>
+
+### 深色文本在浅色背景上 Dark text on light backgrounds
+
+深色文本(`#000000`)在浅色背景(`#FFFFFF`)上应启用以下不透明度级别：
+
+- 高度重要的文本使用 87% 的不透明度，即`rgba(0, 0, 0, 0.87)`
+- 中等重要的文本使用 60% 的不透明度，即`rgba(0, 0, 0, 0.6)`
+- 不可用的文本使用 38% 的不透明度，即`rgba(0, 0, 0, 0.38)`
+
+### 彩色文本与背景 Colored text and backgrounds
+
+彩色文本应谨慎使用，它主要用来吸引注意、标注重点。通常应为标题、按钮和链接使用彩色文本。
+
+import coloredtextbgBasil from './color-system-images/color-legibility-coloredtextbg-basil.png';
+import coloredtextbgCautionOwl from './color-system-images/color-legibility-coloredtextbg-caution-owl.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="ok" img={coloredtextbgBasil}>
+      大标题和短文本片段非常适合使用彩色文本。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="caution" img={coloredtextbgCautionOwl}>
+      主体文本是彩色的，这很难阅读。
+      </ImageWithTitle>
+  </Col>
+</Row>
+
+## 文本类型 Text types
+
+### 帮助文本 Helper Text
+
+帮助文本会给输入框添加上下文语义，比如告知输入框怎么使用。它可以采用品牌色，但是需要遵循 WCAG 的可读性标准。
+
+比如，在浅色背景上，帮助文本的颜色设定为：
+
+* 重要的帮助文本：rgba(0, 0, 0, 0.87)
+* 普通的帮助文本：rbga(0, 0, 0, 0.6)
+* 错误帮助文本：#B00020
+
+### 选中的文本 Selected Text
+
+为了突出品牌，您可以使用主颜色或者辅助色的变体作为文本选中颜色。
+
+选中文本应与选中颜色相对清晰，并且选中颜色应与背景色形成对比。或者可以采用其它方式表示选中的文本，比如：描边、运动、选中标记图标。
+
+import selectedtextBaseline from './color-system-images/color-legibility-selectedtext-baseline.png';
+import selectedtextReply from './color-system-images/color-legibility-selectedtext-reply.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={selectedtextBaseline}>
+      <ol>
+        <li>文本</li>
+        <li>文本选中颜色</li>
+        <li>背景</li>
+      </ol>
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={selectedtextReply}>
+      可以使用辅助色作为文本选中颜色。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 图标和其它元素 Icons and Other symbols
+
+图标和其他元素不需要遵循 WCAG 可读性标准，但应尽可能可见以明确地指示功能或传达信息。
+
+例如，深色图标（#000000）或其他元素相对于浅色背景（#FFFFFF），应遵循以下不透明度级别：
+
+- 活动图标的不透明度为：87%
+- 非活动图标的不透明度为：60%
+- 不可用图标的不透明度为：38%

@@ -4,6 +4,7 @@ import url from 'url';
 import math from 'remark-math';
 import katex from 'remark-html-katex';
 import html from 'remark-html';
+import { resolve } from 'path';
 import packageInfo from './package.json';
 
 /**
@@ -30,7 +31,15 @@ export default {
   typescript: true,
   files: ['**/*.mdx', 'docs/**/*.md'],
   public: './docs/assets',
-  menu: ['开始', '文字排版', '断点'],
+  menu: [
+    '开始',
+    '文字排版',
+    '断点',
+    {
+      name: 'Material Design',
+      menu: ['颜色系统', '将颜色应用于UI', '颜色使用', '文本可读性'],
+    },
+  ],
   wrapper: 'docs/Wrapper.tsx',
   indexHtml: 'docs/index.html',
   mdPlugins: [math, html, katex],
@@ -71,6 +80,8 @@ export default {
       .plugin('tsconfig-paths')
       .use(require('tsconfig-paths-webpack-plugin'))
       .end();
+
+    config.resolve.alias.set('@', resolve(__dirname, 'docs/components')).end();
 
     config.watchOptions({
       ignored: ['node_modules', 'dist', '.cache', 'coverage', '.docz'],

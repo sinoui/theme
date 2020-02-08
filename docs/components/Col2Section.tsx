@@ -36,7 +36,7 @@ function Col2Section({
   return (
     <Section as="section" gutter={40} noGutter={noGutter}>
       <Col xs={24} sm={12}>
-        {title && <h5>{title}</h5>}
+        {title && <h4>{title}</h4>}
         {strToPElement(children)}
       </Col>
       <Col xs={24} sm={12}>
