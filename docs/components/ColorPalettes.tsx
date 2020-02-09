@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import getConstrastRatio from '../../src/getContrastRatio';
-import * as colors from '../../src/color';
+import * as colors from '../../src/colors';
 import { ColorSeries } from '../../src/types';
 
 const DarkTextColor = 'rgba(0, 0, 0, 0.87)';

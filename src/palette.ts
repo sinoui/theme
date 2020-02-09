@@ -1,12 +1,12 @@
 import warning from 'warning';
-import indigo from './color/indigo';
-import pink from './color/pink';
-import grey from './color/grey';
-import red from './color/red';
-import green from './color/green';
-import cyan from './color/cyan';
-import amber from './color/amber';
-import common from './color/common';
+import indigo from './colors/indigo';
+import pink from './colors/pink';
+import grey from './colors/grey';
+import red from './colors/red';
+import green from './colors/green';
+import cyan from './colors/cyan';
+import amber from './colors/amber';
+import common from './colors/common';
 import getContrastRatio from './getContrastRatio';
 import { PaletteOptions, Palette } from './types';
 

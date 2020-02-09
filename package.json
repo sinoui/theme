@@ -16,15 +16,15 @@
     "url": "git+https://github.com/sinoui/theme.git"
   },
   "scripts": {
-    "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
-    "build": "ts-lib-tools build",
+    "build": "ts-lib-tools build --simple",
     "format": "ts-lib-tools format",
     "lint": "ts-lib-tools lint",
     "prepublishOnly": "ts-lib-tools build",
     "doc:dev": "docz dev",
     "doc:build": "docz build",
-    "doc:publish": "docz build && gh-pages -d .docz/dist"
+    "doc:publish": "docz build && gh-pages -d .docz/dist",
+    "realese": "yarn publish dist"
   },
   "prettier": {
     "printWidth": 80,
@@ -104,7 +104,7 @@
     "remark-math": "^2.0.0",
     "style-loader": "^1.0.0",
     "styled-components-breakpoint": "^2.1.1",
-    "ts-lib-tools": "^0.9.5",
+    "ts-lib-tools": "^0.10.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.7.5",
     "webpack-docz-ghpages-plugin": "^0.4.0"

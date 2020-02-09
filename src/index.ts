@@ -1,6 +1,6 @@
 import { Theme } from './types';
 import createTheme from './theme';
-import * as colors from './color';
+import * as colors from './colors';
 import createPalette from './palette';
 import shadows from './shadows';
 import spacing from './spacing';

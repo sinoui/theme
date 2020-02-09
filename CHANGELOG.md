@@ -7,7 +7,7 @@
 - feat(typography): `typography` 新增 `pxToRem` 函数，用来转换 px 到 rem
 - feat(typography): 可以定制文字排版分类样式
 - feat: 新增 ThemeStyle 组件，用来定义全局 css 样式
-- chore(color): 拆分 colors.ts 为一个颜色一个 ts 文件
+- chore(colors): 拆分 colors.ts 为一个颜色一个 ts 文件
 
 ### 破坏性变更
 
@@ -66,7 +66,7 @@
     });
     ```
 
-3. color模块剔除了非标准的颜色，包括：
+3. colors模块剔除了非标准的颜色，包括：
 
    * transparent
    * fullBlack
@@ -78,7 +78,7 @@
    * darkWhite
    * lightWhite
 
-4. color模块将 white 和 black 迁移到 color/common 中
+4. colors模块将 white 和 black 迁移到 color/common 中
 
     之前的方式：
 
@@ -91,12 +91,12 @@
     新的方式：
 
     ```ts
-    import common from '@sinoui/theme/color';
+    import common from '@sinoui/theme/colors';
 
     console.log(common.white, common.black);
     ```
 
-5. color模块去掉自定义颜色系列
+5. colors模块去掉自定义颜色系列
 
   - colorBlack
   - colorDeepGray
@@ -105,7 +105,7 @@
   - colorKelly
   - colorLigntYellow
 
-6. color模块去掉颜色系列中的 `w1`, `w2`, `w3`
+6. colors模块去掉颜色系列中的 `w1`, `w2`, `w3`
 
 ## v0.3.4 - 2019.12.19
 
