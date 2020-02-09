@@ -7,63 +7,105 @@
 - feat(typography): `typography` 新增 `pxToRem` 函数，用来转换 px 到 rem
 - feat(typography): 可以定制文字排版分类样式
 - feat: 新增 ThemeStyle 组件，用来定义全局 css 样式
+- chore(color): 拆分 colors.ts 为一个颜色一个 ts 文件
 
 ### 破坏性变更
 
-文字排版分类发生变化，之前的分类是：
+1. 文字排版分类发生变化，之前的分类是：
 
-- dispay4
-- display3
-- display2
-- display1
-- subheading
-- title
-- headline
-- body2
-- body1
-- caption
-- button
+   - dispay4
+   - display3
+   - display2
+   - display1
+   - subheading
+   - title
+   - headline
+   - body2
+   - body1
+   - caption
+   - button
 
-新的文字排版分类：
+   新的文字排版分类：
 
-- h1
-- h2
-- h3
-- h4
-- h5
-- h6
-- subtitle1
-- subtitle2
-- body1
-- body2
-- caption
-- button
+   - h1
+   - h2
+   - h3
+   - h4
+   - h5
+   - h6
+   - subtitle1
+   - subtitle2
+   - body1
+   - body2
+   - caption
+   - button
 
-自定义文字排版方式简化了。
+2. 自定义文字排版方式简化了。
 
-旧的方式：
+    旧的方式：
 
-```ts
-import { createTheme, createTypography } from '@sinoui/theme';
+    ```ts
+    import { createTheme, createTypography } from '@sinoui/theme';
 
-const theme = createTheme({
-  typography: createTypography({
-    fontSize: 12,
-  }),
-});
-```
+    const theme = createTheme({
+      typography: createTypography({
+        fontSize: 12,
+      }),
+    });
+    ```
 
-新的方式：
+    新的方式：
 
-```ts
-import { createTheme } from '@sinoui/theme';
+    ```ts
+    import { createTheme } from '@sinoui/theme';
 
-const theme = createTheme({
-  typography: {
-    fontSize: 12,
-  },
-});
-```
+    const theme = createTheme({
+      typography: {
+        fontSize: 12,
+      },
+    });
+    ```
+
+3. color模块剔除了非标准的颜色，包括：
+
+   * transparent
+   * fullBlack
+   * darkBlack
+   * lightBlack
+   * minBlack
+   * faintBlack
+   * fullWhite
+   * darkWhite
+   * lightWhite
+
+4. color模块将 white 和 black 迁移到 color/common 中
+
+    之前的方式：
+
+    ```ts
+    import { colors } from '@sinoui/theme';
+
+    console.log(colors.white, colors.black);
+    ```
+
+    新的方式：
+
+    ```ts
+    import common from '@sinoui/theme/color';
+
+    console.log(common.white, common.black);
+    ```
+
+5. color模块去掉自定义颜色系列
+
+  - colorBlack
+  - colorDeepGray
+  - colorBrown
+  - colorGray
+  - colorKelly
+  - colorLigntYellow
+
+6. color模块去掉颜色系列中的 `w1`, `w2`, `w3`
 
 ## v0.3.4 - 2019.12.19
 

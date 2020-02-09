@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import getConstrastRatio from '../../src/getContrastRatio';
-import * as colors from '../../src/colors';
+import * as colors from '../../src/color';
 import { ColorSeries } from '../../src/types';
 
 const DarkTextColor = 'rgba(0, 0, 0, 0.87)';
@@ -212,8 +212,8 @@ export default function ColorPalettes() {
           <ColorModule key={item.name} name={item.name} color={item.color} />
         ))}
       <ColorModuleWrapper>
-        <ColorTag title="Black" color="#000000" light />
-        <ColorTag title="White" color="#FFFFFF" light={false} />
+        <ColorTag title="Black" color={colors.common.black} light />
+        <ColorTag title="White" color={colors.common.white} light={false} />
       </ColorModuleWrapper>
     </ColorPalettesWrapper>
   );

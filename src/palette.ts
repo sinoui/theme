@@ -1,16 +1,12 @@
 import warning from 'warning';
-
-import {
-  indigo,
-  pink,
-  grey,
-  red,
-  green,
-  cyan,
-  amber,
-  black,
-  white,
-} from './colors';
+import indigo from './color/indigo';
+import pink from './color/pink';
+import grey from './color/grey';
+import red from './color/red';
+import green from './color/green';
+import cyan from './color/cyan';
+import amber from './color/amber';
+import common from './color/common';
 import getContrastRatio from './getContrastRatio';
 import { PaletteOptions, Palette } from './types';
 
@@ -40,7 +36,7 @@ export const light = {
   },
   background: {
     default: grey[50],
-    paper: white,
+    paper: common.white,
     appBar: grey[100],
     contentFrame: grey[200],
     divider: grey[200],
@@ -51,7 +47,7 @@ export const light = {
     tooltip: grey[600],
     transparent: 'rgba(0,0,0,0)',
     sendcondaryTransparent: 'rgba(255,255,255,0.87)',
-    snackbar: black,
+    snackbar: common.black,
   },
 };
 
@@ -89,9 +85,9 @@ export const dark = {
     paper: grey[800],
     appBar: grey[900],
     contentFrame: grey[900],
-    status: black,
+    status: common.black,
     sendcondaryTransparent: 'rgba(0,0,0,0.87)',
-    snackbar: white,
+    snackbar: common.white,
     transparent: 'rgba(255, 255, 255)',
     divider: grey[200], // FIXME: 确认正确的dark主题下的分割线颜色
   },
@@ -118,7 +114,6 @@ export default function createPalette(options: PaletteOptions = {}): Palette {
    * @param background 文本的背景色
    */
   function getContrastText(background: string) {
-    console.log(background);
     const contrastText =
       getContrastRatio(background, dark.text.primary) >= contrastThreshold
         ? dark.text.primary
@@ -154,8 +149,8 @@ export default function createPalette(options: PaletteOptions = {}): Palette {
     warning: warningColor,
     danger,
     grey,
-    white,
-    black,
+    white: common.white,
+    black: common.black,
     getContrastText,
   };
 }
