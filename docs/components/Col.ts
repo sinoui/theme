@@ -51,19 +51,20 @@ const widthCss = css((props: Props) => {
 const breakpointKeys = ['sm', 'md', 'lg', 'xl'];
 
 const breakpointsCss = css((props: Props & { theme: Theme }) => {
-  const breakpointKey = breakpointKeys.find((item) => props[item] > 0);
-
-  if (breakpointKey) {
-    return {
-      [`@media screen and (min-width: ${props.theme.breakpoints[breakpointKey]}px)`]: {
+  return breakpointKeys
+    .filter((item) => props[item] > 0)
+    .reduce((result, item) => {
+      // eslint-disable-next-line no-param-reassign
+      result[
+        `@media screen and (min-width: ${props.theme.breakpoints[item]}px)`
+      ] = {
         '&': {
-          width: `${(props[breakpointKey] / 24) * 100}%`,
-          flexBasis: `${(props[breakpointKey] / 24) * 100}%`,
+          width: `${(props[item] / 24) * 100}%`,
+          flexBasis: `${(props[item] / 24) * 100}%`,
         },
-      },
-    };
-  }
-  return null;
+      };
+      return result;
+    }, {} as any);
 });
 
 const Col = styled.div<Props>`
