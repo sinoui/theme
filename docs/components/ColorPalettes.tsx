@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import getConstrastRatio from '../../src/getContrastRatio';
+import { getContrast } from 'polished';
 import * as colors from '../../src/colors';
 import { ColorSeries } from '../../src/types';
 
-const DarkTextColor = 'rgba(0, 0, 0, 0.87)';
-const LightTextColor = 'rgba(255, 255, 255, 0.87)';
+const TextOnDarkColor = '#fff';
+const TextOnLightColor = 'rgba(0, 0, 0, 0.87)';
 
 const colorNameMap = {
   red: '红色',
@@ -59,24 +59,28 @@ const toWords = (title: string) =>
     .replace(/[A-Z]/g, (text) => ` ${text.toLowerCase()}`)
     .replace(/^[a-z]/, (text) => text.toUpperCase());
 
+function getContrastText(color: string) {
+  return getContrast(color, TextOnDarkColor) >= 3
+    ? TextOnDarkColor
+    : TextOnLightColor;
+}
+
 /**
  * 颜色标签头
  */
 function ColorTagHead({
   title,
   color,
-  light,
   shade,
 }: {
   title: string;
   color: string;
-  light: boolean;
   shade: string;
 }) {
   return (
     <ColorTagHeadWrapper
       style={{
-        color: light ? LightTextColor : DarkTextColor,
+        color: getContrastText(color),
         backgroundColor: color,
       }}
     >
@@ -110,20 +114,12 @@ const ColorTagWrapper = styled(ColorTagHeadWrapper)`
 /**
  * 颜色标签
  */
-function ColorTag({
-  title,
-  color,
-  light,
-}: {
-  title: string;
-  color: string;
-  light: boolean;
-}) {
+function ColorTag({ title, color }: { title: string; color: string }) {
   return (
     <ColorTagWrapper
       style={{
         backgroundColor: color,
-        color: light ? LightTextColor : DarkTextColor,
+        color: getContrastText(color),
       }}
     >
       <span>{title}</span>
@@ -160,33 +156,18 @@ function ColorModule({ color, name }: { color: ColorSeries; name: string }) {
     .filter((item) => !!item.color);
   return (
     <ColorModuleWrapper>
-      <ColorTagHead
-        shade="500"
-        color={color[500]}
-        title={name}
-        light={getConstrastRatio(LightTextColor, color[500]) >= 3}
-      />
+      <ColorTagHead shade="500" color={color[500]} title={name} />
       <Sep />
       {filteredVariants
         .filter((item) => typeof item.name === 'number')
         .map((item) => (
-          <ColorTag
-            color={item.color}
-            key={item.name}
-            title={`${item.name}`}
-            light={getConstrastRatio(LightTextColor, item.color) >= 3}
-          />
+          <ColorTag color={item.color} key={item.name} title={`${item.name}`} />
         ))}
       <Sep />
       {filteredVariants
         .filter((item) => typeof item.name !== 'number')
         .map((item) => (
-          <ColorTag
-            color={item.color}
-            key={item.name}
-            title={`${item.name}`}
-            light={getConstrastRatio(LightTextColor, item.color) >= 3}
-          />
+          <ColorTag color={item.color} key={item.name} title={`${item.name}`} />
         ))}
     </ColorModuleWrapper>
   );

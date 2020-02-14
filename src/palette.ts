@@ -1,4 +1,5 @@
 import warning from 'warning';
+import { getContrast } from 'polished';
 import indigo from './colors/indigo';
 import pink from './colors/pink';
 import grey from './colors/grey';
@@ -7,7 +8,6 @@ import green from './colors/green';
 import cyan from './colors/cyan';
 import amber from './colors/amber';
 import common from './colors/common';
-import getContrastRatio from './getContrastRatio';
 import { PaletteOptions, Palette } from './types';
 
 export const light = {
@@ -115,12 +115,12 @@ export default function createPalette(options: PaletteOptions = {}): Palette {
    */
   function getContrastText(background: string) {
     const contrastText =
-      getContrastRatio(background, dark.text.primary) >= contrastThreshold
+      getContrast(background, dark.text.primary) >= contrastThreshold
         ? dark.text.primary
         : light.text.primary;
 
     if (process.env.NODE_ENV !== 'production') {
-      const contrast = getContrastRatio(background, contrastText);
+      const contrast = getContrast(background, contrastText);
       warning(
         contrast >= contrastThreshold,
         [
