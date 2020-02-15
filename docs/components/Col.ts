@@ -60,6 +60,7 @@ const breakpointsCss = css((props: Props & { theme: Theme }) => {
       ] = {
         '&': {
           width: `${(props[item] / 24) * 100}%`,
+          maxWidth: `${(props[item] / 24) * 100}%`,
           flexBasis: `${(props[item] / 24) * 100}%`,
         },
       };
