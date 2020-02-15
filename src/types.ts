@@ -497,31 +497,6 @@ export interface Theme {
   breakpoints: Breakpoints;
 }
 
-/**
- * 颜色属性。可以是：
- *
- * * 主题色名称；primary, accent, success, info, error, warning, danger, light, dark, action, contrast, none
- * * 也可以是css color属性值，如currentColor, initial, inherit, unset, #aaa, rgba(0, 0, 0, 0.87), red
- */
-export type ColorProp =
-  | 'primary'
-  | 'accent'
-  | 'success'
-  | 'error'
-  | 'info'
-  | 'warning'
-  | 'danger'
-  | 'light'
-  | 'dark'
-  | 'action'
-  | 'contrast'
-  | 'initial'
-  | 'inherit'
-  | 'unset'
-  | 'currentColor'
-  | 'none'
-  | string;
-
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}
 }
