@@ -16,21 +16,39 @@ const typographyVariants: [keyof ThemeTypography, string][] = [
   ['overline', '.overline'],
 ];
 
+/**
+ * 文字排版样式
+ */
 const typographyStyles = css(({ theme }) =>
-  typographyVariants.reduce(
-    (acc, [key, cssSelector]) => {
-      acc[cssSelector] = theme.typography[key];
-      return acc;
-    },
-    {} as Record<string, any>,
-  ),
+  typographyVariants.reduce((acc, [key, cssSelector]) => {
+    acc[cssSelector] = theme.typography[key];
+    return acc;
+  }, {} as Record<string, any>),
 );
+
+/**
+ * 链接样式
+ */
+const linkStyle = css`
+  a {
+    color: ${(props) => props.theme.palette.secondary.main};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+`;
 
 interface Props {
   /**
    * 如果设置为 `true`，则不会产生文字排版相关的css。
    */
   disableTypography?: boolean;
+  /**
+   * 如果设置为 `true`，则不会为链接添加默认样式。
+   */
+  disableLink?: boolean;
 }
 
 /**
@@ -45,9 +63,12 @@ const ThemeStyle = createGlobalStyle<Props>`
     font-size: ${(props) => props.theme.typography.body2.fontSize};
     color: ${(props) => props.theme.palette.text.primary};
     font-variant: tabular-nums;
+    background-color: ${(props) => props.theme.palette.background.default};
   }
 
   ${({ disableTypography }) => !disableTypography && typographyStyles}
+
+  ${({ disableLink }) => !disableLink && linkStyle}
 `;
 
 export default ThemeStyle;
