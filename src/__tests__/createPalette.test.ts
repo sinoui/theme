@@ -140,7 +140,7 @@ it('产生其他颜色分类', () => {
     main: '#2196f3',
   });
   expect(palette.success).toEqual({
-    contrastText: '#fff',
+    contrastText: 'rgba(0, 0, 0, 0.87)',
     dark: '#388e3c',
     light: '#81c784',
     main: '#4caf50',
@@ -177,4 +177,15 @@ it('set text color', () => {
   });
 
   expect(palette.text.primary).toBe('rgba(0, 0, 0, 0.92)');
+});
+
+it('使用 createPalette() 的结果再次调用 createPalette()', () => {
+  const paletteA = createPalette({
+    primary: {
+      main: red[600],
+    },
+  });
+  const paletteB = createPalette(paletteA);
+
+  expect(paletteB).toEqual(paletteA);
 });

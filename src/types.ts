@@ -19,157 +19,238 @@ export interface ColorSeries {
   A400: string;
   A700: string;
 }
+/* --------- 调色板 ------- */
+
+export type ShadeKey = keyof ColorSeries;
 
 /**
- * 调色板设置
+ * 调色板颜色
  */
-export interface PaletteOptions {
+export interface PaletteColor {
   /**
-   * 主色调
+   * 主颜色
    */
-  primary?: ColorSeries;
+  main: string;
   /**
-   * 辅助色调
+   * 深色
    */
-  accent?: ColorSeries;
+  dark: string;
   /**
-   * 错误状态色调
+   * 浅色
    */
-  error?: ColorSeries;
+  light: string;
   /**
-   * 成功状态色调
+   * 对比文本的颜色
    */
-  success?: ColorSeries;
-  /**
-   * 提示色调
-   */
-  info?: ColorSeries;
-  /**
-   * 警告状态色调
-   */
-  warning?: ColorSeries;
-  /**
-   * 危险状态色调
-   */
-  danger?: ColorSeries;
-  /**
-   * 主题类型
-   */
-  type?: 'light' | 'dark';
-  /**
-   * 对比度， 0 ~ 21
-   */
-  contrastThreshold?: number;
+  contrastText: string;
 }
 
 /**
- * 文本调色板
+ * 文本颜色
  */
-export interface PaletteText {
+export interface TypeText {
+  /**
+   * 重要文本的颜色
+   */
   primary: string;
+  /**
+   * 次要文本的颜色，如
+   */
   secondary: string;
+  /**
+   * 不可用文本颜色。
+   */
   disabled: string;
+  /**
+   * hint 模式下的文本颜色。
+   */
   hint: string;
-  icon: string;
-  divider: string;
-  lightDivider: string;
-  snackbar: string;
 }
 
 /**
- * 输入框调色板
+ * 按钮颜色
  */
-export interface PaletteInput {
-  bottomLine: string;
-  helperText: string;
-  labelText: string;
-  inputText: string;
-  disabled: string;
-}
-
-/**
- * 动作调色板
- */
-export interface PaletteAction {
+export interface TypeAction {
+  /**
+   * 可用按钮的文本颜色
+   */
   active: string;
-  disabled: string;
+  /**
+   * 鼠标移动到按钮上时的背景色
+   */
   hover: string;
+  /**
+   * hover状态下的透明度
+   */
+  hoverOpacity: number;
+  /**
+   * 按钮被选中时的背景色
+   */
   selected: string;
+  /**
+   * 选中状态下的透明度
+   */
+  selectedOpacity: number;
+  /**
+   * 按钮不可用时的文本颜色
+   */
+  disabled: string;
+  /**
+   * 按钮不用时的背景色
+   */
+  disabledBackground: string;
 }
 
 /**
- * 背景调色板
+ * 背景颜色
  */
-export interface PaletteBackground {
+export interface TypeBackground {
+  /**
+   * 默认背景颜色
+   */
   default: string;
+  /**
+   * 纸张背景颜色
+   */
   paper: string;
-  appBar: string;
-  contentFrame: string;
-  divider: string;
-  chips: string;
-  chipsImg: string;
-  chipsBut: string;
-  chipsButHover: string;
-  tooltip: string;
-  transparent: string;
-  sendcondaryTransparent: string;
-  snackbar: string;
 }
 
 /**
- * 主题调色板
+ * 类型颜色
  */
-export interface PaletteShade {
-  text: PaletteText;
-  input: PaletteInput;
-  action: PaletteAction;
-  background: PaletteBackground;
-}
-
-/**
- * 主题调色板
- */
-export interface PaletteShades {
-  /**
-   * 在亮模式下的颜色设置
-   */
-  light: PaletteShade;
-  /**
-   * 在暗模式下的颜色设置
-   */
-  dark: PaletteShade;
-}
-
-/**
- * 调色板
- */
-export interface Palette {
-  /**
-   * 主题类型
-   */
-  type: 'light' | 'dark';
-  /**
-   * 在不同模式下的颜色设置
-   */
-  shades: PaletteShades;
+export interface TypeObject {
   /**
    * 文本颜色
    */
-  text: PaletteText;
-  input: PaletteInput;
-  action: PaletteAction;
-  background: PaletteBackground;
-  primary: ColorSeries;
-  accent: ColorSeries;
-  error: ColorSeries;
-  success: ColorSeries;
-  info: ColorSeries;
-  warning: ColorSeries;
-  danger: ColorSeries;
+  text: TypeText;
+  /**
+   * 按钮颜色
+   */
+  action: TypeAction;
+  /**
+   * 背景颜色
+   */
+  background: TypeBackground;
+  /**
+   * 分割线颜色
+   */
+  divider: string;
+}
+
+type PaletteType = 'light' | 'dark';
+
+export interface Palette extends TypeObject {
+  type: PaletteType;
+  /**
+   * 品牌色，主颜色。
+   */
+  primary: PaletteColor;
+  /**
+   * 辅助色。
+   */
+  secondary: PaletteColor;
+  /**
+   * 错误状态颜色。
+   */
+  error: PaletteColor;
+  /**
+   * 警告状态颜色。
+   */
+  warning: PaletteColor;
+  /**
+   * 普通信息颜色。
+   */
+  info: PaletteColor;
+  /**
+   * 成功状态颜色。
+   */
+  success: PaletteColor;
+  /**
+   * 灰色色系
+   */
   grey: ColorSeries;
-  white: string;
-  black: string;
-  getContrastText: (color: string) => string;
+  /**
+   * 获取在指定背景颜色上的符合对比度标准的文本颜色（即 Material Design 中的 `on color`）
+   *
+   * @param color 背景颜色
+   */
+  getContrastText(color: string): string;
+  /**
+   * 通用颜色
+   */
+  common: { white: string; black: string };
+}
+
+export type PaletteColorOption =
+  | ColorSeries
+  | {
+      /**
+       * 主颜色
+       */
+      main: string;
+      /**
+       * 深色
+       */
+      dark?: string;
+      /**
+       * 浅色
+       */
+      light?: string;
+      /**
+       * 对比文本的颜色
+       */
+      contrastText?: string;
+    };
+
+export interface PaletteOptions {
+  /**
+   * 主颜色
+   */
+  primary?: PaletteColorOption;
+  /**
+   * 辅助色。默认为主题色。
+   */
+  secondary?: PaletteColorOption;
+  /**
+   * 错误状态颜色。
+   */
+  error?: PaletteColorOption;
+  /**
+   * 警告状态颜色。
+   */
+  warning?: PaletteColorOption;
+  /**
+   * 普通信息颜色。
+   */
+  info?: PaletteColorOption;
+  /**
+   * 成功状态颜色。
+   */
+  success?: PaletteColorOption;
+  /**
+   * 灰色色系
+   */
+  grey?: Partial<ColorSeries>;
+  /**
+   * 颜色模式。
+   */
+  type?: PaletteType;
+  /**
+   * 设置文本颜色。
+   */
+  text?: Partial<TypeText>;
+  /**
+   * 设置按钮颜色。
+   */
+  action?: Partial<TypeAction>;
+  /**
+   * 设置背景颜色。
+   */
+  background?: Partial<TypeBackground>;
+  /**
+   * 分割线颜色
+   */
+  divider?: string;
 }
 
 /* ---------------typography----------------*/

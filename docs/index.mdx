@@ -62,6 +62,22 @@ const Title = styled.h6((props) => ({
 }));
 ```
 
+或者：
+
+```tsx
+import styled from 'styled-components';
+
+const Button = styled.button`
+  color: ${props => props.theme.palette.action.active};
+  &:hover {
+    background-color: ${props => props.theme.palette.action.hover};
+  }
+  @media (hover: none) {
+    background-color: transparent;
+  }
+`;
+```
+
 程序中的 `props.theme` 即是主题上下文中的主题对象。
 
 也可以在普通组件通过上下文获取到主题对象：

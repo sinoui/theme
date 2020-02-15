@@ -1,12 +1,13 @@
 ---
 name: 断点
 route: /breakpoints
+menu: 开发指南
 ---
 
 import { Playground } from 'docz';
 import styled, { ThemeProvider, ThemeContext } from 'styled-components';
-import { createTheme } from '../src';
-import BreakpointIndicator from './BreakpointIndicator';
+import { createTheme } from '../../src';
+import BreakpointIndicator from '@/BreakpointIndicator';
 import { useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
 

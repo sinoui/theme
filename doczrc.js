@@ -33,8 +33,10 @@ export default {
   public: './docs/assets',
   menu: [
     '开始',
-    '文字排版',
-    '断点',
+    {
+      name: '开发指南',
+      menu: ['调色板', '文字排版', '断点'],
+    },
     {
       name: 'Material Design',
       menu: ['颜色系统', '将颜色应用于UI', '颜色使用', '文本可读性'],

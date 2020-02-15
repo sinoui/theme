@@ -1,6 +1,12 @@
 import { getContrast, darken, lighten } from 'polished';
 import deepmerge from 'deepmerge';
-import { ColorSeries } from './types';
+import {
+  ColorSeries,
+  PaletteColorOption,
+  ShadeKey,
+  PaletteOptions,
+  Palette,
+} from './types';
 import indigo from './colors/indigo';
 import pink from './colors/pink';
 import red from './colors/red';
@@ -9,238 +15,6 @@ import blue from './colors/blue';
 import green from './colors/green';
 import grey from './colors/grey';
 import common from './colors/common';
-
-type ShadeKey = keyof ColorSeries;
-
-/**
- * 调色板颜色
- */
-export interface PaletteColor {
-  /**
-   * 主颜色
-   */
-  main: string;
-  /**
-   * 深色
-   */
-  dark: string;
-  /**
-   * 浅色
-   */
-  light: string;
-  /**
-   * 对比文本的颜色
-   */
-  contrastText: string;
-}
-
-/**
- * 文本颜色
- */
-interface TypeText {
-  /**
-   * 重要文本的颜色
-   */
-  primary: string;
-  /**
-   * 次要文本的颜色，如
-   */
-  secondary: string;
-  /**
-   * 不可用文本颜色。
-   */
-  disabled: string;
-  /**
-   * hint 模式下的文本颜色。
-   */
-  hint: string;
-}
-
-/**
- * 按钮颜色
- */
-interface TypeAction {
-  /**
-   * 可用按钮的文本颜色
-   */
-  active: string;
-  /**
-   * 鼠标移动到按钮上时的背景色
-   */
-  hover: string;
-  /**
-   * hover状态下的透明度
-   */
-  hoverOpacity: number;
-  /**
-   * 按钮被选中时的背景色
-   */
-  selected: string;
-  /**
-   * 选中状态下的透明度
-   */
-  selectedOpacity: number;
-  /**
-   * 按钮不可用时的文本颜色
-   */
-  disabled: string;
-  /**
-   * 按钮不用时的背景色
-   */
-  disabledBackground: string;
-}
-
-/**
- * 背景颜色
- */
-interface TypeBackground {
-  /**
-   * 默认背景颜色
-   */
-  default: string;
-  /**
-   * 纸张背景颜色
-   */
-  paper: string;
-}
-
-/**
- * 类型颜色
- */
-interface TypeObject {
-  /**
-   * 文本颜色
-   */
-  text: TypeText;
-  /**
-   * 按钮颜色
-   */
-  action: TypeAction;
-  /**
-   * 背景颜色
-   */
-  background: TypeBackground;
-  /**
-   * 分割线颜色
-   */
-  divider: string;
-}
-
-type PaletteType = 'light' | 'dark';
-
-interface Palette extends TypeObject {
-  type: PaletteType;
-  /**
-   * 品牌色，主颜色。
-   */
-  primary: PaletteColor;
-  /**
-   * 辅助色。
-   */
-  secondary: PaletteColor;
-  /**
-   * 错误状态颜色。
-   */
-  error: PaletteColor;
-  /**
-   * 警告状态颜色。
-   */
-  warning: PaletteColor;
-  /**
-   * 普通信息颜色。
-   */
-  info: PaletteColor;
-  /**
-   * 成功状态颜色。
-   */
-  success: PaletteColor;
-  /**
-   * 灰色色系
-   */
-  grey: ColorSeries;
-  /**
-   * 获取在指定背景颜色上的符合对比度标准的文本颜色（即 Material Design 中的 `on color`）
-   *
-   * @param color 背景颜色
-   */
-  getContrastText(color: string): string;
-  /**
-   * 通用颜色
-   */
-  common: { white: string; black: string };
-}
-
-type PaletteColorOption =
-  | ColorSeries
-  | {
-      /**
-       * 主颜色
-       */
-      main: string;
-      /**
-       * 深色
-       */
-      dark?: string;
-      /**
-       * 浅色
-       */
-      light?: string;
-      /**
-       * 对比文本的颜色
-       */
-      contrastText?: string;
-    };
-
-interface PaletteOptions {
-  /**
-   * 主颜色
-   */
-  primary?: PaletteColorOption;
-  /**
-   * 辅助色。默认为主题色。
-   */
-  secondary?: PaletteColorOption;
-  /**
-   * 错误状态颜色。
-   */
-  error?: PaletteColorOption;
-  /**
-   * 警告状态颜色。
-   */
-  warning?: PaletteColorOption;
-  /**
-   * 普通信息颜色。
-   */
-  info?: PaletteColorOption;
-  /**
-   * 成功状态颜色。
-   */
-  success?: PaletteColorOption;
-  /**
-   * 灰色色系
-   */
-  grey?: Partial<ColorSeries>;
-  /**
-   * 颜色模式。
-   */
-  type?: PaletteType;
-  /**
-   * 设置文本颜色。
-   */
-  text?: Partial<TypeText>;
-  /**
-   * 设置按钮颜色。
-   */
-  action?: Partial<TypeAction>;
-  /**
-   * 设置背景颜色。
-   */
-  background?: Partial<TypeBackground>;
-  /**
-   * 分割线颜色
-   */
-  divider?: string;
-}
 
 function isColorSeries(
   colorItemOption: PaletteColorOption,
@@ -279,25 +53,26 @@ export function getContrastText(
  * @param getContrastTextFn 获取符合对比度标准的文本颜色函数
  */
 export function parsePaletteColor(
-  PaletteColorOption: PaletteColorOption,
+  option: PaletteColorOption,
   getContrastTextFn: (color: string) => string,
   mainShade: ShadeKey | undefined = 500,
   lightShade: ShadeKey | undefined = 300,
   darkShade: ShadeKey | undefined = 700,
 ) {
-  if (isColorSeries(PaletteColorOption)) {
+  if (isColorSeries(option)) {
     return {
-      main: PaletteColorOption[mainShade],
-      dark: PaletteColorOption[darkShade],
-      light: PaletteColorOption[lightShade],
-      contrastText: getContrastTextFn(PaletteColorOption[700]),
+      main: option[mainShade],
+      dark: option[darkShade],
+      light: option[lightShade],
+      contrastText: getContrastTextFn(option[mainShade]),
     };
   }
+
   return {
-    main: PaletteColorOption.main,
-    dark: PaletteColorOption.dark ?? darken(0.18)(PaletteColorOption.main),
-    light: PaletteColorOption.light ?? lighten(0.13)(PaletteColorOption.main),
-    contrastText: getContrastTextFn(PaletteColorOption.main),
+    main: option.main,
+    dark: option.dark ?? darken(0.18)(option.main),
+    light: option.light ?? lighten(0.13)(option.main),
+    contrastText: getContrastTextFn(option.main),
   };
 }
 

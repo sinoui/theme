@@ -1,6 +1,7 @@
 ---
 name: 调色板
 route: /palette
+menu: 开发指南
 ---
 
 import PaletteColorDesc from '@/palette/PaletteColorDesc';
@@ -20,6 +21,7 @@ import ColorPalettes from '@/ColorPalettes';
   * [contrastText 属性](contrasttext-属性)
   * [默认的颜色分类值](#默认的颜色分类值)
   * [切换组件颜色分类](#切换组件颜色分类)
+* [dark 模式](#dark-模式)
 * [文本颜色](#文本颜色)
   * [light 模式下的文本颜色](#light-模式下的文本颜色)
   * [dark 模式下的文本颜色](#dark-模式下的文本颜色)
@@ -36,6 +38,7 @@ import ColorPalettes from '@/ColorPalettes';
 * [定制调色板](#定制调色板)
   * [定制颜色分类](#定制颜色分类)
 * [内置的颜色对象](#内置的颜色对象)
+* [官方色彩工具](#官方色彩工具)
 
 ## 颜色分类
 
@@ -143,6 +146,22 @@ function Demo () {
   </>;
 }
 ```
+
+## dark 模式
+
+@sinoui/theme 默认是 light 模式，同时支持 dark 模式：
+
+```ts
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+```
+
+在 dark 模式下，文本、按钮、背景、分割线的颜色都会与 light 模式不同。下面的章节中会分别从 light 和 dark 模式介绍颜色情况。
 
 ## 文本颜色
 
@@ -301,7 +320,7 @@ import red from '@sinoui/theme/colors/red';
 import green from '@sinoui/theme/colors/green';
 ```
 
-每个颜色对象都包含有 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700 这些不同明暗程度名称对应的值。我们可以通过这些键获取到对应的颜色值，如：
+每个颜色对象都包含有 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700 这些主要和强调颜色。我们可以通过这些 SHADE （即 500, 600, A200 ）获取到对应的颜色值，如：
 
 ```ts
 import red from '@sinoui/theme/colors/red';
@@ -315,3 +334,34 @@ const secondaryColor = red.A400;
 内置的颜色对象如下：
 
 <ColorPalettes />
+
+## 官方色彩工具
+
+您的应用程序可以直接使用内置的颜色对象来设置调色板，同时也可以通过官方色彩工具使用自定义颜色创建主题调色板。
+
+Material Design 团队提供了一款令人赞叹的调色板配置工具: [https://material.io/resources/color/](https://material.io/resources/color/) 。它会帮助您为您的 UI 建立自己的色彩集合，同时也会帮助测量每个颜色组合的文本可访问性。
+
+![color tool](images/color-tool-default-theme.png)
+
+颜色工具的颜色值可以直接用在 `createTheme()` 函数中：
+
+```ts
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+```
