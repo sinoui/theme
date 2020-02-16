@@ -1,0 +1,445 @@
+---
+name: 环境/海拔
+route: /md-elevation
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+import Row from '@/Row';
+import Col from '@/Col';
+
+# 海拔 Elevation
+
+海拔是两个表面在 z 轴上的相对距离。
+
+import hero from './images/elevation-hero.mp4';
+
+<ImageWithTitle video={hero}>
+  <p><strong>组件海拔值</strong></p>
+
+  <ol>
+    <li>导航抽屉: 16dp</li>
+    <li>应用程序栏：8dp</li>
+    <li>卡片：1dp 到 8dp</li>
+    <li>浮动操作按钮：6dp</li>
+    <li>按钮：2dp 到 8dp</li>
+    <li>对话框：24dp</li>
+  </ol>
+</ImageWithTitle>
+
+> 在这篇文章中，将 elevation 翻译成海拔，在前一章节中，我们将 depth 翻译成深度。Material Design 中材料的深度（depth）和表面的海拔（elevation）指的是同一个东西。如果觉得翻译为海拔不妥，可以将意见反馈给[作者](jackingstarliu@gmail.com)。
+
+## Material Design 中的海拔 / Elevation in Material Design
+
+### 测量海拔 Measuring elevation
+
+Materail Design 中的海拔需要通过测量两个表面之间的距离得到。从一个材料表面的正面到另一个材料表面的正面的距离是沿着 z 轴以 dp 为单位度量的，并且默认情况下用[阴影](md-light-and-shadows)来表达。
+
+
+import measuring from './images/elevation-materialdesign.png';
+
+<ImageWithTitle img={measuring}>
+  <ol>
+    <li>一个海拔为 1dp 的表面和另一个海拔为 8dp 的表面。从正面观看。</li>
+    <li>从侧面观看，这两个表面的海拔距离为 7dp。</li>
+  </ol>
+</ImageWithTitle>
+
+import measuring2 from './images/elevation-materialdesign-2.png';
+
+<ImageWithTitle img={measuring2}>
+  <p>当表面位于另一个表面的上面时，相同海拔的表面可能会有不同的展现。</p>
+  <ol>
+    <li>界面A和B的海拔均为 8dp。它们投射了不同的阴影，因为表面B在表面C的上方，而表面C已经有了 4dp 海拔。</li>
+    <li>从侧面观看，界面A、B、C有海拔差异。</li>
+  </ol>
+</ImageWithTitle>
+
+#### 海拔系统 The elevation system
+
+在 Material Design 中，所有表面和组件都有海拔值。
+
+不同海拔的表面执行以下操作：
+
+- 允许表面在其他表面的前后移动，例如，内容滚动到应用程序栏的后面。
+- 反映空间关系，例如一个浮动操作按钮的阴影表明它是与卡片集分离的。
+- 将注意力聚焦在最高海拔的表面上，例如一个对话框临时出现在其他表面之上。
+
+可以使用阴影或其他视觉提示（例如表面填充或不透明度）来描述海拔。
+
+import shadowForElevation from './images/measuringelevation-intro-alt.png';
+import fillForElevation from './images/measuringelevation-intro-alt-caution01.png';
+import opacityForElevation from './images/measuringelevation-intro-alt-caution02.png';
+
+<ImageWithTitle img={shadowForElevation}>
+  Material Design 使用阴影显示海拔。
+</ImageWithTitle>
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="caution" img={fillForElevation}>
+      使用不同的表面填充而不是阴影表示海拔。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="caution" img={opacityForElevation}>
+      不透明度可以代替阴影来表达海拔。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 静止海拔 Resting elevation
+
+静止海拔是值给组件的默认起始海拔值。响应于用户或系统事件，组件从静止海拔移动。所有组件都有静止海拔，而且每种类型的组件有相同的静止海拔。例如，所有卡片有相同的静止海拔，对话框有相同的静止海拔。
+
+#### 静止海拔与环境 Resting elevation and environment
+
+静止海拔因环境、平台或者应用程序而异。移动设备上的静止海拔旨在提供视觉提示，如阴影，以指示何时处于交互状态。相反，桌面上的静止海拔较浅，因为其他提示（如悬停状态）在组件互动时体现。例如，在桌面设备上，卡片的海拔是 0dp，且用边框勾勒出轮廓。
+
+import mobileRestingElevation from './images/restingelevation-baselineelevation.png';
+
+<ImageWithTitle img={mobileRestingElevation}>
+  <ol>
+    <li>从正面看，移动设备上的应用程序栏（A）、卡片（B）和浮动操作按钮（C）的静止海拔</li>
+    <li>从侧面观看组件的不同海拔</li>
+  </ol>
+</ImageWithTitle>
+
+import desktopRestingElevation from './images/restingelevation-modifiedelevation.png';
+
+<ImageWithTitle img={desktopRestingElevation}>
+  <ol>
+    <li>从正面看，桌面设备上的应用程序栏（A）、卡片（B）和浮动操作按钮（C）的静止海拔</li>
+    <li>从侧面观看组件的不同海拔</li>
+  </ol>
+</ImageWithTitle>
+
+### 改变海拔 Changing elevation
+
+组件可以改变海拔来响应用户输入或系统事件。发生这种情况时，组件会移动到预设的**动态海拔偏移量（dynamic elevation offset）**，即组件在非静止状态下的默认海拔。
+
+一旦用户输入或系统事件完成或者取消后，组件将迅速地回到它的静止海拔。
+
+import responsiveelevation from './images/responsiveelevation.mp4';
+
+<ImageWithTitle video={responsiveelevation}>
+  <p>一些组件会增加海拔来响应用户输入。</p>
+  
+  <ol>
+    <li>因用户点击，这个按钮增加了它的海拔：从 2dp 增长到 8dp。</li>
+    <li>从侧面观看组件的海拔</li>
+  </ol>
+</ImageWithTitle>
+
+### 海拔干扰 Elevation interference
+
+当组件在其静止海拔和动态海拔偏移量之间移动时，不应与其他组件发生碰撞。
+
+为了避免此类碰撞，组价可以移开。例如，如果增加卡片的海拔使其通过浮动操作按钮，则该按钮可能会消失或在发生碰撞之前移出屏幕。
+
+也可以设计您的应用程序布局来避免碰撞，如将浮动操作按钮放置在卡片旁边而不是其上方。
+
+import cardpickup from './images/voidelevationinterference-cardpickup.mp4';
+
+<ImageWithTitle video={cardpickup}>
+  临时重新放置或者移除可能与过渡组件碰撞的组件。从正面（1）和侧面（2）视角展示了移动设备上拿起卡片（A）时浮动动作按钮（B)如何消失。
+</ImageWithTitle>
+
+import cardstreamdesktop from './images/avoidelevationinterference-cardstreamdesktop.mp4';
+
+<ImageWithTitle video={cardstreamdesktop}>
+  设计您的应用，以最大程度地减少海拔干扰的几率。
+</ImageWithTitle>
+
+## 描绘海拔 Depicting elevation
+
+要成功地描绘海拔，表面必须显示：
+
+* 表面边缘，使表面与周围环境形成对比
+* 与其他表面的重叠，无论是静止中或者移动中
+* 与其他表面的距离
+
+### 表面边缘 Surface edges
+
+边缘有助于表达材料表面的触觉质量。通过将用户界面的不同部分分离成可识别的组件来展示一个表面的结束、另一个表面的开始。例如，应用程序栏的边缘表明它与网格列表分开，向用户传达网格列表独立于应用程序栏滚动的信息。
+
+默认情况下，使用阴影来表示材料表面边缘。也有一些其他方法指示边缘：
+
+- 给表面不同的颜色
+- 给表面不同的透明度
+
+边缘必须在表面之间产生足够的对比度（通过达到或超过可访问性对比度），以使它们彼此分离。
+
+import edgeNone from './images/othertechniques-edges-none.png';
+import edgeFill from './images/othertechniques-edges-fill.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={edgeNone} status="no">
+      没有显示边缘，则不清楚该图像是包含一个或多个表面。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={edgeFill} status="ok">
+      有足够对比度的表面填充，则能清晰地表明该图片包含两个表面。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 表面重叠 Surface overlap
+
+当两个表面部分或者完全地重叠时，表明它们有不同的海拔。高海拔表面显示在低海拔表面的前面，表明它们沿z轴定位在不同的海拔。表面可能默认情况下就与另一个重叠，或者由于在UI中更改其位置的动效而变得重叠。
+
+当表面有不同的透明度或者对比度不足时，可能难以区分哪个表面在上方。为了避免模棱两可的重叠，需确保表面边缘清晰易辨。
+
+import overlap1 from './images/surfaceedges-grid-1.png';
+
+<ImageWithTitle img={overlap1}>
+  <ol>
+    <li>阴影显示表面边界、表面重叠和海拔。</li>
+    <li>不同的表面颜色显示表面边缘和重叠，但是不能表示海拔。</li>
+    <li>不透明度显示表面边缘和重叠，但是不能表示海拔。</li>
+  </ol>
+</ImageWithTitle>
+
+import overlap2 from './images/occlusion-do-1.png';
+import overlap3 from './images/occlusion-dont-1.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={overlap2} status="ok">
+      顶部应用程序栏与卡片重叠，表明它位于卡片前面。该重叠不能表明两个表面之间的海拔距离。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={overlap3} status="no">
+      没有表面边缘和重叠的视觉提示，就无法确定存在多个表面，哪些表面在其他表面之上，也无法确定表面之间的海拔距离。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 距离 Distnace
+
+可以使用遮罩层或者阴影来表示表面之间的海拔差异。
+
+#### 遮罩层 Scrimmed backgrounds
+
+当 UI 背景是遮罩状态时，表明在它上面的内容有更高的海拔。遮罩层代表很大但不精确的海拔。
+
+import dimmedbackgroundDo from './images/dimmedbackgrounds-do-1.png';
+import dimmedbackgroundDont from './images/dimmedbackgrounds-dont-1.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={dimmedbackgroundDo} status="ok">
+      遮罩层可以指示表面重叠，但是不能表明海拔差异程度。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={dimmedbackgroundDont} status="no">
+      缺少阴影或遮罩层，使得难以区分对话框和内容。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+#### 阴影 Shadows
+
+阴影可以表示表面之间的海拔差异，而这种方式是其他方法不能做到的。
+
+阴影的大小和柔软度或扩散量表示两个表面之间的距离。例如，很小且锐利的阴影表示该表面非常靠近其后面的表面。更大、更柔和的阴影表示更大的距离。
+
+阴影大小和柔软度的细微差异传达出：
+
+- 两个表面之间的确切距离
+- 非重叠表面之间的海拔差异
+
+import shadow1 from './images/expressingelevation-1.png';
+
+<ImageWithTitle img={shadow1}>
+  阴影显示表面的边缘及其相对于背景的海拔。它还会使非重叠表面之间的海拔差异明显。
+</ImageWithTitle>
+
+import shadowDo from './images/separation-shadow-do-1.png';
+import shadowDont from './images/separation-shadow-dont-1.png';
+
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={shadowDo} status="ok">
+      阴影使表面海拔差异明显。应用程序栏（1）的阴影较小、锐利，表明它的海拔低于菜单（2）海拔，后者具有较大的、柔和的阴影。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={shadowDont} status="no">
+      缺少阴影或其他视觉提示来指示边缘和表面重叠，会使表面之间的对比度不足。结果很难理解此用户界面由哪几部分组成。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+import shadowDont2 from './images/shadows-dont-1.png';
+
+<ImageWithTitle img={shadowDont2} status="no">
+  不要仅将阴影用作样式。
+</ImageWithTitle>
+
+### 动效与海拔 Motion and elevation
+
+动效可以使用以下方法强调海拔：
+
+- 改变阴影
+- 显示重叠
+- 推动（pushing）
+- 缩放
+- 视差（parallax）
+
+#### 阴影的变化 Changes in shadows
+
+阴影大小和柔软度的变化强调海拔的变化。
+
+import tapcard from './images/tapcard.mp4';
+
+<ImageWithTitle video={tapcard}>
+  阴影增长，以强调卡片正在上升。
+</ImageWithTitle>
+
+#### 显示重叠 Displaying overlap
+
+表面可以部分或全部与另一个表面以动画的方式重叠，展示在上方的那个表面。
+
+import tapcardOverlay from './images/tapcard-overlap.mp4';
+
+<ImageWithTitle video={tapcardOverlay}>
+  随着其扩展，表面可能会通过重叠附近的表面而显示出海拔。
+</ImageWithTitle>
+
+#### 推动 Pushing
+
+相同海拔的表面可以推动其他表面沿着路径移动。
+
+import tapcardPush from './images/tapcard-push.mp4';
+
+<ImageWithTitle video={tapcardPush}>
+  选定的列表项将展开，将周围的项目推开。
+</ImageWithTitle>
+
+#### 缩放 Scaling
+
+缩放表面的大小可以强调海拔的变化。
+
+import scaling from './images/scaling.mp4';
+
+<ImageWithTitle video={scaling}>
+  前景和背景按比例缩放以强调海拔变化。
+</ImageWithTitle>
+
+#### 视差 Parallax
+
+不同高度的多个表面以不同的速度移动可以产生深度感并将焦点放在前景内容上。
+
+import shrineParallax from './images/shrine-parallax.mp4';
+
+<ImageWithTitle video={shrineParallax}>
+  前景表面的移动速度快于背景图片，从而产生深度感。
+</ImageWithTitle>
+
+#### 组合动效技术
+
+用组合动效强调高度。
+
+import basilParallax from './images/basil-parallax.mp4';
+
+<ImageWithTitle video={basilParallax}>
+  视差动效和缩放会强调哪些表面在其他表面的前面。
+</ImageWithTitle>
+
+## 海拔层次 Elevation hierarchy
+
+内容与其他内容的关系，取决于它们处于相同或不同的海拔。
+
+### 不同海拔的内容 Content at different elevations
+
+在其他表面前面的表面通常：
+
+1. 包含有更重要的内容
+2. 聚焦注意力，比如对话框
+3. 控制其后面的表面，例如应用栏中的操作
+
+import footnote from './images/abovesurface-footnote-1.png';
+
+<ImageWithTitle img={footnote}>
+  前视图（1）和侧视图（2）演示了在桌面设备界面上如何将具有主要焦点（B）的重要内容显示在具有次要焦点的内容（如脚注，A）的前面。
+</ImageWithTitle>
+
+import bottomsheet from './images/abovesurface-bottomsheet-1.png';
+
+<ImageWithTitle img={bottomsheet}>
+  前视图（1）和侧视图（2）演示了移动设备界面上如何将内容放置在较高的表面，如底部动作条（A），可以在保持前后表面关系的同时吸引注意力。
+</ImageWithTitle>
+
+import drawer from './images/surfacerelationships-drawer.mp4';
+
+<ImageWithTitle video={drawer}>
+  前视图（1）和侧视图（2）演示了在移动设备界面上在较低位置表面（A）上的内容通常由前面的表面控制，例如导航抽屉（B）。
+</ImageWithTitle>
+
+### 在共面表面上的内容 Content on coplanar surfaces
+
+将表面定位在相同的海拔会使它们共面，并可能表明它们包含彼此同等重要的内容。例如，集合中的所有卡片都具有同等的重要性。
+
+import sameelevation from './images/surfacerelationships-sameelevation.mp4';
+
+<ImageWithTitle video={sameelevation}>
+  <ol>
+    <li>从正面看，卡片（A，B）具有相同的海拔并一起移动，从而增强了其内容具有相似的层次结构。</li>
+    <li>侧视图看组件的海拔</li>
+  </ol>
+</ImageWithTitle>
+
+不表达海拔的界面可以看起来是共面的。对于不表示海拔的界面，您可以通过其内容传达层次结构差异，并通过调整其水平和垂直布局位置来指示其相对层次结构级别。
+
+例如，在具有共面界面的表面上，根据语言文字的显示方向，将详细内容放在福内容旁边。
+
+import coplanar from './images/coplanar-hierarchy-1.png';
+
+<ImageWithTitle img={coplanar}>
+  <ol>
+    <li>在桌面设备界面上，从左到右按照重要性分别显示了A、B、C三个相同海拔的表面。注：从左到右是英语语言的特性。</li>
+    <li>从侧面看相同的组件</li>
+  </ol>
+</ImageWithTitle>
+
+## 默认的海拔 Default elevations
+
+所有元素都有静止海拔和动态海拔偏移量的默认值。某些组件的海拔比其他组件高，从而在所有组件之间建立了一致的海拔顺序。例如，对话框总是出现在所有其他组件的前面。
+
+### 默认海拔值表格 Table of default elevation values
+
+| 组件                                    | 默认海拔值（dp） |
+| --------------------------------------- | ---------------- |
+| 对话框                                  | 24               |
+| 底部模态动作条 <br/> 侧边模态动作条     | 16               |
+| 抽屉式导航                              | 16               |
+| 浮动操作按钮（按下时）                  | 12               |
+| 标准的底部动作条 <br/> 标准的侧边动作条 | 8                |
+| 底部导航栏                              | 8                |
+| 底部应用程序栏                          | 8                |
+| 菜单和子菜单                            | 8                |
+| 卡片（选中时）                          | 8                |
+| 实心按钮（按下时）                      | 8                |
+| 浮动动作按钮（静止海拔）<br/> Snackbar  | 6                |
+| 顶部应用栏（滚动状态）                  | 4                |
+| 顶部应用栏（静止海拔）                  | 0 或者 4         |
+| 刷新指示器 <br/> 搜索栏（滚动状态）     | 3                |
+| 实心按钮（静止海拔）                    | 2                |
+| 搜索栏（静止海拔）                      | 1                |
+| 卡片（静止海拔）                        | 1                |
+| 开关                                    | 1                |
+| 文本按钮                             | 0                |
+
+### 默认海拔值图 Diagram of default elevation values
+
+import baselineelevationChart from './images/baselineelevation-chart.png';
+
+<ImageWithTitle img={baselineelevationChart}>
+  显示多个组件的默认高度和动态偏移高度的横截面图。
+</ImageWithTitle>

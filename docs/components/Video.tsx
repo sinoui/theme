@@ -5,6 +5,7 @@ import play from './images/play.svg';
 
 const Wrapper = styled.div<{ isPlaying: boolean; isHover: boolean }>`
   max-width: 100%;
+  width: 100%;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.12);
   display: inline-flex;
