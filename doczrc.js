@@ -39,7 +39,14 @@ export default {
     },
     {
       name: 'Material Design',
-      menu: ['引言', '颜色系统', '将颜色应用于UI', '颜色使用', '文本可读性'],
+      menu: [
+        '引言',
+        '环境/表面',
+        '颜色系统',
+        '将颜色应用于UI',
+        '颜色使用',
+        '文本可读性',
+      ],
     },
   ],
   wrapper: 'docs/Wrapper.tsx',

@@ -1,0 +1,442 @@
+---
+name: 环境/表面
+route: /md-surfaces
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+import Row from '@/Row';
+import Col from '@/Col';
+
+# 表面 Surfaces
+
+Material Design 具有三维质感，这体现在其表面（Surfaces）、深度（depth）和阴影（shadows）上。
+
+## 材料环境 Material Environment
+
+### 物理世界 The physical world
+
+在物理世界中，物品可以堆叠或附着在一起，但不能互相穿越。它们投下阴影并反射光线。
+
+Material Design 应用了这些特征，设计了表面如何在 UI 中显示和移动。表面在三维世界中的移动方式类似如它们在物理世界中的移动方式。可以将该空间模型一致地应用到应用程序中。
+
+### 深度 Depth
+
+UI 展示在由光、表面和投射阴影构建的三维空间中。UI 中的所有元素都可以水平移动、垂直移动或者沿着 Z 轴以不同深度进行移动。深度表示元素在正 Z 轴朝向观察者的位置。
+
+import env3d from './images/environment-3d.png';
+
+<ImageWithTitle img={env3d}>
+  包含x, y, z 轴的 3d 空间。
+</ImageWithTitle>
+
+## 特征 Properties
+
+表面在整个 Material Design 中具有一致、不变的特征和行为。
+
+### 尺寸 Dimensions
+
+材料的 x 和 y 尺寸是可变的（以 dp 为单位），但是有统一的 z 轴尺寸，即厚度为 1dp。
+
+import thickness1Yes from './images/surface-physicalproperties-thickness-01-yes.png';
+import thickness2No from './images/surface-physicalproperties-thickness-02-no.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={thickness1Yes} status="ok">
+      材料的高度和宽度可以变化。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={thickness2No} status="no">
+      材料的深度应永远是1dp。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 阴影 Shadows
+
+在不同深度的材料表面会投射阴影。
+
+import shadowsDo from './images/materialshadow-do.mp4';
+
+<ImageWithTitle status="ok" video={shadowsDo}>
+  <p>使用阴影表达不同材料表面的深度。</p>
+
+  <ol>
+    <li>顶部视角</li>
+    <li>3d视角，显示了材料向上移动时光线投射的阴影</li>
+  </ol>
+</ImageWithTitle>
+
+import shadowsDont from './images/materialshadow-dont.mp4';
+
+<ImageWithTitle status="no" video={shadowsDont}>
+  <p>在不改变表面的深度时，不应显示阴影。</p>
+  
+  <ol>
+    <li>顶部视角</li>
+    <li>3d视角，描述了表面仅使用了颜色，而没有光源和深度时却显示了阴影</li>
+  </ol>
+</ImageWithTitle>
+
+### 分辨率 Resolution
+
+材料具有无限的分辨率。
+
+import resolution from './images/materialsurfaceproperties-do-infiniteresolution-1a.mp4';
+
+<ImageWithTitle video={resolution}>
+  材料具有无限的分辨率。
+</ImageWithTitle>
+
+### 内容 Content
+
+内容以任何形状和颜色显示在材料上。内容不会增加材料的厚度（即深度）。展示的内容不会形成单独的层。
+
+import contentShapecolor from './images/materialcontent-shapecolor.mp4';
+
+<ImageWithTitle status="ok" video={contentShapecolor}>
+  材料可以显示任何形状和颜色的内容。内容的行为可以独立于材料，但仅限于材料的边界范围内。
+</ImageWithTitle>
+
+import contentBehavior from './images/materialcontent-behavior.mp4';
+
+<ImageWithTitle status="ok" video={contentBehavior}>
+  内容的行为可以独立于表面的行为。
+</ImageWithTitle>
+
+import contentDependentBehavior from './images/materialcontent-dependent-behavior.mp4';
+
+<ImageWithTitle status="ok" video={contentDependentBehavior}>
+  内容行为可以依赖于材料的行为。
+</ImageWithTitle>
+
+### 物理属性 Physical properties
+
+import physicalDo from './images/materialsurfaceproperties-do-physical.png';
+import physicalDont from './images/materialsurfaceproperties-dont-passthrough.png';
+
+材料是实心的固体。用户输入和交互不能穿透材料。
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="ok" img={physicalDo}>
+      输入事件只能作用在材料的表面。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="no" img={physicalDont}>
+      输入事件不能穿透材料。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+import multiMaterialsDo from './images/whatismaterial-properties-physical5.png';
+import multiMaterialsDont from './images/whatismaterial-properties-physical6.png';
+
+多个材料元素不能同时占据空间中相同的点。
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="ok" img={multiMaterialsDo}>
+      利用海拔（即深度）来分离元素，以阻止多个材料元素会同时占据空间中相同的点。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle status="no" img={multiMaterialsDont}>
+      多个材料元素不能同时占据空间中相同的点。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+import clipping from './images/materialproperties-clipping.mp4';
+
+材料不能穿透另一个材料。例如，一个材料表面不能通过改变海拔（即深度）来穿透另一个材料表面。
+
+<ImageWithTitle status="no" video={clipping}>
+  材料不能穿透另一个材料。
+</ImageWithTitle>
+
+import gas from './images/materialsurfaceproperties-do-enterexitseq-1a.mp4';
+import enterExits from './images/materialsurfaceproperties-do-enterexitseq-1a.mp4';
+
+材料的行为不能像气体。
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={gas}>
+      材料的行为不能像气体。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={enterExits}>
+      材料可以通过改变不透明度、尺寸和位置来进入和退出。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+import dripping from './images/materialsurfaceproperties-dont-dripping.mp4';
+import flow from './images/materialsurfaceproperties-dont-flow-1a.mp4';
+
+材料不能表现得像液体或凝胶一样的流体，但是材料中显示的内容是可以的。
+
+<ImageWithTitle status="no" video={dripping}>
+  材料不能表现得像液体或流体。
+</ImageWithTitle>
+
+<ImageWithTitle status="no" video={flow}>
+  材料不能表现得像液体。
+</ImageWithTitle>
+
+### 变换材料 Transforming Material
+
+import changeshape from './images/materialsurfaceproperties-changeshape-1b.mp4';
+
+材料可以改变形状。
+
+<ImageWithTitle video={changeshape}>
+  材料可以改变形状。
+</ImageWithTitle>
+
+import opacity from './images/materialsurfaceproperties-opacity.png';
+
+材料可以改变不透明度。
+
+<ImageWithTitle img={opacity}>
+  <ol>
+    <li>材料可以均匀地改变整个表面的不透明度。</li>
+    <li>材料可以改变部分表面的不透明度。</li>
+  </ol>
+</ImageWithTitle>
+
+import plane from './images/materialsurfaceproperties-plane.mp4';
+
+材料仅可以在平面上扩展和收缩。
+
+<ImageWithTitle video={plane} status="ok">
+  材料进可以在平面上扩展和收缩。
+</ImageWithTitle>
+
+import planeDont from './images/materialsurfaceproperties-plane-dont.mp4';
+
+材料在用户界面的深度内弯曲或折叠。
+
+<ImageWithTitle video={planeDont} status="no">
+  材料在弯曲或折叠时不能超出UI的深度。
+</ImageWithTitle>
+
+import join from './images/materialproperties-join.mp4';
+
+材料表面可以连接在一起形成单个材料表面。
+
+<ImageWithTitle video={join}>
+  多个材料表面可以连接在一起形成单个表面。
+</ImageWithTitle>
+
+import slicejoin from './images/materialproperties-slicejoin.mp4';
+
+材料可以在拆分后再次连接。例如，你删除了材料表面的一部分，则该表面将再次变得完整。
+
+<ImageWithTitle video={slicejoin}>
+  材料可以拆分，然后重新变成整体。
+</ImageWithTitle>
+
+### 移动 Movement
+
+import appear from './images/materialmovement-appear.mp4';
+
+材料可以在环境中的任何地方自发地出现或者消失（如缩放动画）。
+
+<ImageWithTitle video={appear}>
+  材料可以自发地出现或消失。
+</ImageWithTitle>
+
+import anyaxis from './images/materialmovement-anyaxis.mp4';
+
+材料可以沿任何轴移动。
+
+<ImageWithTitle video={anyaxis}>
+  材料可以沿不同的轴移动。
+</ImageWithTitle>
+
+import coordinate from './images/materialmovement-coordinate.mp4';
+
+可以编排多个材料表面的移动。
+
+<ImageWithTitle video={coordinate}>
+  可以编排多个材料表面的移动。
+</ImageWithTitle>
+
+import zInteraction from './images/materialmovement-z-interaction.mp4';
+
+材料沿 z 轴运动通常是用户交互的结果。
+
+<ImageWithTitle video={zInteraction}>
+  材料表面因用户交互产生了 z 轴移动提示。
+</ImageWithTitle>
+
+## 属性 Attributes
+
+### 基准材料表面 Basic Material surface
+
+基准材料表面是不透明白色的，1dp厚度，并且投射阴影。Material Design 中所有的 UI 元素均来自对这个基准表面的修改。
+
+### 行为 Behavior
+
+材料表面有以下行为方式：
+
+* **刚性表面**在所有相互作用中均保持相同大小。
+* **可拉伸表面**可以沿着一个或多个边缘伸展或者收缩，直至达到尺寸限制，然后表现为刚性表面。
+* **可平移的表面**在交互过程中保持相同大小。可以滚动显示超出表面的内容，直至达到内容边界（即可平移表面可以有滚动条）。当滚动到内容边界，表面在该滚动方向上就是刚性的。（备注：“可平移的表面”是直译 Pannable surfaces 而来的，表示的是可以滚动其内部内容的表面。pan 是移动端手势术语，相当于拖拽，翻译过来就是平移。在移动端，需要用手指按住并移动界面，才能看到界面之外的内容。）
+
+import staticSurface from './images/materialattributes-static-1b.png';
+
+<ImageWithTitle img={staticSurface}>
+  材料表面的尺寸可以是固定的，并且所有内容是可见的。在交互过程中保持尺寸不变。
+</ImageWithTitle>
+
+import stretchSurface from './images/materialattributes-stretch-1.mp4';
+
+<ImageWithTitle video={stretchSurface}>
+  材料表面的尺寸可以沿着一个或者多个轴增长以容纳更多的内容。
+</ImageWithTitle>
+
+import pan from './images/materialattributes-pan.mp4';
+
+<ImageWithTitle video={pan}>
+  材料表面尺寸保持刚性，但是内容可以在表面上滚动或平移。
+</ImageWithTitle>
+
+#### 复合表面 Composite surfaces
+
+表面可以切分成有不同显示行为的区域。
+
+import constructingsurfaces1 from './images/materialattributes-constructingsurfaces-1.mp4';
+
+<ImageWithTitle video={constructingsurfaces1}>
+  一个表面可以包含多个可滚动的区域，例如一个嵌入的地图（1）和一个可滚动的列表（2），它们的滚动是相互独立的。
+</ImageWithTitle>
+
+import constructingsurfaces2 from './images/materialattributes-constructingsurfaces-2.mp4';
+
+<ImageWithTitle video={constructingsurfaces2}>
+  卡片可以伸展以显示可滚动的区域。
+</ImageWithTitle>
+
+### 可拉伸表面 Stretchable surfaces
+
+可拉伸表面可以在水平、垂直或者两个方向上伸展，直至达到其尺寸限制。达到尺寸限制后，表面将变得刚性。
+
+通常，用户与表面的交互会引起单方向上的伸展。例如，点击“更多细节”图标可引起卡片在垂直方向上展开并显示额外的内容。
+
+import stretchvert from './images/surfaces-stretchvert.mp4';
+
+<ImageWithTitle video={stretchvert}>
+  材料可以仅在垂直方向上伸展。
+</ImageWithTitle>
+
+import stretchhoriz from './images/surfaces-stretchhoriz.mp4';
+
+<ImageWithTitle video={stretchhoriz}>
+  材料可以仅在水平方向上伸展。
+</ImageWithTitle>
+
+import stretchverthoriz from './images/surfaces-stretchverthoriz.mp4';
+
+<ImageWithTitle video={stretchverthoriz}>
+  材料可以在水平和垂直方向上伸展。
+</ImageWithTitle>
+
+### 表面位置和位移（x/y） Surface positioning and movement (x/y)
+
+表面可以在 x 和 y 轴上有固定的位置，也可以在任何方向上位移。
+
+可以限制表面在一个轴上移动，或者可以允许表面在两个轴上同时移动。
+
+import movementVert from './images/surfaces-movement-vert.mp4';
+
+<ImageWithTitle video={movementVert}>
+  表面可以有固定的位置。顶部应用程序栏（1）有固定的位置，而卡片列表（2）在其后面沿着垂直方向滚动。
+</ImageWithTitle>
+
+import movementHorizvert from './images/surfaces-movement-horizvert.mp4';
+
+<ImageWithTitle video={movementHorizvert}>
+  表面（1，2）可以在任何方向上移动，尽管一次只能在一个轴上移动。
+</ImageWithTitle>
+
+import movementCards from './images/surfaces-movement-cards.mp4';
+
+<ImageWithTitle video={movementCards}>
+  表面可以在任何方向上移动。
+</ImageWithTitle>
+
+表面可以彼此独自移动，或者它们的移动影响或取决于其他表面的移动。
+
+依赖关系可以基于多种机制，例如附近的表面在另一个表面扩展时移动，或者两个表面之间以视差（parallax）的方式移动。
+
+import movementIndependent from './images/surfaces-movement-independent.mp4';
+
+<ImageWithTitle video={movementIndependent}>
+  表面可以彼此独自移动。
+</ImageWithTitle>
+
+import movementDependent from './images/surfaces-movement-dependent.mp4';
+
+<ImageWithTitle video={movementDependent}>
+  表面的移动可以依赖于另一个表面的移动。
+</ImageWithTitle>
+
+### 表面不透明度 Surface opacity
+
+材料表面可以是透明的、半透明的或者不透明的。
+
+可能需要处理透明或半透明表面的背景，以保持在表面上的文字的可读性。
+
+透明表面缺少清晰的边缘，因此很难确定表面的开始和结束位置，以及内容属于哪个表面。
+
+import surfaceopacityCaution from './images/materialattributes-surfaceopacity-do.mp4';
+
+<ImageWithTitle video={surfaceopacityCaution} status="caution">
+  <ol>
+    <li>在透明或半透明表面上显示内容，可能需要背景处理，以保持可读性。</li>
+    <li>三维视图</li>
+  </ol>
+</ImageWithTitle>
+
+import surfaceopacityDont from './images/materialattributes-surfaceopacity-dont.mp4';
+
+<ImageWithTitle video={surfaceopacityDont} status="no">
+  <ol>
+    <li>不要使用透明的表面，因为很难识别出内容属于哪个表面。顶部应用程序栏是透明的，分不清文字是属于应用程序栏还是其后面的表面。</li>
+    <li>三维视图</li>
+  </ol>
+</ImageWithTitle>
+
+### 遮罩层 Scrim
+
+遮罩层是应用于材料表面的临时处理，目的是使表面上的内容不那么突出。他们有助于将用户注意力吸引到屏幕的其他部分，远离使用了遮罩层的表面。
+
+可以有多种方式使用遮罩层，包括：
+
+* 使表面和其内容变暗或者变淡
+* 降低表面和其内容的不透明度
+
+在屏幕上的多个表面可以同时显示遮罩层。遮罩层可以显示在任何海拔（深度）上，无论是在前景还是背景中。
+
+import scrimBack from './images/surfaces-attributes-scrim-back.png';
+import scrimFront from './images/surfaces-attributes-scrim-front.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={scrimBack}>
+      因背景内容显示了遮罩层，所以前景内容会吸引更多的关注。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={scrimFront}>
+      遮罩层使前面显示的内容变淡，并将注意力吸引到其后面的表面。
+    </ImageWithTitle>
+  </Col>
+</Row>

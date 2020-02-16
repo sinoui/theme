@@ -19,6 +19,8 @@ const Section = styled(Row)<{ noGutter?: boolean }>`
   & > *:first-child > *:first-child {
     margin-top: 0;
   }
+
+  margin-bottom: 48px;
 `;
 
 const strToPElement = (element: React.ReactNode) => {
@@ -39,7 +41,7 @@ function Col2Section({
         {title && <h4>{title}</h4>}
         {strToPElement(children)}
       </Col>
-      <Col xs={24} sm={12}>
+      <Col xs={24} sm={12} style={{ color: '#616161' }}>
         {img && <img src={img} alt="col-2-section-img" />}
         {video && <Video src={video} />}
         {strToPElement(mediaTitle)}

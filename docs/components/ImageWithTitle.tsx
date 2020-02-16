@@ -9,10 +9,11 @@ interface Props {
   video?: string;
   noGutter?: boolean;
   status?: 'ok' | 'no' | 'caution';
+  marginTop?: number;
 }
 
 const Wrapper = styled.section`
-  margin: 36px 0;
+  margin-bottom: 48px;
 `;
 
 /**
@@ -24,10 +25,17 @@ export default function ImageWithTitle({
   video,
   noGutter,
   status,
+  marginTop,
 }: Props) {
   const Comp = noGutter ? 'section' : Wrapper;
   return (
-    <Comp>
+    <Comp
+      style={{
+        marginTop,
+        fontSize: 14,
+        color: '#616161',
+      }}
+    >
       {img && <img src={img} alt="img" />}
       {video && <Video src={video} />}
       <StatusBar status={status} />
