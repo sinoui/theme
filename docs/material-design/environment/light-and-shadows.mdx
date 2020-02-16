@@ -1,0 +1,124 @@
+---
+name: 环境/光与阴影
+route: /md-light-and-shadows
+menu: Material Design
+---
+
+import Row from '@/Row';
+import Col from '@/Col';
+import ImageWithTitle from '@/ImageWithTitle';
+
+# 光与阴影 Light and shadows
+
+当材料表面阻挡光源时，它们会投射阴影。
+
+## 光 Light
+
+### 光和阴影 Light and shadows
+
+在 Material Design 环境中，虚拟光照亮了 UI。主光源投射出更清晰的定向阴影，称为直射阴影。从各个角度出现的环境光创建扩散的柔和阴影，称为环境阴影。
+
+import lightshadows1 from './images/lightshadows-1.png';
+import lightshadows2 from './images/lightshadows-2.png';
+import lightshadows3 from './images/lightshadows-3.png';
+import lightshadows4 from './images/lightshadows-4.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={lightshadows1}>
+      主光源透色的阴影
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={lightshadows2}>
+      环境光投射的阴影
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={lightshadows3}>
+      主光源和环境光的混合阴影
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle img={lightshadows4}>
+      元素在暗界面上使用阴影，即使它们不太明显。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 光源 Light sources
+
+材料的阴影由主光源和环境光投射。在 Android 和 iOS 开发中，当光源在沿 z 轴的各个位置被材料表面阻挡时，会出现阴影。在 web 中，仅通过操纵 y 轴即可描绘阴影。以下示例了海拔为 6dp 的卡片。
+
+import shadow1 from './images/whatismaterial-environment-shadow1.png';
+import shadow2 from './images/whatismaterial-environment-shadow2.png';
+import shadow3 from './images/whatismaterial-environment-shadow3.png';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12} md={8}>
+    <ImageWithTitle img={shadow1} status="no">
+      主光源透色的阴影
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12} md={8}>
+    <ImageWithTitle img={shadow2} status="no">
+      环境光投射的阴影
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12} md={8}>
+    <ImageWithTitle img={shadow3} status="ok">
+      主光源和环境光的混合阴影
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+## 阴影 Shadows
+
+阴影提供有关深度、运动方向和表面边缘的提示。表面的阴影取决于其海拔以及与其他表面的关系。
+
+### 用法 Usage
+
+由于阴影表示表面之间的海拔，因此必须在整个产品中始终使用阴影。
+
+import shadowprinciples1 from './images/shadowprinciples-do-1.png';
+
+<ImageWithTitle img={shadowprinciples1}>
+  通过使用一致的阴影来描绘高度。
+</ImageWithTitle>
+
+import shadowprinciples2 from './images/shadowprinciples-do-2.png';
+
+<ImageWithTitle img={shadowprinciples2}>
+  阴影大小反映了海拔。高海拔的表面阴影较大，而低海拔的表面阴影较小。
+</ImageWithTitle>
+
+import shadowprinciplesBasil from './images/shadowprinciples-basil-1c.mp4';
+import shadowprinciplesList from './images/shadowprinciples-list.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={shadowprinciplesBasil} status="caution">
+      如果你的产品不使用阴影，请通过其他方式（例如通过视差动效）表示海拔。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={shadowprinciplesList} status="ok">
+      在此重新排序的交互期间，阴影的出现表明该列表项已被提升并可以移动到其同级列表项之前。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 阴影和动效 Shadows & Motion
+
+阴影提供有关表面的运动方向以及表面之间的距离是增加还是减少的有效提示。
+
+import shadowsmotion1 from './images/shadowsmotion-do-1a.mp4';
+import shadowsmotion2 from './images/shadowsmotion-dont-1a.mp4';
+
+<ImageWithTitle video={shadowsmotion1}>
+  当表面改变形状或比例但其海拔保持不变时，其阴影不应改变。
+</ImageWithTitle>
+
+<ImageWithTitle video={shadowsmotion2}>
+  当表面改变其海拔时，其阴影也应改变。
+</ImageWithTitle>
