@@ -1,0 +1,228 @@
+---
+name: 动效/了解动效
+route: /md-understanding-motion
+menu: Material Design
+---
+
+import Row from '@/Row';
+import Col from '@/Col';
+import ImageWithTitle from '@/ImageWithTitle';
+
+# 了解动效 Understanding motion
+
+动效有助于提升 UI 的表现力并且易于使用。
+
+## 原则 Principles
+
+import informative from './images/informative.mp4';
+import attention from './images/attention.mp4';
+import expressive from './images/tone-v2.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12} md={8}>
+    <ImageWithTitle video={informative}>
+      <h4>提供有用信息 Informative</h4>
+      <p>动效能表达不同元素的空间关系、层级关系；说明什么操作是可执行的、操作之后会有什么结果。</p>
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12} md={8}>
+    <ImageWithTitle video={attention}>
+      <h4>引导注意力聚焦 Focused</h4>
+      <p>动效可以帮助用户将注意力集中到重要元素上，减少注意力的分散。</p>
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12} md={8}>
+    <ImageWithTitle video={expressive}>
+      <h4>表现力丰富 Expressive</h4>
+      <p>用户完成了一些操作后，可以用动效来庆祝；动效能赋予平淡的交互更丰满的个性；可以更好地传达品牌调性、风格。</p>
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+## 作用 Usage
+
+* 表达层级关系
+* 提供反馈、告知状态
+* 引导用户使用
+* 让产品更有个性，更吸引力
+
+### 表达层级关系 Hierarchy
+
+动效可以表达出不同元素之间的关系。
+
+import hierarchParentChild from './images/hierarchy-parentchild.mp4';
+import hierarchyMenu from './images/hierarchy-menu.mp4';
+import hierarchyPeer from './images/hierarchy-peer.mp4';
+
+<ImageWithTitle video={hierarchParentChild}>
+  动效反映了父元素（收件箱）和子元素（收件箱消息）之间的层次结构。
+</ImageWithTitle>
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={hierarchyMenu}>
+      点击图标，菜单会产生从图标位置展开的动效，说明菜单列表包含在图标中。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={hierarchyPeer}>
+      Tab 切换页面横滑的动效，说明两个 tab 下的内容是平级的。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 提供反馈、告知状态 Feedback & status
+
+动效提供及时的反馈和用户操作的状态。
+
+import feedbackPassword from './images/feedback-password.mp4';
+import feedbackLoading from './images/feedback-loading.mp4';
+import feedbackTouch from './images/feedback-touch.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={feedbackPassword}>
+      动效反馈了密码输入的正误。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={feedbackLoading}>
+      占位图的动效说明列表内容正在加载中。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+<ImageWithTitle video={feedbackTouch}>
+  动效可以让用户清晰看到一个项目被选中以及释放后的反馈。
+</ImageWithTitle>
+
+### 引导用户使用 User education
+
+动效可以暗示如何操作，并提供有用的建议。
+
+import usereducationGesture from './images/usereducation-gesture.mp4';
+import usereducationCart from './images/usereducation-cart.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={usereducationGesture}>
+      动效暗示用户可以采用上滑手势解锁
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={usereducationCart}>
+      动效表达了已选物品的位置。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 个性化 Character
+
+动效为互动增添了个性和吸引力。
+
+import craneLaunch from './images/crane-launch.mp4';
+import juggler from './images/juggler.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={craneLaunch}>
+      动效营造出优美的第一印象。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={juggler}>
+      富有想象力的人物动画增添幽默乐趣；让等待不无聊，让错误不挫败。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 解析过渡过程 Transition anatomy
+
+import topappbar from './images/elementtype-topappbar.mp4';
+
+在过渡期间，进行转换的 UI 元素分为传入、传出或永久的。元素所属的类别会影响其转换方式。
+
+不转换的 UI 元素归为静态元素。它们在过渡期间不扮演任何角色。
+
+<ImageWithTitle video={topappbar}>
+  <h4>1. 永久元素 Persistent element</h4>
+  <p>永久元素的转换（例如导航图标）在屏幕上有自己的动画。</p>
+  <h4>2. 传出元素 Outgoing element</h4>
+  <p>传出元素（例如标题）以淡出的方式离开屏幕。</p>
+  <h4>3. 传入元素 Incoming element</h4>
+  <p>传入元素（例如图标按钮），以淡入的方式进入屏幕。</p>
+  <h4>4. 静态元素 Static element</h4>
+  <p>静态元素（例如菜单图标），没有任何变化。</p>
+</ImageWithTitle>
+
+## 展现连续性 Expressing continuity
+
+当 UI 元素消失、出现、位置变动后，动效可以通过平滑、不中断的动画引用用户注意力。
+
+一般使用以下一种或多种技术来表示连续性：
+
+* 补间动画 Tweening
+* 淡入淡出 Fading
+* 元素共享动画 Shared transformation
+
+### 补间动画 Tweening
+
+**补间动画**显示组件或元素的变更随时间推移的平滑的进展。例如，开关可以通过补间动画实现平滑的移动；通过补间动画改变大小和圆角半径，可以让浮动操作按钮平滑地过渡为卡片。
+
+补间动画用于有一系列中间值的转变。例如，可以让颜色从红色过渡到紫色，然后过渡到蓝色。
+
+补间动画不能用于没有中间值的转变。如：列表布局只有整数列，1列或2列，不可能有1 ~ 2之间的列数。
+
+import tweening from './images/tweening.mp4';
+
+<ImageWithTitle video={tweening}>
+  对浮动操作按钮的这些属性做了补间动画：位置、大小、z轴海拔、颜色、圆角半径、黑色蒙层。
+</ImageWithTitle>
+
+### 淡入淡出 Fading
+
+**淡入淡出**是不透明度变化的补间动画，达到平滑过渡的效果。如：一个图像可以通过淡出淡入切换到另一张图像。
+
+
+### 淡入淡出 Fade
+
+淡入淡出可在完全重叠的元素之间（例如卡片或其他容器中的照片）创建平滑过渡。前景元素通过淡入淡出来显示后面一层的元素。例如：一张图片在淡出时，能看出它背后还有另一张图片。
+
+import dissolve from './images/dissolve.mp4';
+
+<ImageWithTitle video={dissolve}>
+  一个元素的淡出，以显示隐藏在其后面的元素。
+</ImageWithTitle>
+
+### 交叉淡入淡出 Cross-fade
+
+交叉淡入淡出说的是两个元素同时变：一个淡入，同时另一个淡出。这样在变化的过程中，二者以及它们后面的背景能够被同时看到。但如果层数太多就会分散注意力。
+
+import crossFade from './images/cross-dissolve.mp4';
+
+<ImageWithTitle video={crossFade}>
+  尽管两个元素同时淡入淡出，但在过渡中可以同时看到这两个元素和其背景。
+</ImageWithTitle>
+
+### 依此淡入淡出 Fade through
+
+依此淡入淡出指的是：两个元素，一个完全淡出之后，另一个才淡入。这种变化可用于文字、图标等不适合重合叠加的元素。变化过程中，下面的背景会露出来，结合元素共享动画一起使用，会提供良好的一致体验。
+
+import fadeThrough from './images/fade-through.mp4';
+
+<ImageWithTitle video={fadeThrough}>
+  两个元素依此淡出淡入，并且在任何时候都不同时可见。
+</ImageWithTitle>
+
+### 元素共享动画 Shared transformation
+
+**元素共享动画**通过同步的元素动作，来强化一致性。例如，如果浮动操作按钮突然显示不同的图标，可能会分散注意力。当图标处于运动状态时，共享变换可以平滑地表达图标的变化。
+
+import cutonaction from './images/cutonaction.mp4';
+
+<ImageWithTitle video={cutonaction}>
+  <ol>
+    <li>浮动操作按钮的图标突然间切换。</li>
+    <li>浮动操作按钮的图标平滑地切换。</li>
+  </ol>
+</ImageWithTitle>
