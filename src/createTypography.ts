@@ -1,5 +1,5 @@
 import deepMerge from 'deepmerge';
-import { TypographyConstants, ThemeTypography, FontWeight } from './types';
+import { TypographyOptions, ThemeTypography, FontWeight } from './types';
 
 const DEFAULT_FONT_FAMILY = `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
 'Microsoft YaHei', Roboto, 'Noto Sans SC', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
@@ -54,7 +54,7 @@ const getStandardTypography = (
  * @param constants 文本排版配置
  */
 export default function createTypography(
-  constants: TypographyConstants = {},
+  constants: TypographyOptions = {},
 ): ThemeTypography {
   const {
     fontFamily = DEFAULT_FONT_FAMILY,
