@@ -1,0 +1,53 @@
+---
+name: 阴影
+route: /shadows
+menu: 开发指南
+---
+
+import ShadowsDemo from '@/ShadowsDemo';
+
+# 阴影
+
+阴影是用来反映元素深度的最常用的手段。在 web 中，使用 css 的 [box-shadow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow) 实现。更多设计考量参见[环境：光和阴影](md-light-and-shadows)。
+
+## 使用
+
+可以从`theme.shadows` 获取到阴影。阴影一共分成 25 级，从 0 到 24。这些数字即是元素的海拔值。例如给卡片组件添加上阴影。规范中给出的卡片海拔参考值：
+
+- 静止海拔：1dp
+- 选中时海拔：8dp
+
+参考实现如下：
+
+```ts
+import styled from 'styled-components';
+
+const Card = styled.div`
+  background-color: ${({ theme }) => theme.palette.background.paper};
+  box-shadow: ${({ theme, selected }) => theme.shadows[selected ? 8 : 1]};
+`;
+```
+
+## 不同海拔的阴影
+
+元素的海拔越高，阴影越大、越柔软；元素的海拔越低，阴影越小、越锐利。
+
+<ShadowsDemo />
+
+注意：海拔为 0 时，可能需要使用其他技巧确定元素的边缘，如上面示例中使用了边框。
+
+## 定制
+
+可以通过 `createTheme()` 函数定制阴影：
+
+```ts
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  shadows: [
+    'none',
+    '1px 1px 1px 1px red',
+    //其他23级阴影样式
+  ],
+});
+```

@@ -35,7 +35,7 @@ export default {
     '开始',
     {
       name: '开发指南',
-      menu: ['调色板', '文字排版', '断点'],
+      menu: ['阴影', '调色板', '文字排版', '断点'],
     },
     {
       name: 'Material Design',

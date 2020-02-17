@@ -7,7 +7,7 @@ const Card = styled.div<{
   color: rbga(0, 0, 0, 0.87);
   padding: 16px;
   margin: 16px 0;
-  background: #fafafa;
+  background: ${({ theme }) => theme.palette.grey[100]};
   ${({ darkMode }) =>
     darkMode &&
     `
