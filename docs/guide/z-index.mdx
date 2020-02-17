@@ -1,0 +1,45 @@
+---
+name: z-index
+route: /z-index
+menu: 开发指南
+---
+
+# z-index
+
+@sinoui/theme 提供预设的 z-index，为标准组件提供可预测的、合理的 z 轴深度。包括：
+
+- appBar（应用栏） - 1100
+- drawer（抽屉）- 1200
+- modal（模态框） - 1300
+- dialog（对话框）- 1500
+- popover（弹框） - 2100
+- snackbar（信息提示框） - 2900
+- tooltip（提示） - 3000
+
+这些 z-index 值设置比较大，而且彼此之间跨度比较大，这样既避免冲突，又为自定义更多的 z-index 预留空间。
+
+## 使用
+
+可以从 `theme.zIndex` 获取各个 zIndex 值：
+
+```tsx
+import styled from 'styled-components';
+
+const AppBar = styled.div`
+  z-index: ${({ theme }) => theme.zIndex.appBar};
+`;
+```
+
+## 定制
+
+zIndex 可以通过 `createTheme()` 函数自定义：
+
+```ts
+import { createTheme } from '@sinoui/theme';
+
+const theme = createTheme({
+  zIndex: {
+    appBar: 1111,
+  },
+});
+```

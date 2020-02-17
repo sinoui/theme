@@ -2,7 +2,7 @@ import { Palette } from './palette';
 import { ThemeTypography } from './typography';
 import { ThemeShadows } from './shadows';
 import { ThemeTransitions } from './transitions';
-import { ThemeZIndex } from './zindex';
+import { ThemeZIndex } from './z-index';
 import { ThemeSpacing } from './spacing';
 import { Breakpoints } from './breakpoints';
 

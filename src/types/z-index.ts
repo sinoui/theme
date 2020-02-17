@@ -1,30 +1,33 @@
-export default {
+/**
+ * 主题中的 z-index 设置
+ */
+export interface ThemeZIndex {
   /**
    * 应用程序懒
    */
-  appBar: 1100,
+  appBar: number;
   /**
    * 抽屉
    */
-  drawer: 1200,
+  drawer: number;
   /**
    * 模态框
    */
-  modal: 1300,
+  modal: number;
   /**
    * 对话框
    */
-  dialog: 1500,
+  dialog: number;
   /**
    * 弹出框
    */
-  popover: 2100,
+  popover: number;
   /**
    * 信息提示框
    */
-  snackbar: 2900,
+  snackbar: number;
   /**
    * 提示信息
    */
-  tooltip: 3000,
-};
+  tooltip: number;
+}

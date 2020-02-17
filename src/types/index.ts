@@ -4,7 +4,7 @@ export * from './typography';
 export * from './shadows';
 export * from './Theme';
 export * from './ThemeOptions';
-export * from './zindex';
+export * from './z-index';
 export * from './transitions';
 export * from './spacing';
 export * from './breakpoints';

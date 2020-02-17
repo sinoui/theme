@@ -216,6 +216,17 @@ const light = lighten(0.2, palette.primary.main);
 const dark = darken(0.2, palette.primary.main);
 ```
 
+#### zIndex
+
+去掉了组件库中不使用的z-index：
+
+- drawerOverlay - 遮罩层
+- navDrawer - 导航区域
+- dialogOverlay - 对话框遮罩层
+- layer - 新的应用层
+- menu - 菜单
+- mobileStepper
+
 ## v0.3.4 - 2019.12.19
 
 - fix: 修复在 IE 中无法使用的缺陷
