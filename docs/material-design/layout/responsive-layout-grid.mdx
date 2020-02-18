@@ -1,0 +1,275 @@
+---
+name: 布局/响应式布局网格
+route: /md-layout-responsive-layout-grid
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+
+# 响应式布局网格 Responsive layout grid
+
+Material Design 响应式布局网格可适应屏幕尺寸和方向，从而确保跨布局的一致性。
+
+## 列，间距和边距 Columns, gutters, and margins
+
+Material Design 布局网格由三个元素组成：列、间距和边距。
+
+import cmg from './images/layout-responsive-columns-margins-gutters.png';
+
+<ImageWithTitle img={cmg}>
+  <ol>
+    <li>列</li>
+    <li>间距</li>
+    <li>边距</li>
+  </ol>
+</ImageWithTitle>
+
+### 列 Columns
+
+内容放置在包含列的屏幕区域中。
+
+列宽是使用百分比而不是固定值来定义的，以允许内容灵活地适应任何屏幕大小。网络中显示的列数由查看屏幕的断点范围（预定屏幕大小的范围）确定，无论是移动设备、平板电脑还是其他尺寸的断点。
+
+import columns360 from './images/layout-responsive-columns-360.png';
+import columns600 from './images/layout-responsive-columns-600.png';
+
+<ImageWithTitle img={columns360}>
+  在移动设备上，在 360dp 的断点处，此布局网格使用4列。
+</ImageWithTitle>
+<ImageWithTitle img={columns600}>
+  在平板电脑上，在 600dp 的断点处，此布局网格使用8列。
+</ImageWithTitle>
+
+### 间距 Gutters
+
+间距是列之间的空间。它们有助于分离内容。
+
+间距宽度在每个断点范围内的值是固定的。为了更好地适应屏幕，间距宽度可以在不同的断点处改变。更宽的间距宽度更适合较大的屏幕，因为它们在列之间创建了更多的空白。
+
+import gutters360 from './images/layout-responsive-gutters-360.png';
+import gutters600 from './images/layout-responsive-gutters-600.png';
+
+<ImageWithTitle img={gutters360}>
+  在移动设备上，在 360dp 的断点处，此布局网格使用 16dp 间距。
+</ImageWithTitle>
+<ImageWithTitle img={gutters600}>
+  在平板电脑上，在 600dp 的断点处，此布局网格使用 24dp 间距。
+</ImageWithTitle>
+
+### 边距 Margins
+
+边距是内容与屏幕左右边缘之间的空间。
+
+边距宽度在每个断点范围内的值是固定的。为了更好地适应屏幕，边距宽度可以在不同的断点处改变。更宽的边距宽度更适合较大的屏幕，因为它们会在内容周围产生更多的空白。
+
+import margins360 from './images/layout-responsive-margins-360.png';
+import margins600 from './images/layout-responsive-margins-600.png';
+
+<ImageWithTitle img={margins360}>
+  在移动设备上，在 360dp 的断点处，此布局网格使用 16dp 边距。
+</ImageWithTitle>
+<ImageWithTitle img={margins600}>
+  在平板电脑上，在 600dp 的断点处，此布局网格使用 24dp 边距。
+</ImageWithTitle>
+
+## 网格定制 Grid customization
+
+可以调整布局网格，以满足您的产品和各种设备尺寸的需求。
+
+### 定制间距 Customizing gutters
+
+可以调整间距，以在布局的列之间创建更多或更少的空间。
+
+import customGuttersSmall from './images/layout-custom-gutters-small.gif';
+import customGuttersLarge from './images/layout-custom-gutter-large.gif';
+import customGuttersTooLarge from './images/layout-custom-gutters-too-large-dont.gif';
+
+<ImageWithTitle img={customGuttersSmall}>
+  这个布局网格使用 8dp
+  间距。较小的间距可能表明图像彼此紧密相关，使它们被视为集合的一部分。
+</ImageWithTitle>
+<ImageWithTitle img={customGuttersLarge}>
+  这个布局网格使用较大的 32dp
+  间距以在列之间创建更多的分隔。额外的空间有助于将每张专辑视为集合中的一个单独实体。
+</ImageWithTitle>
+<ImageWithTitle img={customGuttersTooLarge} status="no">
+  不要将间距设置得太大，比如与列宽一样。间距占用太多的空间，不会为内容留下组件的空间，从而无法使内容统一。
+</ImageWithTitle>
+
+### 定制边距 Customizing margins
+
+可以调整边距，以在内容与屏幕边缘之间创建更多或更少的空间。边距对每个断点使用固定值。
+
+正文清晰易读的理想长度是每行 40-60 个字符。
+
+import customMarginsSmall from './images/layout-custom-margins-small.gif';
+import customMarginsLarge from './images/layout-custom-margins-large.gif';
+import customMarginsTooLarge from './images/layout-custom-margins-large-dont.gif';
+
+<ImageWithTitle img={customMarginsSmall}>
+  这个布局网格使用较小的 8dp 边距，以允许图像在布局中占用更多空间。
+</ImageWithTitle>
+<ImageWithTitle img={customMarginsLarge}>
+  这个布局网格使用较大的 64dp 边距来限制内容的宽度。
+</ImageWithTitle>
+<ImageWithTitle img={customMarginsTooLarge} status="no">
+  这个布局网格使用太大的边距，侵占了内容空间。
+</ImageWithTitle>
+
+### 间距与边距 Gutters and margins
+
+对于同一个断点，间距与边距的宽度可以不相同。
+
+import customGuttersMarginsDifferent from './images/layout-custom-gutters-margins-different.png';
+
+<ImageWithTitle img={customGuttersMarginsDifferent}>
+  <ol>
+    <li>32dp 边距</li>
+    <li>8dp 间距</li>
+  </ol>
+</ImageWithTitle>
+
+### 水平网格 Horizontal grids
+
+可以针对水平滚动的触摸 UI 自定义 Material Design 布局网格。列、间距和边距是从左到右放置的，而不是从上到下。屏幕的高度确定水平网格中的列数。
+
+在非触摸和 Web 平台上，水平滚动 UI 并不常见。
+
+import horizontalGrid from './images/layout-horizontal-grid.png';
+
+<ImageWithTitle img={horizontalGrid}>
+  <p>该水平布局网格使用四个水平列，总布局高度为 400dp。</p>
+
+  <ol>
+    <li>列</li>
+    <li>间距</li>
+    <li>边距</li>
+  </ol>
+</ImageWithTitle>
+
+可以放置水平网格以适应不同的高度，从而在顶部为应用程序栏或其他UI区域留出空间。
+
+import horizontalGridAppbar from './images/layout-horizontal-grid-appbar.png';
+
+<ImageWithTitle img={horizontalGridAppbar}>
+  该水平布局网格从顶部应用栏组件下方开始，并使用四个水平列，高度为 316dp。
+</ImageWithTitle>
+
+## 断点 Breakpoints
+
+断点是具有特定布局要求的预定屏幕大小的范围。在给定的断点范围内，布局将根据屏幕大小和方向进行调整。
+
+import breakpoints from './images/layout-responsive-breakpoints.mp4';
+
+<ImageWithTitle video={breakpoints} />
+
+### 断点系统 Breakpoint system
+
+Material Design 根据以下列结构提供响应式布局。4列、8列和12列网格布局可用于不同的屏幕、设备和方向。
+
+每个断点范围确定每种显示尺寸的列数以及建议的边距和间距。
+
+| 断点范围(dp) |      竖向     |       横向       |  窗口   |  列 | 边距/间距 |
+|-------------|---------------|------------------|--------|-----|-----------|
+| 0 - 359     | small handset |                  | xsmall |  4  |     16    |
+| 360 - 399   | medium handset |                 | xsmall |  4  |     16    |
+| 400 - 479   |  large handset |                 | xsmall |  4  |     16    |
+| 480 - 599   | large handset  | small handset   | xsmall |  4  |     16    |
+| 600 - 719   | small tablet   | medium handset  | small  |  8  |     16    |
+| 720 - 839   | large tablet   | large handset   | small  |  8  |     24    |
+| 840 - 959   | large tablet   | large handset   | small  | 12  |     24    |
+| 960 – 1023  |                | small tablet    | small  | 12  |     24    |
+| 1024 – 1279 |                | large tablet    | medium | 12  |     24    |
+| 1280 – 1439 |                | large tablet    | medium | 12  |     24    |
+| 1440 – 1599 |                |                 | large  | 12  |     24    |
+| 1600 – 1919 |                |                 | large  | 12  |     24    |
+| 1920 +      |                |                 | xlarge | 12  |     24    |
+
+## 网格行为 Grid behavior
+
+### 弹性网格 Fluid grids
+
+弹性网格使用可缩放和调整内容大小的列。弹性网格的布局可以使用断点来确定布局是否需要显著更改。
+
+import fluid from './images/layout-responsive-grid-behavior-fluid.gif';
+
+<ImageWithTitle img={fluid}>
+  列在全宽网格中扩展
+</ImageWithTitle>
+
+### 固定网格 Fixed grids
+
+固定网格使用固定大小的列，具有弹性边距，以在每个断点范围内保持内容不变。固定网格的布局只能在指定的断点处更改。
+
+import fixed from './images/layout-responsive-grid-behavior-fixed.gif';
+
+<ImageWithTitle img={fixed}>
+  边距在固定网格中扩展
+</ImageWithTitle>
+
+## 用户界面区域 UI regions
+
+布局由多个UI区域组成，例如侧面导航，内容区域和应用栏。这些区域可以显示操作、内容或导航目标。UI区域应跨设备保持一致，同时适应不同屏幕尺寸的不同断点。
+
+为了提高设备之间的熟悉度，为桌面设计的UI元素应该以与移动UI一致的方式进行组织。
+
+import uiRegions from './images/ui-regions.gif';
+
+<ImageWithTitle img={uiRegions}>
+  在不同尺寸的屏幕上更改布局
+</ImageWithTitle>
+
+### 永久用户界面区域  Permanent UI regions
+
+永久用户界面区域是可以在响应网格之外显示的区域，如导航抽屉。这些地区不能重叠。
+
+import permenant from './images/layout-responsive-uiregions-permenant.png';
+
+<ImageWithTitle img={permenant}>
+  当屏幕空间可用时，永久用户界面区域将显示内容。
+</ImageWithTitle>
+
+### 持久用户界面区域 Persistent UI regions
+
+持久性用户界面区域是可以随时根据命令显示的区域，或者它们可以保持可见。它们可以打开或关闭，出现或消失。当它们出现时，它们会压缩内容和网格。
+
+当持久性用户界面区域可见时，其可见性不受屏幕上其他元素交互的影响。
+
+import persistent from './images/layout-responsive-uiregions-persistent.gif';
+
+<ImageWithTitle img={persistent}>
+  当打开时，这个持久层导航抽屉会使网格（及其内容）压缩。
+</ImageWithTitle>
+
+### 临时用户界面区域 Temporary UI regions
+
+临时用户界面区域暂时出现，当它们出现时，它们不会影响响应式网格。当它们可见时，可以通过点击其区域中的项目或其区域外的任何空间来隐藏它们。
+
+当用户界面区域可见时，其他屏幕元素不是交互式的。
+
+import temporary from './images/layout-responsive-uiregions-temporary.gif';
+
+<ImageWithTitle img={temporary}>
+  打开后，此临时导航抽屉不会影响响应式网格或屏幕内容。
+</ImageWithTitle>
+
+## 原型 Whiteframes
+
+原型是结构化布局，为布局、分层和阴影提供一致的方法。它们是一个起点，旨在在进行修改以满足产品的特定需求。
+
+import whiteframes1 from './images/layout-responsive-whiteframes-01.png';
+import whiteframes2 from './images/layout-responsive-whiteframes-02.png';
+
+<ImageWithTitle img={whiteframes1}>
+  <ol>
+    <li>移动设备</li>
+    <li>桌面设备</li>
+  </ol>
+</ImageWithTitle>
+
+<ImageWithTitle img={whiteframes2}>
+  <ol>
+    <li>移动设备</li>
+    <li>桌面设备</li>
+  </ol>
+</ImageWithTitle>
