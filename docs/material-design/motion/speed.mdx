@@ -1,0 +1,267 @@
+---
+name: 动效/速度
+route: /md-motion-speed
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+import Row from '@/Row';
+import Col from '@/Col';
+
+# 速度 Speed
+
+设置合理的动效速度可使动效过渡响应灵敏且平滑。
+
+## 控制速度 Controlling speed
+
+过渡速度是 UI 改变状态的可见速度。主要通过**持续时间**（过渡持续多长时间）、**缓动**（随着时间推移的加速度）和元素移动的**距离**来控制速度，即：duration, easing and distance。
+
+在调整持续时间之前，请应用正确的缓动类型，因为缓动调整可能会影响持续时间。
+
+### 作用 Usage
+
+适当的过渡速度可帮助用户跟上 UI 更改，而不会使任务复杂化。应该使用尽可能短的持续时间，只要能不起到突然或震颤的反效果即可。
+
+import speedDo from './images/posivibe-speed-do-v03.mp4';
+import speedDont from './images/posivibe-speed-dont-v02.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={speedDo} status="ok">
+      快速轻松地进行过渡。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={speedDont} status="no">
+      应避免过渡太快或者太慢。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+## 持续时间 Duration
+
+无论采用何种动画风格，过渡都不应过快让人感觉突然，或者太慢让用户等待。正确地设置持续时间和缓动会产生流畅而清晰的过渡。以下因素详细说明了应如何调整持续时间以适应每个动画。
+
+### 复杂程度 Complexity level
+
+简单的动画比复杂的动画需要更少的时间。
+
+#### 简单动画 Simple animations
+
+import iconssimple from './images/iconssimple.mp4';
+import dialogsenterexit from './images/dialogsenterexit.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={iconssimple}>
+      选择控件的持续时间是100毫秒。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={dialogsenterexit}>
+      <p>弹窗以淡入淡出动画进入和退出。</p>
+
+      <ul>
+        <li>淡入的持续时间：150毫秒。</li>
+        <li>淡出的持续时间：75毫秒。</li>
+      </ul>
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+#### 复杂动画 Complex animations
+
+import iconsmedium from './images/iconsmedium.mp4';
+import iconscomplex from './images/iconscomplex.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={iconsmedium}>
+      形状变换更复杂，因此它们具有200毫秒的持续时间。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={iconscomplex}>
+      具有详细动画的持续时间是500毫秒。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 退出和关闭 Exits and closing
+
+关闭、销毁或折叠元素的过渡使用的持续时间较短，因为与下一个任务相比，它们显得没那么重要，用户应将注意力尽快转移到下一个任务上。
+
+import baselineEnterexit from './images/baseline-enterexit.mp4';
+import expandcollapse from './images/expandcollapse.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={baselineEnterexit}>
+      抽屉导航入场用时250毫秒，关闭用时200毫秒。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={expandcollapse}>
+      卡片展开用时300毫秒，折叠用时250毫秒。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 区域 Area
+
+穿越屏幕小区域的过渡持续时间比穿越大区域的短。
+
+#### 小的区域 Small
+
+元素穿越屏幕的一小部分的动画的持续时间很短，例如图标和选择控件。
+
+import smallswitch from './images/smallswitch.mp4';
+
+<ImageWithTitle video={smallswitch}>
+  开关动画的持续时间是100毫秒。
+</ImageWithTitle>
+
+#### 中等区域 Medium
+
+元素穿越屏幕上较大部分的动画需要的持续时间会稍长一些，例如底部菜单和展开的chips。
+
+import bottomsheetPartial from './images/bottomsheet-partial.mp4';
+import chipsPartial from './images/chips-partial.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={bottomsheetPartial}>
+      <h5>底部菜单</h5>
+
+      <ol>
+        <li>展开：250毫秒</li>
+        <li>收缩：200毫秒</li>
+      </ol>
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={chipsPartial}>
+      <h5>Chip</h5>
+      
+      <ol>
+        <li>展开：250毫秒</li>
+        <li>收缩：200毫秒</li>
+      </ol>
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+#### 大型区域 Large
+
+元素穿越屏幕上大部分的动画需要的持续时间最长。
+
+import cardFull from './images/card-full.mp4';
+import dpsFull from './images/dps-full.mp4';
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={cardFull}>
+      <h5>卡片</h5>
+
+      <ol>
+        <li>展开：300毫秒</li>
+        <li>收缩：250毫秒</li>
+      </ol>
+    </ImageWithTitle>
+  </Col>
+
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={dpsFull}>
+      <h5>永久菜单页</h5>
+
+      <ol>
+        <li>展开：300毫秒</li>
+        <li>收缩：250毫秒</li>
+      </ol>
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+## 缓动 Easing
+
+缓动是一种调整动画变化加速度的方法。例如，缓动使过渡可以加速和减速，而不是以恒定的速度移动。
+
+在现实世界中，事情不会瞬间开始或停止。它们需要时间加速和减速。缓动会让元素像是受到摩擦力等自然力的影响一样移动。
+
+import curvenocurve from './images/curvenocurve.mp4';
+import easingdo from './images/easingdo.mp4';
+import easingdont from './images/easingdont.mp4';
+
+<ImageWithTitle video={curvenocurve}>
+  没有缓动的过渡看起来僵硬且机械。
+</ImageWithTitle>
+
+<Row gutter={48}>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={easingdo} status="ok">
+      使用缓动使元素可以一起加速和减速。这些元素的加速是同步的，从而产生统一的印象。
+    </ImageWithTitle>
+  </Col>
+  <Col xs={24} sm={12}>
+    <ImageWithTitle video={easingdont} status="ok">
+      避免加快应该放慢速度的元素，这会造成混乱的印象。
+    </ImageWithTitle>
+  </Col>
+</Row>
+
+### 缓动类型 Easing types
+
+缓动类型可能在各个平台上的命名可能不同。在这里将它们成为标准、加速和减速。
+
+### 标准缓动 Standard easing
+
+**标准缓动**通过给减速比加速更多的时间，在动画的结尾处引起微妙的注意。这是最常见的缓动类型。
+
+从静止状态开始、到静止状态结束的元素使用标准缓动。它们非常快地加速并缓慢地减速，为了强调过渡的结束。
+
+import standardcurve from './images/standardcurve.mp4';
+
+<ImageWithTitle video={standardcurve}>
+  此图显示了一个在过渡中一直可见的元素的缓动。y轴表示位置，x轴表示时间。
+</ImageWithTitle>
+
+| 平台 | 缓动设置 |
+| ---- | ------- |
+| Andriod | FastOutSlowInInterpolator |
+| iOS | [[CAMediaTimingFunction alloc] initWithControlPoints:0.4f:0.0f:0.2f:1.0f] |
+| CSS | cubic-bezier(0.4, 0.0, 0.2, 1); |
+| After Effects | Outgoing Easing: 40%, Incoming Easing: 80% |
+
+### 减速缓动 Decelerate easing
+
+使用减速缓动为进场元素设置动画，该过程以峰值速度（元素运动的最快点）开始过渡，并在静止时（速度为0时）结束。
+
+import deceleratecurve from './images/deceleratecurve.mp4';
+
+<ImageWithTitle video={deceleratecurve}>
+  该图显示了仅在过渡结束时可见元素的缓动。y轴表示位置，x轴表示时间。
+</ImageWithTitle>
+
+| 平台 | 缓动设置 |
+| ---- | ------- |
+| Andriod | LinearOutSlowInInterpolator |
+| iOS | [[CAMediaTimingFunction alloc] initWithControlPoints:0.0f:0.0f:0.2f:1.0f] |
+| CSS | cubic-bezier(0.0, 0.0, 0.2, 1); |
+| After Effects | Outgoing Easing: 0%, Incoming Easing: 80% |
+
+### 加速缓动 Accelerate easing
+
+离开屏幕的元素使用加速缓动，从静止开始并以峰值速度结束。
+
+import acceleratecurve from './images/acceleratecurve.mp4';
+
+<ImageWithTitle video={acceleratecurve}>
+  该图显示了仅在过渡开始时显示的元素的缓动。y轴表示位置，x轴表示时间。
+</ImageWithTitle>
+
+| 平台 | 缓动设置 |
+| ---- | ------- |
+| Andriod | FastOutLinearInInterpolator |
+| iOS | [[CAMediaTimingFunction alloc] initWithControlPoints:0.4f:0.0f:1.0f:1.0f] |
+| CSS | cubic-bezier(0.4, 0.0, 1, 1); |
+| After Effects | Outgoing Easing: 40%, Incoming Easing: 0% |
