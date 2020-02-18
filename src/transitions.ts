@@ -1,28 +1,50 @@
 import { TransitionOptions } from './types';
 
+/**
+ * 缓动
+ */
 export const easing = {
-  // This is the most common easing curve.
+  /**
+   * 标准缓动。用得最多的缓动。
+   */
   easeInOut: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
-  // Objects enter the screen at full velocity from off-screen and
-  // slowly decelerate to a resting point.
+  /**
+   * 加速缓动。元素离开屏幕时使用。
+   */
   easeOut: 'cubic-bezier(0.0, 0.0, 0.2, 1)',
   // Objects leave the screen at full velocity.
+  /**
+   * 减速缓动。元素进场时使用。
+   */
   easeIn: 'cubic-bezier(0.4, 0.0, 1, 1)',
-  // The sharp curve is used  may return to the screen at any time.
+  /**
+   * 更快速的缓入缓出。比校准缓动感觉跟快速一些。用于随时可能出现在页面上的元素的动画。
+   */
   sharp: 'cubic-bezier(0.4, 0.0, 0.6, 1)',
 };
 
+/**
+ * 持续时间
+ */
 export const duration = {
   shortest: 150,
   shorter: 200,
   short: 250,
-  // most basic recommended timing
+  /**
+   * 标准持续时间
+   */
   standard: 300,
-  // this is to be used in complex animations
-  complex: 375,
-  // recommended when something is entering screen
+  /**
+   * 复杂动画的持续时间
+   */
+  complex: 500,
+  /**
+   * 进入屏幕的持续时间
+   */
   enteringScreen: 225,
-  // recommended when something is leaving screen
+  /**
+   * 离开屏幕的持续时间
+   */
   leavingScreen: 195,
 };
 
@@ -59,7 +81,7 @@ function createTransition(
  *
  * @param height 高度
  */
-function getAutoHeightDuration(height?: number): number {
+function getAutoHeightDuration(height?: number | null): number {
   if (!height) {
     return 0;
   }
