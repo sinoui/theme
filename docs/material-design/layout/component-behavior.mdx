@@ -1,0 +1,203 @@
+---
+name: 布局/组件行为
+route: /md-layout-component-behavior
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+
+# 组件行为 Component behavior
+
+以下指南描述了组件在网格中和断点之间的行为方式。
+
+## 定位术语 Positioning terminology
+
+用户界面元素在每个断点范围内的行为方式不同。
+
+### 术语解释 Descriptors
+
+用户界面元素、组件和表面在网格中的位置可以由下面的术语描述：
+
+| 术语         | 定义                                             |
+| ------------ | ------------------------------------------------ |
+| 上方, 下方   | 一个元素的 y 轴位置                              |
+| 前方，后方   | 一个元素的 z 轴位置                              |
+| 左，右，居中 | 一个元素 x 轴位置                                |
+| 顶部，底部   | 某元素相对于容器或者屏幕边缘的 y 轴位置          |
+| 垂直居中     | 某元素的 x 轴和 y 轴删位置都位于容器或屏幕的中心 |
+| 粘性定位     | 跟随用户界面滚动并锁定在滚动位置上的某个点       |
+| 浮动         | 固定在滚动内容前面的元素位置                     |
+
+## 组件宽度 Component width
+
+组件宽度可以在整个屏幕尺寸上保持不标，也可以根据布局而变化。组件宽度可以是：
+
+- 固定的
+- 弹性的
+
+由于固定宽度元素不会在布局变化时保持宽度不变，因此可以更改它们的位置以适应新布局。它们的位置可以是：
+
+- 推入的
+- 覆盖的
+
+### 固定的 Fixed
+
+import fixedWidth from './images/layout-element-behavior-fixed-width.gif';
+
+当元素有固定的宽度，它的宽度会在屏幕尺寸变化时保持不变。
+
+<ImageWithTitle img={fixedWidth}>
+  按钮组件尺寸不变，放置在右边距处。
+</ImageWithTitle>
+
+### 弹性的 Fluid
+
+弹性宽度的元素的宽度随着屏幕尺寸的变化而扩大和缩小。
+
+import fluidWidth from './images/layout-element-behavior-fluid-width.gif';
+
+<ImageWithTitle img={fluidWidth}>按钮在右边的两列内流畅地缩放。</ImageWithTitle>
+
+import fluidWidthDont from './images/layout-element-behavior-fluid-dont-01.gif';
+
+<ImageWithTitle img={fluidWidthDont} status="no">
+  如果弹性容器太窄而无法显示元素和较小宽度的填充，请不要使用弹性宽度。
+</ImageWithTitle>
+
+import fluidWidthCaution from './images/layout-element-behavior-fluid-caution-01.gif';
+
+<ImageWithTitle img={fluidWidthCaution} status="caution">
+  当弹性组件跨越屏幕中的多个列时要小心。某些组件（如按钮）可能会在较大的屏幕上过于显眼。
+</ImageWithTitle>
+
+### 推入 Pushing
+
+当布局和屏幕尺寸发生变化时，组件可以从它原始位置推入出来。组件的宽度保持不变，但是它的水平位置发生变化，向左或者向右移动。当发生这种情况时，如果被推离屏幕，它可能会被屏幕边缘部分遮挡。
+
+import push from './images/layout-element-behavior-push.gif';
+
+<ImageWithTitle img={push}>导航抽屉将内容区域推离屏幕。</ImageWithTitle>
+
+### 覆盖 Overlaid
+
+当用户界面尺寸发生变化时，一个组件可能会被其它遮挡它的组件覆盖。当一个组件被覆盖，它的宽度和位置保持不变。
+
+import overlaid from './images/layout-element-behavior-overlaid.gif';
+
+<ImageWithTitle img={overlaid}>内容区域被导航区域覆盖。</ImageWithTitle>
+
+## 响应模式 Responsive patterns
+
+组件可以使用以下模式根据屏幕尺寸和设备类型调整其尺寸：
+
+- 使用不同组件以更好地适应空间
+- 更改组件的可见性以容纳较小的空间
+- 更改输入的方法
+
+随着屏幕空间的增长，可以应用以下响应模式。
+
+### 出现 Reveal
+
+当在指定的断点处有更多空间可用时，可以显示较小屏幕所隐藏的部分 UI。
+
+import reveal from './images/layout-responsive-patterns-reveal-navdrawer.png';
+
+<ImageWithTitle img={reveal}>
+  元素，例如侧边导航栏，在屏幕尺寸增大时可见。
+</ImageWithTitle>
+
+import reveal2 from './images/layout-responsive-patterns-reveal-wordprocessor.png';
+
+<ImageWithTitle img={reveal2}>
+  一个简单的UI可能会显示出更强大或复杂的选项。
+</ImageWithTitle>
+
+import reveal3 from './images/layout-responsive-patterns-reveal-card.png';
+
+<ImageWithTitle img={reveal3}>
+  当有更多空间可用时，默认情况下可以显示仅在点击小屏幕后才会显示的内容。
+</ImageWithTitle>
+
+### 变形 Transform
+
+一个组件可以在特定的断点从一种形式变换成另一种形式。
+
+import transformNavdrawer from './images/layout-responsive-patterns-transform-navdrawer.png';
+
+<ImageWithTitle img={transformNavdrawer}>
+  侧边导航栏可以在更大屏幕中转变成多标签页。
+</ImageWithTitle>
+
+import transformList from './images/layout-responsive-patterns-transform-list.png';
+
+<ImageWithTitle img={transformList}>
+  列表可以在更大的屏幕上转换为图片列表。
+</ImageWithTitle>
+
+import transformToolbar from './images/layout-responsive-patterns-transform-toolbar.png';
+
+<ImageWithTitle img={transformToolbar}>
+  菜单项可以在较大屏幕上的工具栏中转换为图标。
+</ImageWithTitle>
+
+### 分割 Divide
+
+当更多屏幕空间可见时，多个层级内容的用户界面可以显示所有的层级内容。UI 元素被划分到这些新的可用空间中。
+
+import divide1 from './images/layout-responsive-patterns-transform-divide-1.png';
+
+<ImageWithTitle img={divide1}>
+  侧边导航栏、列表内容和详细内容会分开，以在较大的屏幕上填充单个视图。
+</ImageWithTitle>
+
+import divide2 from './images/layout-responsive-patterns-transform-divide-2.png';
+
+<ImageWithTitle img={divide2}>
+  选项卡的同级内容在较大屏幕上的同一视图中被分隔排列。
+</ImageWithTitle>
+
+### 重排 Reflow
+
+UI 可能会更改其布局以在新的可用空间上重排。
+
+import reflow1 from './images/layout-responsive-patterns-transform-reflow-1.png';
+import reflow2 from './images/layout-responsive-patterns-transform-reflow-2.png';
+import reflow3 from './images/layout-responsive-patterns-transform-reflow-3.png';
+
+<ImageWithTitle img={reflow1}>
+  单列格式的元素可以重新排列在更大的屏幕上，形成多种组合来填满内容区域。
+</ImageWithTitle>
+<ImageWithTitle img={reflow2}>
+  水平选项卡在更大屏幕上重排为垂直列表。
+</ImageWithTitle>
+<ImageWithTitle img={reflow3}>
+  元素可以根据新的屏幕比例或设备方向在组件内重排。
+</ImageWithTitle>
+
+### 扩展 Expand
+
+UI 可以扩展到更多空间。
+
+import expand1 from './images/layout-responsive-patterns-transform-expand-1.png';
+import expand2 from './images/layout-responsive-patterns-transform-expand-2.png';
+
+<ImageWithTitle img={expand1}>
+  卡片可以扩展以填充新的更大的空间。
+</ImageWithTitle>
+<ImageWithTitle img={expand2}>
+  对话框可以与内容成比例或以特定的增量进行扩展。
+</ImageWithTitle>
+
+### 位移 Position
+
+UI 组件可能会移动到更合适的位置。
+
+import position1 from './images/layout-responsive-patterns-transform-position-1.png';
+import position2 from './images/layout-responsive-patterns-transform-position-2.png';
+
+<ImageWithTitle img={position1}>
+  小屏幕上的底部卡片可能重新定位为较大屏幕上的菜单。
+</ImageWithTitle>
+<ImageWithTitle img={position2}>
+  浮动操作按钮可以移动到更大屏幕上的相对于其他UI元素的更重要的位置。
+</ImageWithTitle>
