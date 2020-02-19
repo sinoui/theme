@@ -1,0 +1,257 @@
+---
+name: 布局/间距方法
+route: /md-layout-spacing-methods
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+import Row from '@/Row';
+import Column from '@/Col';
+
+# 间距方法 Spacing methods
+
+空间方法使用基准网格、参考线、内边距和增量间距来影响比率、容器和触摸目标。
+
+## 基准网格 Baseline grid
+
+### 8dp 网格 / 8dp grid
+
+在移动、平板和桌面设备上所有组件对齐 8dp 的方形基准网格。
+
+import baselinegrid from './images/layout-spacing-baslinegrid.png';
+
+<ImageWithTitle img={baselinegrid}>
+  应用程序栏和浮动操作按钮对齐 8dp 网格。
+</ImageWithTitle>
+
+### 4dp 网格 / 4dp grid
+
+组件中的图标、文字和某些元素可以与 4dp 网格对齐。
+
+import baselinegrid4dp from './images/layout-spacing-4dp-baslinegrid.png';
+
+<ImageWithTitle img={baselinegrid4dp}>
+  底部导航栏的元素与 4dp 网格对齐。
+</ImageWithTitle>
+
+### 4dp 基准网格 / 4dp baseline grid
+
+文字对齐 4dp 基准网格。
+
+import baselinetype from './images/layout-spacing-baslinetype.png';
+
+<ImageWithTitle img={baselinetype}>4dp 基准网格。</ImageWithTitle>
+
+当文字在组件中居中对齐时，可以在 4dp 网格之外显示，比如按钮和列表项目。尽管组件内居中文本显示在网格之外，但是文本仍可以垂直居中对齐。
+
+import verticalspacingtype from './images/layout-spacing-keylinespadding-verticalspacing-type.png';
+
+<ImageWithTitle img={verticalspacingtype}>
+  即使不在4dp网格上，文本也会在列表项里垂直居中。
+</ImageWithTitle>
+
+## 间距 Spacing
+
+### 间距方法 Spacing methods
+
+间隔方法比响应式布局网格更精细。间距方法是围绕如何在布局和组件中放置元素的一组规则。
+
+import padding from './images/layout-spacingmethods-01-padding.png';
+import dimensions from './images/layout-spacingmethods-02-dimensions.png';
+import alignment from './images/layout-spacingmethods-02-alignment.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={padding}>
+      <h4>内边距</h4>
+      <p>内边距是组件内部元素之间的间距。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={dimensions}>
+      <h4>尺寸</h4>
+      <p>尺寸描述的是组件元素的宽度和高度。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={alignment}>
+      <h4>对齐</h4>
+      <p>对齐是组件元素的放置位置。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 内边距 Padding
+
+内边距指的是用户界面元素之间的间距。内边距是一种替代参考线的间距方法，以 8dp 或 4dp 的增量进行度量。
+
+内边距可以在垂直和水平方向上进行测量，不需要跨越布局的整个高度。
+
+import paddingVerthorz from './images/layout-spacing-keylinespadding-padding-verthorz.png';
+
+<ImageWithTitle img={paddingVerthorz}>组件之间的内边距是 24dp。</ImageWithTitle>
+
+### 尺寸 Dimensions
+
+尺寸指的是组件元素的宽度和高度。
+
+某些组件，例如应用程序栏或列表，仅概述元素的高度。这些元素的高度需对其 8dp 网格。不需要指定其宽度，因为它会响应视口宽度。
+
+import dimensionsHeight from './images/layout-spacing-dimensions-height.png';
+
+<ImageWithTitle img={dimensionsHeight}>
+  <ol>
+    <li>状态栏高度：24dp</li>
+    <li>应用程序栏高度：56dp</li>
+    <li>列表项目高度：88dp</li>
+  </ol>
+</ImageWithTitle>
+
+### 对齐 Alignment
+
+对齐是组件中元素的放置位置。
+
+import spacingAlignment from './images/layout-spacing-alignment.png';
+
+<ImageWithTitle img={spacingAlignment}>
+  <ol>
+    <li>布局网格</li>
+    <li>对齐</li>
+  </ol>
+</ImageWithTitle>
+
+### 参考线 Keylines
+
+参考线是一种对齐工具，可用于将元素一致地放置在布局网格之外。它们是垂直线，显示了元素未与网格对齐时放置的位置。参考线由每个元素与屏幕边缘的距离确定，并以 8dp 的增量进行度量。
+
+import keylines from './images/layout-spacing-keylinespadding-keylines.png';
+
+<ImageWithTitle img={keylines}>
+  <ol>
+    <li>布局网格</li>
+    <li>参考线</li>
+  </ol>
+</ImageWithTitle>
+
+参考线可以在布局中的元素之间创建更多或更少的间距。它们可在每个断点范围内调整。
+
+import customKeylines from './images/custom-keylines.gif';
+
+<ImageWithTitle img={customKeylines}>
+  参考线可以扩大或缩小元素之间的间距。
+</ImageWithTitle>
+
+## 容器和宽高比 Containers and ratios
+
+### 容器 Containers
+
+容器是用于表示封闭区域的形状。容器可以容纳用户界面元素，例如图像、图标或表面。
+
+import containers1 from './images/layout-unitsmeasurements-dev-containers.png';
+
+<ImageWithTitle img={containers1}>
+  <p>200%</p>
+  <ol>
+    <li>图像容器</li>
+    <li>图标容器</li>
+    <li>表面容器</li>
+  </ol>
+</ImageWithTitle>
+
+容器可以是固定尺寸的，并限制其中元素的大小或裁剪。或者，容器也可以是弹性的，能够缩放以容纳内容的大小。
+
+import containers2 from './images/layout-spacingmethods-containers.gif';
+
+<ImageWithTitle img={containers2}>
+  <ol>
+    <li>固定尺寸容器裁剪包含的图片。</li>
+    <li>弹性图像容器，可以缩放以容纳原始图像大小。</li>
+  </ol>
+</ImageWithTitle>
+
+### 宽高比 Aspect ratios
+
+宽高比是元素的宽度与高度的比例。宽高比写成`宽度:高度`。
+
+要保持布局的一致性，请对图像、表面和屏幕尺寸等元素使用一致的宽高比。
+
+建议在您的用户界面中使用以下宽高比：16:9, 3:2, 4:3, 1:1, 3:4, 2:3。
+
+import aspectratio from './images/layout-unitsmeasurements-dev-aspectratio.png';
+
+<ImageWithTitle img={aspectratio} />
+
+### 弹性宽高比 Flexible ratios
+
+弹性宽高比由布局网格决定：
+
+1. 容器宽度由屏幕布局决定，并且伸展到最大可填充的空间
+2. 容器高度由容器中图像的高度决定
+
+使用弹性宽高比让内容决定容器的高度。
+
+import flexibleratio from './images/layout-unitsmeasurements-dev-aspectratio-baseline.png';
+
+<ImageWithTitle img={flexibleratio}>
+  容器的宽度由布局的列宽度决定。
+</ImageWithTitle>
+
+### 响应式裁剪 Responsive cropping
+
+响应式显示图像，请确定不同断点范围如何裁剪图像。在不同断点范围内，裁剪可以：
+
+- 保持一个固定的比例
+- 适应不同的比例
+- 固定图像的高度
+
+#### 保持固定比 Maintain one ratio
+
+图像尺寸可以在所有断点范围内采用固定比例。
+
+import maintainratio from './images/layout-responsive-cropping-maintain-ratio.png';
+
+<ImageWithTitle img={maintainratio}>
+  <p>
+    50%
+    <br />
+    用户界面中的图像在断点间保持 3:2 比例。
+  </p>
+</ImageWithTitle>
+
+#### 适应不同比例 Adapt to different ratios
+
+可以在不同的断点范围使用不同的图像尺寸比例。
+
+import adaptratio from './images/layout-responsive-cropping-adapt-ratio.png';
+
+<ImageWithTitle img={adaptratio}>
+  <p>
+    50%
+    <br />
+    图像比例从 1:1 变成了 16:9。
+  </p>
+</ImageWithTitle>
+
+#### 固定图像高度 Fixed image heights
+
+图像在不同的断点范围内有固定的高度和弹性宽度。
+
+import fixedheight from './images/layout-responsive-cropping-fixed-height.png';
+
+<ImageWithTitle img={fixedheight}>
+  <p>
+    50%
+    <br />
+    图像有固定高度和弹性宽度。
+  </p>
+</ImageWithTitle>
+
+## 触摸目标 Touch targets
+
+触摸目标适用于同时接收触摸输入和非触摸输入（如鼠标点击）的任何设备。为了平衡信息密度和可用性，触摸目标至少为 48 x 48 dp，目标之前至少要有 8dp 的间距。
+
+import touchtargets from './images/layout-spacing-touchtargets.png';
+
+<ImageWithTitle img={touchtargets}>
+  触摸目标最小尺寸： 48 x 48 dp。
+</ImageWithTitle>

@@ -36,10 +36,10 @@ export default function ImageWithTitle({
         color: '#616161',
       }}
     >
-      {img && <img src={img} alt="img" />}
+      {img && <img src={img} alt="img" style={{ minWidth: '100%' }} />}
       {video && <Video src={video} />}
       <StatusBar status={status} />
-      {children}
+      <div>{children}</div>
     </Comp>
   );
 }
