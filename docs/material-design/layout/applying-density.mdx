@@ -9,7 +9,9 @@ import Column from '@/Col';
 import ImageWithTitle from '@/ImageWithTitle';
 import Sep from '@/Sep';
 
-# 应用密度 Applying density <sup>beta</sup>
+# 应用密度 Applying density
+
+`beta`
 
 Material Design 为使用案例提供了有关高密度间距的指南——如何通过增加密度改善用户体验。
 
@@ -136,7 +138,7 @@ import densityAlignment from './images/density-alignment.mp4';
 
 <Row gutter={48}>
   <Column xs={24} sm={12} md={8}>
-    <ImageWithTitle video={densityPadding}>
+    <ImageWithTitle img={densityPadding}>
       <h4>内边距</h4>
       <p>
         增加组件密度时，不要改变内边距。组件填充会影响宽度，减小填充会负面影响用户交互。
@@ -144,13 +146,13 @@ import densityAlignment from './images/density-alignment.mp4';
     </ImageWithTitle>
   </Column>
   <Column xs={24} sm={12} md={8}>
-    <ImageWithTitle video={densityPadding}>
+    <ImageWithTitle img={densityPadding}>
       <h4>尺寸</h4>
       <p>增加组件密度时，减小其尺寸。组件尺寸影响的是其宽度和高度。</p>
     </ImageWithTitle>
   </Column>
   <Column xs={24} sm={12} md={8}>
-    <ImageWithTitle video={densityAlignment}>
+    <ImageWithTitle img={densityAlignment}>
       <h4>对齐</h4>
       <p>
         增加组件密度不能改变对齐方式。居中对齐的组件允许改变尺寸，但是需要确保对齐方式不变化。
