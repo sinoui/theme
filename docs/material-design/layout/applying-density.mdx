@@ -1,0 +1,214 @@
+---
+name: 布局/应用密度
+route: /md-layout-applying-density
+menu: Material Design
+---
+
+import Row from '@/Row';
+import Column from '@/Col';
+import ImageWithTitle from '@/ImageWithTitle';
+import Sep from '@/Sep';
+
+# 应用密度 Applying density <sup>beta</sup>
+
+Material Design 为使用案例提供了有关高密度间距的指南——如何通过增加密度改善用户体验。
+
+## 用法 Usage
+
+import scannable from './images/density-illos-01.png';
+import prioritized from './images/density-illos-02.png';
+import visible from './images/density-illos-03.png';
+
+<Sep />
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={scannable}>
+      <h4>Scannable</h4>
+      <p>密集的用户界面提高了查看和导航大量内容的便利性。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={prioritized}>
+      <h4>Prioritized</h4>
+      <p>密集的UI通过减少操作之间的空间来帮助用户集中精力。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={prioritized}>
+      <h4>Visible</h4>
+      <p>增加密集可以在单个屏幕上显示更多的内容和操作。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 密集指南 Density guidelines
+
+#### 如何应用 How to apply
+
+Material Design 密集指南是帮助理解何时以及如何应用密集以改进用户体验的一份资料。实现 Material Design 的 UI 库一般会支持密集模式定制。
+
+#### 何时应用 When to apply
+
+在设计用户与组件交互时，应确定是否增加用户界面的密度。当用户查看、处理大量信息时，高密度组件可以改善体验。
+
+通过在屏幕上提供更多内容，可以增加列表、表格、长表单的密度，从而使信息更易于扫描、查看和比较。
+
+import apply from './images/density-apply.mov';
+
+<ImageWithTitle img={apply}>
+  <ol>
+    <li>增加数据表格的密度。</li>
+    <li>增加表单的密度。</li>
+  </ol>
+</ImageWithTitle>
+
+### 何时不使用密度 When not to apply density
+
+任务和基于警报的组件不应增加密度。
+
+#### 重点任务 Focused tasks
+
+不要增加包含重点任务的组件密度，如下拉菜单、选择器。诸如日期选择器组件，增加了密度，减少了可点击的空间，从而降低了可用性。
+
+import focusedTasksDont from './images/focused-tasks-dont.png';
+
+<ImageWithTitle status="no" img={focusedTasksDont}>
+  不要增加包含重点任务的组件密度，如日期选择器。
+</ImageWithTitle>
+
+#### 警告和消息 Alerts and messaging
+
+不要增加提醒用户的组件密度，如对话框。警报类组件的密度增加使它们吸引用户注意力方面效果不佳。在对话框的示例中，密度增加会损害消息的可读性和突出性。
+
+import alertsDont from './images/alerts-dont.png';
+
+<ImageWithTitle status="no" img={alertsDont}>
+  不要增加警告和消息组件的密度，如对话框。
+</ImageWithTitle>
+
+## 布局 Layout
+
+### 网格和组件密度 Grid and component density
+
+维护组件密度和网格布局之间的平衡。
+
+要创建可扫描的内容组，请结合使用低密度的网格布局和高密度的组件。你的组件密度越高，网格的边距和间距应越大。高密度布局网格和高密度组件一块使用会让用户难以使用。
+
+import gridDo from './images/gridvcontent-do.mov';
+import gridDont from './images/gridvcontent-dont.mov';
+
+<ImageWithTitle status="ok" img={gridDo}>
+  高密度组件与低密度边距、间距组合使用。
+</ImageWithTitle>
+<ImageWithTitle status="no" img={gridDont}>
+  不要同时使用高密度组件和布局网格。
+</ImageWithTitle>
+
+## 组件 Components
+
+### 给组件应用密度 Applying density to components
+
+不要单独调整组件密度。相反，应为组件集使用密度。当你调整一个组件的密度，需考虑这个变更是否会影响到您的应用程序中其它的组件。
+
+Material 组件有三个密集维度：默认（default）, 舒适（comfortable）, 紧凑（compact）。
+
+### 密度刻度 Density scale
+
+密度刻度使您在需要时控制各个组件的密度。
+
+密度刻度已编号，从 0 开始表示组件的默认密度。随着空间的减小，密度刻度将移至负数（-1, -2, -3），从而创建更高的密度。每个增量代表组件高度减少 4dp。
+
+import buttonDensityScale from './images/button-density-scale.mov';
+import chipDensityScaleDont from './images/chip-density-scale-dont.mov';
+
+<ImageWithTitle img={buttonDensityScale}>按钮应用上密度刻度。</ImageWithTitle>
+<ImageWithTitle img={chipDensityScaleDont} status="no">
+  不同因增加密度太多而破坏了组件。chip组件使用了 -4 密度后，文字溢出了。
+</ImageWithTitle>
+
+### 间距方法 Spacing methods
+
+当组件的密度增加时，内边距和对齐方式保持不变，但是尺寸需要改变。
+
+import densityPadding from './images/density-padding.mp4';
+import densityDimensions from './images/density-dimensions.mp4';
+import densityAlignment from './images/density-alignment.mp4';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle video={densityPadding}>
+      <h4>内边距</h4>
+      <p>
+        增加组件密度时，不要改变内边距。组件填充会影响宽度，减小填充会负面影响用户交互。
+      </p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle video={densityPadding}>
+      <h4>尺寸</h4>
+      <p>增加组件密度时，减小其尺寸。组件尺寸影响的是其宽度和高度。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle video={densityAlignment}>
+      <h4>对齐</h4>
+      <p>
+        增加组件密度不能改变对齐方式。居中对齐的组件允许改变尺寸，但是需要确保对齐方式不变化。
+      </p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+#### 给多个元素设置间距 Spacing multiple elements
+
+如果一个组件内有多个元素垂直排列，使用 4dp 增量将它们分开。将分组后的元素居中在组件容器中。
+
+import alignmentGrouping from './images/aligment-grouping.png';
+
+<ImageWithTitle img={alignmentGrouping}>
+  <ol>
+    <li>以 20dp 分离元素。</li>
+    <li>元素组在组件容器中垂直居中。</li>
+  </ol>
+</ImageWithTitle>
+
+## 可访问性 Accessibility
+
+### 触摸目标 Touch targets
+
+触摸目标适用于同时接收触摸输入和非触摸输入（如鼠标点击）的任何设备。为了平衡信息密度和可用性，触摸目标至少为 48 x 48 dp，目标之前至少要有 8dp 的间距。
+
+import touchtargets from './images/layout-spacing-touchtargets.png';
+
+<ImageWithTitle img={touchtargets}>
+  <p>触摸目标最小尺寸： 48 x 48 dp。</p>
+
+  <ol>
+    <li>40dp 元素，48dp 触摸目标</li>
+    <li>24dp 元素，48dp 触摸目标</li>
+    <li>36dp 元素，48dp 触摸目标</li>
+  </ol>
+</ImageWithTitle>
+
+48 x 48 dp的最小触摸目标应是您产品中默认的体验设置。用户必须选择高密度组件体验，因为更高密度的组件无法满足可访问性要求。
+
+import optInDensityPattern from './images/opt-in-density-pattern.png';
+
+<ImageWithTitle img={optInDensityPattern}>
+  用户选择加入更密集的组件体验模式。
+</ImageWithTitle>
+
+## 文本 Typography
+
+### 行高 Line height
+
+行高指的是文本行之间的间距。行高是在文本布局中创建密度的一种方法。
+
+import lineheight from './images/layout-line-height-1.png';
+
+<ImageWithTitle img={lineheight}>
+  <ol>
+    <li>更大的行高：44dp, 40dp, 44dp, 32dp </li>
+    <li>更小的行高：36dp, 32dp, 40dp, 20dp </li>
+  </ol>
+</ImageWithTitle>

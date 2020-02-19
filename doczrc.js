@@ -47,6 +47,7 @@ export default {
         '布局/响应式布局网格',
         '布局/间距方法',
         '布局/组件行为',
+        '布局/应用密度',
         '颜色系统',
         '将颜色应用于UI',
         '颜色使用',
@@ -86,6 +87,13 @@ export default {
           }),
         ],
       })
+      .end();
+
+    config.module
+      .rule('mov')
+      .test(/\.mov$/)
+      .use('file-loader')
+      .loader('file-loader')
       .end();
 
     config
