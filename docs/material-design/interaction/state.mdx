@@ -1,0 +1,700 @@
+---
+name: 交互/状态
+route: /md-interaction-state
+menu: Material Design
+---
+
+import ImageWithTitle from '@/ImageWithTitle';
+import Row from '@/Row';
+import Column from '@/Col';
+import Sep from '@/Sep';
+
+# 状态 States
+
+状态是传达组件或者交互元素的视觉表示方式。
+
+## 使用 Usage
+
+用户界面元素与用户之间的交流是通过状态来表示的。每种组件的状态需要在视觉上相似但组件本身没有过大的改变，与此同时，当前状态要与其他状态及周围的布局有明显的区别。
+
+import usage from './images/purpose-01.png';
+
+<ImageWithTitle img={usage}>
+  元素状态需要与其他元素和周围的布局明显区分出来。
+</ImageWithTitle>
+
+### 原则 Principles
+
+import distinct from './images/states-distinct.png';
+import additive from './images/states-additive.png';
+import consistent from './images/states-consistent.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={distinct}>
+      <h4>区分</h4>
+      <p>
+        当前状态与其他状态和周围的用户界面有明显的区别，并在视觉设计中根据重要程度进行设计。
+      </p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={additive}>
+      <h4>可叠加</h4>
+      <p>
+        当多个状态同时发生，比如同时进行选择和悬停操作，则需要同时显示两种状态叠加的视觉效果。
+      </p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={consistent}>
+      <h4>一致性</h4>
+      <p>应该在组件之间一致地应用状态，以提高可用性。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 状态类型 Types of states
+
+import enabled from './images/enabled.png';
+import disabled from './images/disabled.png';
+import hover from './images/hover.png';
+import focused from './images/focused.png';
+import selected from './images/selected.png';
+import activated from './images/activated.png';
+import pressed from './images/pressed.png';
+import dragged from './images/dragged.png';
+import on from './images/on.png';
+import off from './images/off.png';
+import error from './images/error.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={enabled}>
+      <h4>启用 Enabled</h4>
+      <p>启用状态代表组件或元素可以与之交互。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={disabled}>
+      <h4>禁用 Disabled</h4>
+      <p>禁用状态代表组件或元素不可与之交互。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={hover}>
+      <h4>悬停 Hover</h4>
+      <p>悬停状态代表用户将鼠标放在可交互元素的上方。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={focused}>
+      <h4>聚焦 Focused</h4>
+      <p>
+        聚焦状态代表用户使用键盘、鼠标或声音等输入方式使某个元素被高亮显示。
+      </p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={selected}>
+      <h4>选中 Selected</h4>
+      <p>选中状态代表用户的选择。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={activated}>
+      <h4>激活 Activated</h4>
+      <p>
+        激活状态代表无论是用户手动或是系统默认导致某个组件或可交互元素被触发并高亮显示。
+      </p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={pressed}>
+      <h4>按下 Pressed</h4>
+      <p>按下状态代表用户的一次轻触。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={dragged}>
+      <h4>拖动 Dragged</h4>
+      <p>拖动状态代表用户按下并移动一个元素。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={on}>
+      <h4>打开 On</h4>
+      <p>打开状态是打开、关闭这两种选项状态的一种状态。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={off}>
+      <h4>关闭 Off</h4>
+      <p>关闭状态是打开、关闭这两种选项状态的一种状态。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={error}>
+      <h4>错误 Error</h4>
+      <p>错误状态代表用户或系统出现了错误。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+## 设计解析 Anatomy
+
+### 叠加 Overlay
+
+在一个元素上方叠加半透明图层来代表状态，它提供了一种使用不透明度可视化状态的系统方法。
+
+叠加可以被应用于整个元素或在元素上方叠加半透明的圆形。叠加的颜色需要与元素本身的文字及图表颜色相符，如果再改变状态后文字和图标的颜色产生了变化，那叠加的颜色应该与文字和图标最后显示的颜色相符。
+
+import elementsOverlay from './images/elements-overlay.png';
+import elementsElevation from './images/elements-elevation.png';
+import elementsIcon from './images/elements-iconography.png';
+import elementsColorchange from './images/elements-colorchange.png';
+import elementsMessaging from './images/elements-messaging.png';
+
+<ImageWithTitle img={elementsOverlay}>
+  <ol>
+    <li>在列表项上的叠加层</li>
+    <li>在chip上的叠加层</li>
+    <li>选择控件上的叠加层</li>
+  </ol>
+</ImageWithTitle>
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={elementsElevation}>
+      海拔与叠加层结合可以表示某些组件上的状态。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={elementsIcon}>
+      图标与叠加层结合可以表示某些组件上的状态。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={elementsColorchange}>
+      颜色的改变可表示状态。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={elementsMessaging}>
+      额外的文字信息可表示状态。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 叠加的不透明度值 Overlay opacity values
+
+为确保适当的可见性和颜色对比度，叠加层颜色的不透明度值应根据不同的文字与背景组合来调整。
+
+import opacityValues from './images/overlay-opacity-values.png';
+
+<ImageWithTitle img={opacityValues}>
+  <ol>
+    <li>
+      白色（#FFF）背景的叠加层颜色的不透明度值，采用黑色（#000）或者主题色（本例是#6200ee）的对应透明度值。
+    </li>
+    <li>
+      在主题色#6200EE背景上的叠加层颜色的不透明度值，采用白色（#FFF）的对应不透明度。
+    </li>
+  </ol>
+</ImageWithTitle>
+
+## 禁用状态 Disabled
+
+### 使用 Usage
+
+禁用状态代表组件或元素是不可交互的，且在 UI 设计中不需要着重强调。禁用状态以启用状态的 38% 不透明度显示。
+
+颜色的改变和降低海拔也可以用来表示禁用状态。
+
+import disabled1 from './images/disabled-01.png';
+
+<ImageWithTitle img={disabled1}>
+  启用（1）和禁用（2）按钮的颜色和海拔不同。
+</ImageWithTitle>
+
+#### 禁用状态继承 Disabled state inheritance
+
+有些组件可以继承禁用状态，例如切换按钮、选择控件、文本输入框、图标、网格和列表项、卡片、纸片和按钮。
+
+import disabled2 from './images/disabled-02.png';
+
+<ImageWithTitle img={disabled2}>
+  <ol>
+    <li>切换按钮</li>
+    <li>选择控件</li>
+    <li>文本输入框</li>
+    <li>列表项</li>
+  </ol>
+</ImageWithTitle>
+
+有一些组件不能继承禁用状态：浮动操作按钮（FAB）、底部卡片、侧边卡片、工具提示、警告、导航型控件（如应用栏、标签栏、底部导航栏和步进器）。如果浮动操作按钮中的行为是无用的，则浮动操作按钮不应该出现在界面上。
+
+import disabled03dont from './images/disabled-03-dont.png';
+
+<ImageWithTitle img={disabled03dont} status="no">
+  <ol>
+    <li>浮动操作按钮</li>
+    <li>底部卡片</li>
+    <li>应用程序栏</li>
+  </ol>
+</ImageWithTitle>
+
+### 行为 Behavior
+
+禁用的组件在点击和悬停时不改变状态。
+
+import disabledBehaviorNoHover from './images/disabled-behavior-nohover.mp4';
+import disabledBehaviorTap from './images/disabled-behavior-tap.mp4';
+import behavior3dont from './images/behavior-03-dont.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={disabledBehaviorNoHover}>
+      鼠标悬停在禁用组件上时，组件和鼠标指针都不改变状态。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={disabledBehaviorTap}>
+      点击禁用组件不改变状态。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24}>
+    <ImageWithTitle img={behavior3dont} status="no">
+      <p>禁用组件不能在以下情况改变状态：</p>
+      <ol>
+        <li>悬停</li>
+        <li>聚焦</li>
+        <li>拖动</li>
+        <li>按下</li>
+      </ol>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+在一个页面中，可能存在零个、一个或多个禁用组件。
+
+import composition from './images/composition.png';
+
+<ImageWithTitle img={composition}>
+  <ol>
+    <li>禁用的切换按钮</li>
+    <li>禁用的按钮</li>
+  </ol>
+</ImageWithTitle>
+
+## 悬停状态 Hover
+
+### 使用 Usage
+
+悬停状态是指用户将鼠标放置在可交互元素上。悬停状态可用在所有可交互组件上，但不需要着重强调，以免对内容产生干扰。
+
+叠加图层可用于悬停状态。它既可以用在整个组件上，也可以用于组件中的某个元素或者使用圆形图层叠加在组件上。
+
+import hover01 from './images/hover-01.png';
+import hover02 from './images/hover-02.png';
+import hover03 from './images/hover-03.png';
+
+<Row gutter={48}>
+  <Column xs={24}>
+    <ImageWithTitle img={hover01}>
+      <p>叠加图层可用于：</p>
+      <ol>
+        <li>组件中的某项元素上</li>
+        <li>整个组件上</li>
+        <li>圆形图层</li>
+      </ol>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={hover02}>
+      <p>一些组件，如按钮、卡片，可以使用海拔表示悬停状态。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={hover03}>
+      <p>悬停时可显示额外的控件（1）。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+#### 悬停状态继承 Hover inheritance
+
+悬停状态可以由以下组件继承：按钮、浮动操作按钮、切换按钮、选择控件、网格列表项、列表项、卡片、纸片、文本输入框和图标。
+
+import hover04 from './images/hover-04.png';
+
+<ImageWithTitle img={hover04}>
+  <p>整个组件继承悬停状态，如：</p>
+  <ol>
+    <li>图标</li>
+    <li>文本输入框</li>
+    <li>卡片</li>
+    <li>按钮</li>
+  </ol>
+</ImageWithTitle>
+
+可交互的元素可以继承悬停状态。
+
+import hover05 from './images/hover-05.png';
+
+<ImageWithTitle img={hover05}>
+  <p>悬停状态可以被可交互元素或者组件中的片段继承，如：</p>
+  <ol>
+    <li>应用程序栏上的图标</li>
+    <li>卡片上的操作</li>
+    <li>标签页项</li>
+    <li>列表项</li>
+  </ol>
+</ImageWithTitle>
+
+悬停状态不能被以下组件继承：应用程序栏、标签页、底部导航、卡片、对话框、警告、菜单、步进器。
+
+import hover06dont from './images/hover-06-dont.png';
+
+<ImageWithTitle img={hover06dont} status="no">
+  <p>以下元素不能继承悬停状态：</p>
+  <ol>
+    <li>卡片</li>
+    <li>对话框</li>
+    <li>应用程序栏</li>
+  </ol>
+</ImageWithTitle>
+
+### 行为 Behavior
+
+悬停状态由用户使用光标在交互式元素上暂停而启动。
+
+import hoverMotion from './images/behavior-hover-motion.mp4';
+
+<ImageWithTitle video={hoverMotion}>
+  悬停状态使用低调的淡入淡出动画。
+</ImageWithTitle>
+
+悬停状态可以与聚焦、激活、选中或者按下状态同时存在。
+
+import behavior03 from './images/behavior-03.png';
+
+<ImageWithTitle img={behavior03}>
+  <p>悬停状态分别与下面的状态组合：</p>
+  <ol>
+    <li>聚焦</li>
+    <li>激活</li>
+    <li>选中</li>
+    <li>按下</li>
+  </ol>
+</ImageWithTitle>
+
+在一个布局中只能同时存在一个悬停状态。
+
+import hoverOne from './images/behavior-hover-one.mp4';
+
+<ImageWithTitle video={hoverOne}>
+  基于鼠标的位置，只有一个元素是悬停状态。
+</ImageWithTitle>
+
+### 叠加图层不透明度值 Overlay opacity values
+
+为了确保合适的对比度和可访问性，叠加的颜色不透明度应该根据不同的文字及背景组合来调整。为了不干扰界面内容，悬停状态应该使用较低的不透明度值。
+
+import overlaysHover from './images/overlays-hover.png';
+
+<ImageWithTitle img={overlaysHover}>
+  <ol>
+    <Row gutter={48}>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：100% #FFFFFF</div>
+          <div>墨水：100% #000000</div>
+          <div>叠加图层：4% #000000</div>
+        </li>
+      </Column>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：100% #6200EE</div>
+          <div>墨水：100% #FFFFFF</div>
+          <div>叠加图层：8% #FFFFFF</div>
+        </li>
+      </Column>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：图片</div>
+          <div>叠加图层：16% #000000</div>
+        </li>
+      </Column>
+    </Row>
+  </ol>
+</ImageWithTitle>
+
+## 聚焦状态 Focus
+
+### 使用 Usage
+
+聚焦状态代表用户使用键盘或者声音使某个元素被高亮标记。聚焦状态可以应用在所有可交互组件中。
+
+聚焦状态应受到高度重视。
+
+叠加图层可用于聚焦状态。它可以用于整个组件、组件中的元素或者覆盖组件部分区域的圆形。
+
+import focus01 from './images/focus-01.png';
+import focus02 from './images/focus-02.png';
+import focus03 from './images/focus-03.png';
+
+<Row gutter={48}>
+  <Column xs={24}>
+    <ImageWithTitle img={focus01}>
+      <p>叠加图层可用于：</p>
+      <ol>
+        <li>组件中的某项元素上</li>
+        <li>整个组件上</li>
+        <li>圆形图层</li>
+      </ol>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={focus02}>
+      <p>一些组件，如按钮、卡片，可以使用海拔表示聚焦状态。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={focus03}>
+      <p>聚焦时可显示额外的控件（1）。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+#### 聚焦状态的继承 Focus state inheritance
+
+可以继承聚焦状态的组件包括：按钮、浮动操作按钮、切换按钮、选择控件、网格列表项、列表项、卡片、纸片、文本输入框和图标。
+
+import focus04 from './images/focus-04.png';
+
+<ImageWithTitle img={focus04}>
+  <p>整个组件继承聚焦状态，如：</p>
+  <ol>
+    <li>图标</li>
+    <li>文本输入框</li>
+    <li>卡片</li>
+    <li>按钮</li>
+  </ol>
+</ImageWithTitle>
+
+import focus05 from './images/focus-05.png';
+
+<ImageWithTitle img={focus05}>
+  <p>聚焦状态可以被组件中的可交互元素继承，如：</p>
+  <ol>
+    <li>应用程序栏上的图标</li>
+    <li>卡片上的操作</li>
+    <li>标签页项</li>
+    <li>列表项</li>
+  </ol>
+</ImageWithTitle>
+
+import focus06dont from './images/focus-06-dont.png';
+
+<ImageWithTitle img={focus06dont} status="no">
+  <p>以下元素不能继承聚焦状态：</p>
+  <ol>
+    <li>卡片</li>
+    <li>对话框</li>
+    <li>应用程序栏</li>
+  </ol>
+</ImageWithTitle>
+
+### 行为 Behavior
+
+import focusFade from './images/behavior-focus-fade.mp4';
+import focusOrder from './images/behavior-focus-order.mp4';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={focusFade}>
+      在聚焦状态出现和消失时使用淡入淡出动画
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={focusOrder}>
+      聚焦状态以特定于结构的阅读顺序出现。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+聚焦状态可以与悬停、激活或选中状态组合使用。
+
+import behaviorFocus03 from './images/behavior-focus-03.png';
+
+<ImageWithTitle img={behaviorFocus03}>
+  <p>聚焦状态可以与以下状态组合：</p>
+  <ol>
+    <li>悬停</li>
+    <li>激活</li>
+    <li>选中</li>
+  </ol>
+</ImageWithTitle>
+
+同一个布局中同时只有一个元素是聚焦状态。
+
+import focusOne from './images/placement-focus-one.mp4';
+
+<ImageWithTitle video={focusOne}>
+  同一个布局中同时只有一个元素是聚焦状态。
+</ImageWithTitle>
+
+### 叠加图层的不透明度值 Overlay opacity values
+
+为了确保合适的对比度和可访问性，图层叠加的颜色透明度应该根据不同的文字及背景组合来调整。当一个控件没有展现其他状态时，聚焦状态应该使用较高的透明度叠加。
+
+import overlaysFocus from './images/overlays-focus.png';
+
+<ImageWithTitle img={overlaysFocus}>
+  <ol>
+    <Row gutter={48}>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：100% #FFFFFF</div>
+          <div>墨水：100% #000000</div>
+          <div>叠加图层：12% #000000</div>
+        </li>
+      </Column>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：100% #6200EE</div>
+          <div>墨水：100% #FFFFFF</div>
+          <div>叠加图层：24% #FFFFFF</div>
+        </li>
+      </Column>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：图片</div>
+          <div>叠加图层：36% #000000</div>
+        </li>
+      </Column>
+    </Row>
+  </ol>
+</ImageWithTitle>
+
+## 选中状态 Selected
+
+### 使用 Usage
+
+选中状态表示用户使用以下输入方法之一选择选项：轻触（tap）、鼠标、键盘或声音。选中状态给与中度重视，以便易于识别，但不分散注意力。
+
+叠加图层可用于选中状态。它可以用于整个组件、组件中的元素。
+
+import selected01 from './images/selected-01.png';
+
+<ImageWithTitle img={selected01}>
+  <Sep />
+  <div>
+    <div>叠加图层可用于：</div>
+    <div>1. 组件中的元素</div>
+    <div>2. 整个组件</div>
+  </div>
+  <Sep />
+  <div>
+    <span>选中状态可用下面的方式表达：</span>
+    <div>A. 图层</div>
+    <div>B. 图标</div>
+  </div>
+</ImageWithTitle>
+
+#### 选中状态继承 Select state inheritance
+
+可以继承选中状态的组件包括：图片列表项、列表项、纸片、卡片、数据表格、菜单选项和选择器。
+
+import select02 from './images/selected-02.png';
+
+<ImageWithTitle img={select02}>
+  <p>以下组件可继承选中状态：</p>
+  <ol>
+    <li>网格列表项</li>
+    <li>列表项</li>
+    <li>卡片</li>
+    <li>纸片</li>
+  </ol>
+</ImageWithTitle>
+
+不可继承选中状态的组件包括：应用程序栏、遮罩层、底部导航、sheet、按钮、对话框、分割线、可展开面板、警告、提示框、标签页、文本输入框、步进器、工具提示。
+
+import select03dont from './images/selected-03-dont.png';
+
+<ImageWithTitle img={select03dont} status="no">
+  <p>以下组件不可继承选中状态：</p>
+  <ol>
+    <li>按钮</li>
+    <li>文本输入框</li>
+    <li>应用程序栏</li>
+    <li>对话框</li>
+  </ol>
+</ImageWithTitle>
+
+### 行为 Behavior
+
+用户选定一个或者多个选项时，将启动选中状态。
+
+import selectedRipple from './images/behavior-selected-ripple.mp4';
+import selectedUserOrder from './images/behavior-selected-user-order.mp4';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={selectedRipple}>
+      在选中状态出现和消失时使用淡入淡出动画。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={selectedUserOrder}>
+      选中状态以用户启动顺序确定。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+选中状态可以与悬停、聚焦、按下或拖动状态组合表示。
+
+import behaviorSelected03 from './images/behavior-selected-03.png';
+
+<ImageWithTitle img={behaviorSelected03}>
+  选中状态与（1）悬停和（2）聚焦状态组合。
+</ImageWithTitle>
+
+在一个布局中同时可以存在多个选中状态。
+
+import composition01 from './images/composition-01.png';
+
+<ImageWithTitle img={composition01}>多个选中状态。</ImageWithTitle>
+
+### 叠加图层不透明度值 Overlay opacity values
+
+为了确保合适的对比度和可访问性，图层叠加的颜色透明度应该根据不同的文字及背景组合来调整。选中状态的设计既要有辨识度，又不能对内容产生影响，因此它的强调程度为中等。
+
+import overlaysSelected from './images/overlays-selected.png';
+
+<ImageWithTitle img={overlaysSelected}>
+  <ol>
+    <Row gutter={48}>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：100% #FFFFFF</div>
+          <div>墨水：100% #000000</div>
+          <div>叠加图层：8% #6200EE</div>
+        </li>
+      </Column>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：100% #6200EE</div>
+          <div>墨水：100% #FFFFFF</div>
+          <div>叠加图层：16% #FFFFFF</div>
+        </li>
+      </Column>
+      <Column xs={24} sm={8}>
+        <li>
+          <div>表面：图片</div>
+          <div>叠加图层：24% #000000</div>
+        </li>
+      </Column>
+    </Row>
+  </ol>
+</ImageWithTitle>
