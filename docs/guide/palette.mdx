@@ -13,52 +13,52 @@ import ColorPalettes from '@/ColorPalettes';
 
 您可以通过调色板来统一设置 sinoui 组件的颜色，以契合您的品牌或者 UI 风格。
 
-* [颜色分类](#颜色分类)
-  * [颜色属性](#颜色属性)
-  * [main 属性](#main-属性)
-  * [dark 属性](dark-属性)
-  * [light 属性](light-属性)
-  * [contrastText 属性](contrasttext-属性)
-  * [默认的颜色分类值](#默认的颜色分类值)
-  * [切换组件颜色分类](#切换组件颜色分类)
-* [dark 模式](#dark-模式)
-* [文本颜色](#文本颜色)
-  * [light 模式下的文本颜色](#light-模式下的文本颜色)
-  * [dark 模式下的文本颜色](#dark-模式下的文本颜色)
-* [按钮颜色](#按钮颜色)
-  * [按钮颜色透明度](#按钮颜色透明度)
-  * [light 模式下的按钮颜色](#light-模式下的按钮颜色)
-  * [dark 模式下的按钮颜色](#dark-模式下的按钮颜色)
-* [背景颜色](#背景颜色)
-  * [light 模式下的背景颜色](#light-模式下的背景颜色)
-  * [dark 模式下的背景颜色](#dark-模式下的背景颜色)
-* [分割线颜色](#分割线颜色)
-  * [light 模式下的分割线颜色](#light-模式下的分割线颜色)
-  * [dark 模式下的分割线颜色](#dark-模式下的分割线颜色)
-* [定制调色板](#定制调色板)
-  * [定制颜色分类](#定制颜色分类)
-* [内置的颜色对象](#内置的颜色对象)
-* [官方色彩工具](#官方色彩工具)
+- [颜色分类](#颜色分类)
+  - [颜色属性](#颜色属性)
+  - [main 属性](#main-属性)
+  - [dark 属性](dark-属性)
+  - [light 属性](light-属性)
+  - [contrastText 属性](contrasttext-属性)
+  - [默认的颜色分类值](#默认的颜色分类值)
+  - [切换组件颜色分类](#切换组件颜色分类)
+- [dark 模式](#dark-模式)
+- [文本颜色](#文本颜色)
+  - [light 模式下的文本颜色](#light-模式下的文本颜色)
+  - [dark 模式下的文本颜色](#dark-模式下的文本颜色)
+- [按钮颜色](#按钮颜色)
+  - [按钮颜色透明度](#按钮颜色透明度)
+  - [light 模式下的按钮颜色](#light-模式下的按钮颜色)
+  - [dark 模式下的按钮颜色](#dark-模式下的按钮颜色)
+- [背景颜色](#背景颜色)
+  - [light 模式下的背景颜色](#light-模式下的背景颜色)
+  - [dark 模式下的背景颜色](#dark-模式下的背景颜色)
+- [分割线颜色](#分割线颜色)
+  - [light 模式下的分割线颜色](#light-模式下的分割线颜色)
+  - [dark 模式下的分割线颜色](#dark-模式下的分割线颜色)
+- [定制调色板](#定制调色板)
+  - [定制颜色分类](#定制颜色分类)
+- [内置的颜色对象](#内置的颜色对象)
+- [官方色彩工具](#官方色彩工具)
 
 ## 颜色分类
 
 调色板提供了多个颜色分类，以满足不同语义场景下的使用颜色：
 
-* `primary` - 主颜色，用于为用户界面的主要元素着色
-* `secondary` - 辅助色，用于为用户界面的突出元素着色（如浮动按钮、进度条等）
-* `error` - 错误颜色，用于为用户呈现错误信息的颜色
-* `warning` - 警告颜色，用于表示潜在的危险动作或重要信息（如删除动作）
-* `info` - 提示语颜色，用于表示中立或者不重要的信息
-* `success` - 成功颜色，用于表示用户触发的操作已成功完成
+- `primary` - 主颜色，用于为用户界面的主要元素着色
+- `secondary` - 辅助色，用于为用户界面的突出元素着色（如浮动按钮、进度条等）
+- `error` - 错误颜色，用于为用户呈现错误信息的颜色
+- `warning` - 警告颜色，用于表示潜在的危险动作或重要信息（如删除动作）
+- `info` - 提示语颜色，用于表示中立或者不重要的信息
+- `success` - 成功颜色，用于表示用户触发的操作已成功完成
 
 ### 颜色属性
 
 每个颜色分类是一个对象，这个颜色对象有四个属性，即：
 
-* `main` - 主要用途的颜色值
-* `dark` - 深色变体颜色值
-* `light` - 浅色变体颜色值
-* `contrastText` - 在 main 颜色背景上的文字颜色
+- `main` - 主要用途的颜色值
+- `dark` - 深色变体颜色值
+- `light` - 浅色变体颜色值
+- `contrastText` - 在 main 颜色背景上的文字颜色
 
 获取四个颜色属性的示例代码（获取主颜色的四个颜色属性）：
 
@@ -74,16 +74,16 @@ const { main, dark, light, contrastText } = palette.primary;
 
 dark 属性代表的是此颜色分类的深色变体。一般用于：
 
-* 鼠标移动到元素上后元素的背景色（即 hover 时的颜色）
-* 有背景色元素的边框
-* App 中的顶部应用栏
+- 鼠标移动到元素上后元素的背景色（即 hover 时的颜色）
+- 有背景色元素的边框
+- App 中的顶部应用栏
 
 您也可以通过 [polished](https://polished.js.org/) 的方法来获取其他的深色变体，如：
 
 ```ts
 import { darken } from 'polished';
 
-function Demo () {
+function Demo() {
   const theme = useContext(ThemeContext);
   const { main } = theme.palette.primary;
 
@@ -102,12 +102,12 @@ light 属性代表的是此颜色分类的浅色变体。
 ```ts
 import { lighten, opacify } from 'polished';
 
-function Demo () {
+function Demo() {
   const theme = useContext(ThemeContext);
   const { main } = theme.palette.primary;
 
   const lightenColor = lighten(0.1, main); // 通过降低颜色亮度获取浅色变体
-  const lightenColor2 = opacify(0.1, main); // 通过提升透明度获取浅色变体
+  const lightenColor2 = opacify(-0.9, main); // 通过提升透明度获取浅色变体
 }
 ```
 
@@ -139,11 +139,13 @@ const textColor = getContrastText('red'); // 在红色背景上的文本颜色
 import React from 'react';
 import Button from '@sinoui/core/Button';
 
-function Demo () {
-  return <>
-    <Button color="primary">primary按钮</Button>
-    <Button color="secondary">secondary按钮</Button>
-  </>;
+function Demo() {
+  return (
+    <>
+      <Button color="primary">primary按钮</Button>
+      <Button color="secondary">secondary按钮</Button>
+    </>
+  );
 }
 ```
 
@@ -169,9 +171,9 @@ const theme = createTheme({
 
 通过 `palette.text` 获取到文本颜色对象，它包含以下属性：
 
-* primary - 主文本颜色。应用程序中的大部分文本的颜色。
-* secondary - 次要文本颜色。如帮助文本的颜色。
-* disabled - 不可用文本颜色。
+- primary - 主文本颜色。应用程序中的大部分文本的颜色。
+- secondary - 次要文本颜色。如帮助文本的颜色。
+- disabled - 不可用文本颜色。
 
 文本颜色支持 `light` 和 `dark` 模式。
 
@@ -187,11 +189,11 @@ const theme = createTheme({
 
 您可以通过 `palette.action` 获取、定制按钮相关的颜色。按钮颜色对象包含以下属性：
 
-* active - 可用按钮的文本颜色
-* hover - 鼠标移动到按钮上时的背景色
-* selected - 按钮被选中时的背景色（如 ButtonGroup）
-* disabled - 按钮不可用时的文本颜色
-* disabledBackground - 按钮不用时的背景色
+- active - 可用按钮的文本颜色
+- hover - 鼠标移动到按钮上时的背景色
+- selected - 按钮被选中时的背景色（如 ButtonGroup）
+- disabled - 按钮不可用时的文本颜色
+- disabledBackground - 按钮不用时的背景色
 
 按钮颜色支持 `light` 和 `dark` 模式。
 
@@ -199,22 +201,23 @@ const theme = createTheme({
 
 `palette.action` 对象除了上面介绍的颜色属性，还有两个透明度属性，它们分别是：
 
-* hoverOpacity - hover状态下的按钮颜色透明度
-* selectedOpacity - 选中状态下的按钮颜色透明度
+- hoverOpacity - hover 状态下的按钮颜色透明度
+- selectedOpacity - 选中状态下的按钮颜色透明度
 
-这些透明度是为了方便在按钮颜色不是默认颜色，而是其他颜色（如主颜色、辅助颜色等）时，计算其hover、选中状态的按钮背景色。例如：
+这些透明度是为了方便在按钮颜色不是默认颜色，而是其他颜色（如主颜色、辅助颜色等）时，计算其 hover、选中状态的按钮背景色。例如：
 
 ```tsx
 import styled from 'styled-components';
 import { opacify } from 'polished';
 
 const Button = styled.button`
-  color: ${props => props.theme.palette.primary.main};
+  color: ${(props) => props.theme.palette.primary.main};
   &:hover {
-    background: ${props => opacify(
-      props.theme.palette.primary.main,
-      props.theme.palette.action.hoverOpacity,
-    )};
+    background: ${(props) =>
+      opacify(
+        props.theme.palette.action.hoverOpacity - 1,
+        props.theme.palette.primary.main,
+      )};
   }
 `;
 ```
@@ -231,8 +234,8 @@ const Button = styled.button`
 
 您可以通过 `palette.background` 获取、定制背景颜色。背景颜色对象包含以下属性：
 
-* default - 默认背景。一般在整个页面设置此颜色
-* paper - 纸张的背景颜色，如 Card、Paper 等组件
+- default - 默认背景。一般在整个页面设置此颜色
+- paper - 纸张的背景颜色，如 Card、Paper 等组件
 
 背景颜色支持 `light` 和 `dark` 模式。
 
@@ -275,7 +278,7 @@ const theme = createTheme({
     },
     text: {
       primary: 'rgba(0, 0, 0, 0.92)',
-    }
+    },
   },
 });
 ```
@@ -284,7 +287,7 @@ const theme = createTheme({
 
 ### 定制颜色分类
 
-调色板定制对象中可以接受两种类型的颜色分类值，第一种是颜色分类对象，它的TypeScript类型如下：
+调色板定制对象中可以接受两种类型的颜色分类值，第一种是颜色分类对象，它的 TypeScript 类型如下：
 
 ```ts
 interface PaletteColor {

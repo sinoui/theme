@@ -1,0 +1,158 @@
+---
+name: 使用polished处理颜色
+route: /handle-color-by-polished
+menu: 开发指南
+---
+
+import { lighten, parseToHsl, opacify } from 'polished';
+import purple from '../../src/colors/purple';
+import ItemDemo from '@/ItemDemo';
+import PaletteGenerator from '@/PaletteGenerator';
+
+# 使用 polished 处理颜色
+
+@sinoui/theme 只为我们提供了有限的几种标准颜色，但是在组件开发时，往往需要从这些标准颜色衍生出更深或者更浅的颜色，应用于特定的用户界面元素上。推荐您使用 [polished.js](https://polished.js.org/) 来生成这些颜色。以下教程会详细介绍几个重点方法来处理颜色需求。
+
+## 透明度
+
+Material Design 常用透明度表示元素状态切换。有两种方式实现半透明背景：
+
+- 使用 polished/opacify 直接生不同透明度的背景色
+- 使用 CSS 伪元素，它的背景色是不带透明度的颜色值，且本身应用透明度值
+
+### polished/opacify()
+
+`opacify(amount, mainColor)` 方法是用来增加颜色的不透明度的。如：
+
+```ts
+import { opacify } from 'polished';
+
+const color = opacify(0.2, 'rgb(12, 32, 12, .1)');
+
+// color = rgba(12, 32, 12, .3);
+```
+
+往往我们是要给不带透明度的颜色添加上不透明度值，例如设置不透明度为 20%，正确的写法是：
+
+```ts
+import { opacify } from 'polished';
+
+const color = opacify(-0.8, 'rgb(12, 32, 12)');
+
+// color = rgba(12, 32, 12, 0.2);
+```
+
+注意，`amount` 等于 `-0.8`，因为 `rgb(12, 32, 12)` 等价于 `rgba(12, 32, 12, 1)`，不透明度为 1。
+
+### css 伪类
+
+可以用 css 伪类，来模拟出透明的背景色。这个 css 伪类：
+
+- 背景色是不带透明度的颜色
+- 指定不透明度
+
+例如：
+
+```ts
+import styled from 'styled-components';
+
+const Item = styled.div`
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    background-color: ${({ theme: { palette } }) => palette.primary.main};
+    opacity: 0.12;
+
+    transition: ${(props) =>
+      props.theme.transitions.create(['background-color', 'opacity'])};
+  }
+
+  &:hover::before {
+    opacity: 0.24;
+  }
+`;
+```
+
+对比一下两种方式的效果：
+
+方式一，使用 opacify 函数：
+
+<ItemDemo useOpacify />
+
+方式二，使用 css 伪类：
+
+<ItemDemo />
+
+## 深浅色
+
+@sinoui/theme 中的每种颜色都有四个属性：
+
+- main
+- light
+- dark
+- contrastText
+
+如果需要更深或者更浅的颜色，需要使用 polished 中的 `darken()` 和 `lighten()` 方法来生成：
+
+```ts
+import { darken } from 'polished';
+
+const darkerColor = darken(0.2, theme.palette.primary.main);
+```
+
+可以通过 darken, lighten 函数近似生成 Material Design 的调色板颜色：
+
+| 调色板明暗程度 | 生成方法                 |
+| -------------- | ------------------------ |
+| 50             | lighten(0.84, mainColor) |
+| 100            | lighten(0.62, mainColor) |
+| 200            | lighten(0.42, mainColor) |
+| 300            | lighten(0.26, mainColor) |
+| 400            | lighten(0.12, mainColor) |
+| 500            | mainColor                |
+| 600            | darken(0.14, mainColor)  |
+| 700            | darken(0.2, mainColor)   |
+| 800            | darken(0.3, mainColor)   |
+| 900            | darken(0.45, mainColor)  |
+
+主颜色对应的生成调色板如下：
+
+<PaletteGenerator />
+
+## 文本颜色
+
+文本颜色与背景颜色的对比度非常重要，因为需要确保在有颜色背景上的文字是清晰可见的、易读的。[WCAG 2.0](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) 规定文本颜色对比度至少满足 **3:1**。@sinoui/theme 基于 polished 方法提供了 `theme.palette.getContrastText(backgroundColor)` 方法来获取文本颜色。
+
+例如：
+
+```tsx
+const AppBar = styled.div`
+  background-color: ${({ theme: { palette } }) => palette.primary.main};
+  color: ${({
+    theme: {
+      palette: { primary, getContrastText },
+    },
+  }) => getContrastText(primary.main)};
+`;
+```
+
+另外，@sinoui/theme 调色板中每个颜色对象都有 `contrastText` 属性，此属性即是此颜色背景上文字颜色。上面的示例可以简化为：
+
+```tsx
+const AppBar = styled.div`
+  background-color: ${({ theme: { palette } }) => palette.primary.main};
+  color: ${({ theme: { palette } }) => palette.primary.contrastText};
+`;
+```
