@@ -1,6 +1,6 @@
 # 版本变更说明
 
-## v1.0.0-beta.0
+## v1.0.0-beta.1 2020.2.24
 
 - feat(typography): 采用新的 Material Design 标准设置文字排版分类
 - feat(typography): 简化自定义文字排版的方式
@@ -16,7 +16,12 @@
 之前的方式是：
 
 ```ts
-import { createTheme, createPalette, createTypography, colors } from '@sinoui/theme';
+import {
+  createTheme,
+  createPalette,
+  createTypography,
+  colors,
+} from '@sinoui/theme';
 
 const theme = createTheme({
   typography: createTypography({
@@ -79,46 +84,46 @@ const theme = createTheme({
 
 #### 颜色模块 colors module
 
-1. colors模块剔除了非标准的颜色，包括：
+1. colors 模块剔除了非标准的颜色，包括：
 
-   * transparent
-   * fullBlack
-   * darkBlack
-   * lightBlack
-   * minBlack
-   * faintBlack
-   * fullWhite
-   * darkWhite
-   * lightWhite
+   - transparent
+   - fullBlack
+   - darkBlack
+   - lightBlack
+   - minBlack
+   - faintBlack
+   - fullWhite
+   - darkWhite
+   - lightWhite
 
-2. colors模块将 white 和 black 迁移到 colors/common 中
+2. colors 模块将 white 和 black 迁移到 colors/common 中
 
-    之前的方式：
+   之前的方式：
 
-    ```ts
-    import { colors } from '@sinoui/theme';
+   ```ts
+   import { colors } from '@sinoui/theme';
 
-    console.log(colors.white, colors.black);
-    ```
+   console.log(colors.white, colors.black);
+   ```
 
-    新的方式：
+   新的方式：
 
-    ```ts
-    import common from '@sinoui/theme/colors';
+   ```ts
+   import common from '@sinoui/theme/colors';
 
-    console.log(common.white, common.black);
-    ```
+   console.log(common.white, common.black);
+   ```
 
-3. colors模块去掉自定义颜色系列
+3. colors 模块去掉自定义颜色系列
 
-    - colorBlack
-    - colorDeepGray
-    - colorBrown
-    - colorGray
-    - colorKelly
-    - colorLigntYellow
+   - colorBlack
+   - colorDeepGray
+   - colorBrown
+   - colorGray
+   - colorKelly
+   - colorLigntYellow
 
-4. colors模块去掉颜色系列中的 `w1`, `w2`, `w3`
+4. colors 模块去掉颜色系列中的 `w1`, `w2`, `w3`
 
 #### 调色板
 
@@ -126,48 +131,48 @@ const theme = createTheme({
 
 新的调色板使用方式：
 
-* 调色板不为单独的组件定义颜色，组件内部颜色在组件内部定义或者生成
-* 调色板提供了 `palette.grey`，组件可以使用此灰色集合来定义内部颜色
-* 使用 [polished](https://polished.js.org/) 提供的方法扩展颜色
+- 调色板不为单独的组件定义颜色，组件内部颜色在组件内部定义或者生成
+- 调色板提供了 `palette.grey`，组件可以使用此灰色集合来定义内部颜色
+- 使用 [polished](https://polished.js.org/) 提供的方法扩展颜色
 
 去掉的颜色值：
 
-* 去掉了整个 `danger` 颜色分类，使用 `warnning` 代替
-* 去掉了整个 `input`
+- 去掉了整个 `danger` 颜色分类，使用 `warnning` 代替
+- 去掉了整个 `input`
 
-   * helperText, labelText --> palette.text.secondary
-   * disabled --> palette.text.disabled
-   * inputText --> palette.text.primary
-   * bottomLine --> 在组件中直接定义即可，没必要放在主题定制中
+  - helperText, labelText --> palette.text.secondary
+  - disabled --> palette.text.disabled
+  - inputText --> palette.text.primary
+  - bottomLine --> 在组件中直接定义即可，没必要放在主题定制中
 
-* 去掉部分 `text` 中的属性：
+- 去掉部分 `text` 中的属性：
 
-    * icon --> sinoui-components 未使用
-    * divider --> palette.divider
-    * lightDivider --> sinoui-components 未使用
-    * snackbar --> palette.getContrastText(snackbar组件的背景色)
+  - icon --> sinoui-components 未使用
+  - divider --> palette.divider
+  - lightDivider --> sinoui-components 未使用
+  - snackbar --> palette.getContrastText(snackbar 组件的背景色)
 
-* 去掉了大部分 `background` 中的属性，只保留 default 和 paper：
+- 去掉了大部分 `background` 中的属性，只保留 default 和 paper：
 
-    * appBar --> palette.grey[100]
-    * contentFrame --> palette.grey[200]
-    * divider --> palette.divider（见后面的说明）
-    * chips --> palette.grey[300]
-    * chipsImg --> palette.grey[400]
-    * chipsBut --> palette.grey[400]
-    * chipsButHover --> palette.grey[500]
-    * tooltip --> grey[600]
-    * transparent --> 直接使用 `transparent` 关键字
-    * sendcondaryTransparent --> palette.text.primary
-    * snackbar --> palette.common.black
+  - appBar --> palette.grey[100]
+  - contentFrame --> palette.grey[200]
+  - divider --> palette.divider（见后面的说明）
+  - chips --> palette.grey[300]
+  - chipsImg --> palette.grey[400]
+  - chipsBut --> palette.grey[400]
+  - chipsButHover --> palette.grey[500]
+  - tooltip --> grey[600]
+  - transparent --> 直接使用 `transparent` 关键字
+  - sendcondaryTransparent --> palette.text.primary
+  - snackbar --> palette.common.black
 
-    对于 sinoui-components 中使用的 `divider`，表示的是选中后的背景色，推荐使用 `palette.action.selected` 代替。如果觉得颜色不合适，也可以使用灰色：`palette.grey[200]`。
+  对于 sinoui-components 中使用的 `divider`，表示的是选中后的背景色，推荐使用 `palette.action.selected` 代替。如果觉得颜色不合适，也可以使用灰色：`palette.grey[200]`。
 
-* `palette.black`, `palette.white` 分别变更为 `palette.common.black`，`palette.common.white`
+- `palette.black`, `palette.white` 分别变更为 `palette.common.black`，`palette.common.white`
 
-* 去掉了整个 `shades`
+- 去掉了整个 `shades`
 
-    sinoui-components 使用 `shades` 来取文本颜色：`palette.shades.dark.text.primary`。替换成新的获取文本颜色方式：`palette.getContrastText(背景色)`。
+  sinoui-components 使用 `shades` 来取文本颜色：`palette.shades.dark.text.primary`。替换成新的获取文本颜色方式：`palette.getContrastText(背景色)`。
 
 另一个重大变更：**不再提供颜色分类的集合，替换成包含 main, dark, light, contrastText 的对象**。这些颜色分类包括：`primary`, `secondary`, `error`, `success`, `info`, `success`。
 
@@ -218,7 +223,7 @@ const dark = darken(0.2, palette.primary.main);
 
 #### zIndex
 
-去掉了组件库中不使用的z-index：
+去掉了组件库中不使用的 z-index：
 
 - drawerOverlay - 遮罩层
 - navDrawer - 导航区域
