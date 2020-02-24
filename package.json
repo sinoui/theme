@@ -7,7 +7,9 @@
   "umd:main": "dist/theme.umd.production.js",
   "module": "dist/theme.esm.js",
   "homepage": "https://sinoui.github.io/theme",
-  "bugs": { "url": "https://github.com/sinoui/theme/issues" },
+  "bugs": {
+    "url": "https://github.com/sinoui/theme/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinoui/theme.git"
@@ -17,11 +19,10 @@
     "build": "ts-lib-tools build --simple",
     "format": "ts-lib-tools format",
     "lint": "ts-lib-tools lint",
-    "prepublishOnly": "ts-lib-tools build",
     "doc:dev": "docz dev",
     "doc:build": "docz build",
     "doc:publish": "docz build && gh-pages -d .docz/dist",
-    "realese": "yarn publish dist"
+    "release": "yarn build && yarn publish dist"
   },
   "prettier": {
     "printWidth": 80,
@@ -34,8 +35,14 @@
     "jsxBracketSameLine": false,
     "arrowParens": "always"
   },
-  "eslintConfig": { "extends": "ts-lib" },
-  "husky": { "hooks": { "pre-commit": "lint-staged" } },
+  "eslintConfig": {
+    "extends": "ts-lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "src/*.{ts,tsx}": [
       "cross-env CI=true ts-lib-tools test",
@@ -43,7 +50,10 @@
       "git add"
     ]
   },
-  "peerDependencies": { "react": ">=16.8.0", "styled-components": ">=4.0.0" },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "styled-components": ">=4.0.0"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
@@ -84,7 +94,11 @@
     "typescript": "^3.7.5",
     "webpack-docz-ghpages-plugin": "^0.4.0"
   },
-  "publishConfig": { "access": "public" },
-  "resolutions": { "typescript": "^3.7.5" },
+  "publishConfig": {
+    "access": "public"
+  },
+  "resolutions": {
+    "typescript": "^3.7.5"
+  },
   "types": "types/index.d.ts"
 }
