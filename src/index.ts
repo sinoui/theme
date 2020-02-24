@@ -1,5 +1,5 @@
 import { Theme } from './types';
-import createTheme from './theme';
+import createTheme from './createTheme';
 import * as colors from './colors';
 import createPalette from './createPalette';
 import shadows from './shadows';

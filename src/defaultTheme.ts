@@ -1,4 +1,4 @@
-import createTheme from './theme';
+import createTheme from './createTheme';
 
 const defaultTheme = createTheme();
 

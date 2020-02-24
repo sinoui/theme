@@ -1,4 +1,6 @@
-const breakpoints = {
+import { Breakpoints } from './types';
+
+const breakpoints: Breakpoints = {
   xs: 0,
   sm: 600,
   md: 960,

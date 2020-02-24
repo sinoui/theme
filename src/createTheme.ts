@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import createPalette from './createPalette';
 import createTypography from './createTypography';
 import shadows from './shadows';
@@ -9,20 +10,15 @@ import breakpoints from './breakpoints';
 
 /**
  * 创建主题
+ *
  * @param options 主题配置
  */
 export default function createTheme(options: ThemeOptions = {}): Theme {
   const palette = createPalette(options.palette);
   const typography = createTypography(options.typography);
 
-  return {
-    shadows,
-    transitions,
-    zIndex,
-    spacing,
-    breakpoints,
-    ...options,
-    palette,
-    typography,
-  };
+  return deepmerge(
+    { shadows, transitions, zIndex, spacing, breakpoints },
+    { ...options, palette, typography },
+  ) as Theme;
 }
