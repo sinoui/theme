@@ -1,16 +1,13 @@
 {
   "name": "@sinoui/theme",
-  "version": "0.3.5-0",
+  "version": "1.0.0-beat.0",
   "description": "sinoui 主题定制库。",
   "license": "MIT",
   "main": "dist/index.js",
   "umd:main": "dist/theme.umd.production.js",
   "module": "dist/theme.esm.js",
-  "typings": "dist/index.d.ts",
   "homepage": "https://sinoui.github.io/theme",
-  "bugs": {
-    "url": "https://github.com/sinoui/theme/issues"
-  },
+  "bugs": { "url": "https://github.com/sinoui/theme/issues" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinoui/theme.git"
@@ -37,14 +34,8 @@
     "jsxBracketSameLine": false,
     "arrowParens": "always"
   },
-  "eslintConfig": {
-    "extends": "ts-lib"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "eslintConfig": { "extends": "ts-lib" },
+  "husky": { "hooks": { "pre-commit": "lint-staged" } },
   "lint-staged": {
     "src/*.{ts,tsx}": [
       "cross-env CI=true ts-lib-tools test",
@@ -52,23 +43,7 @@
       "git add"
     ]
   },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "styled-components": ">=4.0.0"
-  },
-  "files": [
-    "dist",
-    "assets",
-    "colors.js",
-    "defaultTheme.js",
-    "palette.js",
-    "shadows.js",
-    "spacing.js",
-    "theme.js",
-    "transitions.js",
-    "typography.js",
-    "zIndex.js"
-  ],
+  "peerDependencies": { "react": ">=16.8.0", "styled-components": ">=4.0.0" },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.3",
@@ -109,10 +84,7 @@
     "typescript": "^3.7.5",
     "webpack-docz-ghpages-plugin": "^0.4.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "resolutions": {
-    "typescript": "^3.7.5"
-  }
+  "publishConfig": { "access": "public" },
+  "resolutions": { "typescript": "^3.7.5" },
+  "types": "types/index.d.ts"
 }
