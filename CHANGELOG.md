@@ -1,5 +1,9 @@
 # 版本变更说明
 
+## v1.0.0-beta.3 2020.2.25
+
+- fix: 修复打包失败的缺陷
+
 ## v1.0.0-beta.1 2020.2.24
 
 - feat(typography): 采用新的 Material Design 标准设置文字排版分类
