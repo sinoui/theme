@@ -1,0 +1,170 @@
+---
+name: 组件/分隔线
+route: /md-components-dividers
+menu: Material Design
+---
+
+import Row from '@/Row';
+import Column from '@/Col';
+import ImageWithTitle from '@/ImageWithTitle';
+
+# 分隔线 Dividers
+
+分隔线是一个在列表和布局中分组内容的细线。
+
+![divider-intro](images/divider-intro.png)
+
+## 使用 Usage
+
+分隔线将内容分成清晰的组。
+
+### 原则 Principles
+
+import principle1 from './images/divider-illos-03.png';
+import principle2 from './images/divider-illos-04.png';
+import principle3 from './images/divider-illos-05.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={principle1}>
+      <h4>微妙 Subtle</h4>
+      <p>分隔线应在布局中引入注目，但不抢眼突兀。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={principle2}>
+      <h4>次要的 Secondary</h4>
+      <p>分隔线仅用在无法使用留白区分元素的场景。</p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={principle2}>
+      <h4>谨慎使用 Infrequent</h4>
+      <p>谨慎使用分隔线，它是用来创建分组，而不是分割各个项的。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 类型 Types
+
+import full from './images/dividers-full.png';
+import inset from './images/dividers-inset.png';
+import middle from './images/divider-middle.png';
+import subheader from './images/dividers-subhead.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={full}>
+      <h4>全宽分隔线 Full-bleed dividers</h4>
+      <div>全宽分隔线将内容分成不同的部分，并且占满整个布局的宽度。</div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={inset}>
+      <h4>插入分隔线 Inset dividers</h4>
+      <div>插入分隔线将相关内容分开，并与应用栏标题对齐。</div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={middle}>
+      <h4>中间分隔线 Middle dividers</h4>
+      <div>中间分隔线将相关内容分开，在布局或列表居中显示。</div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={subheader}>
+      <h4>带副标题的分隔线 Dividers with subheaders</h4>
+      <div>分隔线可以带上子标题，以帮助定义内容分组。</div>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+## 类型 Types
+
+### 全宽分隔线 Full-bleed dividers
+
+全宽分隔线将内容分成不同的部分，例如：
+
+- 分割列表和布局元素
+- 指示元素可能在哪里扩展
+
+import fullBleed from './images/dividers-full-bleed.png';
+import baselineDrawer from './images/baseline-drawer.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={fullBleed}>
+      如果列表没有锚定元素（例如图标），则留白可能不足以分割内容。全宽分隔线可以帮助分离出单个内容。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={baselineDrawer}>
+      导航抽屉中的全宽分隔线。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 插入分隔线 Inset dividers
+
+插入分隔线将相关内容分开，例如在邮箱中的邮件。它们应与锚定元素（例如图标或者头像）一起使用，并与应用栏标题左对齐。
+
+import insetDividerWithImg from './images/inset-dividers-with-img.png';
+import insetDividerAvatar from './images/inset-dividers-with-avatar.png';
+import dividersDo from './images/dividers-do.png';
+import dividersDont from './images/dividers-dont.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={insetDividerWithImg}>
+      缩略图作为锚点，使用插入分隔线区内内容。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={insetDividerAvatar}>
+      头像作为锚点，使用插入分隔线区分内容。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={dividersDo} status="ok">
+      使用分隔线分组项目。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={dividersDont} status="no">
+      不用使用分隔线分割单个项。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 中间分隔线 Middle dividers
+
+分隔线也可以在布局居中显示。它们最适合分隔相关内容，例如收据上的价格。
+
+import middle2 from './images/divider-middle-2.png';
+import middle3 from './images/divider-middle-3.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={middle2}>中间分隔符区分收据上的价格。</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={middle3}>
+      中间分隔符区分主要内容和操作。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 带有副标题的分隔线 Dividers with subheaders
+
+分隔线可以与副标题配对以标识分组的内容。将分隔线放在子标题的上方，以加强子标题与内容的关联。
+
+import subheader2 from './images/dividers-subhead-2.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={subheader}>在副标题上的插入分隔线。</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={subheader2}>在副标题上的全宽分隔线。</ImageWithTitle>
+  </Column>
+</Row>
