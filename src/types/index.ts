@@ -14,6 +14,6 @@ export * from './breakpoints';
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {
-    version: string;
+    version?: string;
   }
 }
