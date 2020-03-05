@@ -1,5 +1,9 @@
 # 版本变更说明
 
+## v1.0.0-beta.6 2020.3.5
+
+- fix(typography): 修复字体样式对象的类型声明不兼容 styled-components 的缺陷
+
 ## v1.0.0-beta.5 2020.2.28
 
 - fix: 修复 DefaultTheme 类型错误

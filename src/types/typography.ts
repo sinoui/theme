@@ -1,3 +1,5 @@
+import { CSSObject } from 'styled-components';
+
 /**
  * 字重
  */
@@ -43,55 +45,55 @@ export interface ThemeTypography {
   /**
    * 一级标题样式
    */
-  h1: React.CSSProperties;
+  h1: CSSObject;
   /**
    * 二级标题样式
    */
-  h2: React.CSSProperties;
+  h2: CSSObject;
   /**
    * 三级标题样式
    */
-  h3: React.CSSProperties;
+  h3: CSSObject;
   /**
    * 四级标题样式
    */
-  h4: React.CSSProperties;
+  h4: CSSObject;
   /**
    * 五级标题样式
    */
-  h5: React.CSSProperties;
+  h5: CSSObject;
   /**
    * 六级标题样式
    */
-  h6: React.CSSProperties;
+  h6: CSSObject;
   /**
    * 副标题1样式
    */
-  subtitle1: React.CSSProperties;
+  subtitle1: CSSObject;
   /**
    * 副标题2样式
    */
-  subtitle2: React.CSSProperties;
+  subtitle2: CSSObject;
   /**
    * 主体文本1样式
    */
-  body1: React.CSSProperties;
+  body1: CSSObject;
   /**
    * 主体文本2样式
    */
-  body2: React.CSSProperties;
+  body2: CSSObject;
   /**
    * 按钮文本样式
    */
-  button: React.CSSProperties;
+  button: CSSObject;
   /**
    * 说明文本样式
    */
-  caption: React.CSSProperties;
+  caption: CSSObject;
   /**
    * overline 样式
    */
-  overline: React.CSSProperties;
+  overline: CSSObject;
 
   /**
    * 将 px 值转换为 rem 值
