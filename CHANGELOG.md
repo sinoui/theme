@@ -1,6 +1,6 @@
 # 版本变更说明
 
-## v1.0.0-beta.6 2020.3.5
+## v1.0.0-beta.7 2020.3.5
 
 - fix(typography): 修复字体样式对象的类型声明不兼容 styled-components 的缺陷
 - fix(shadows): 修复海拔为 2 和 3 的阴影样式不正确的错误
