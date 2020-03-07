@@ -1,0 +1,642 @@
+---
+name: 组件/文本字段
+route: /md-components-text-fields
+menu: Material Design
+---
+
+import Row from '@/Row';
+import Column from '@/Col';
+import ImageWithTitle from '@/ImageWithTitle';
+import Col2Section from '@/Col2Section';
+
+# 文本字段 Text fields
+
+文本字段允许用户输入、编辑文本。
+
+## 使用 Usage
+
+用户可以借助文本字段在界面上输入、编辑文本。它们一般会出现在表单和对话框中。
+
+### 原则 Principles
+
+import illo1 from './images/textfield-illo-01.png';
+import illo2 from './images/textfield-illo-02.png';
+import illo3 from './images/textfield-illo-03.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={illo1}>
+      <h4>发现 Discoverable</h4>
+      <div>文本字段应突出并指示用户可以输入信息。</div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={illo2}>
+      <h4>清晰 Clear</h4>
+      <div>文本字段状态应清楚地区分。</div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={illo3}>
+      <h4>有效 Efficient</h4>
+      <div>文本字段应易于理解所请求的信息并解决任何错误。</div>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 类型 Types
+
+有两种类型文本字段：
+
+- 填充模式文本字段
+- 轮廓模式文本字段
+
+两种类型的文本字段都使用容器为交互提供清晰的边界，从而使输入框在布局中可发现。
+
+import types from './images/textfields-types.png';
+
+<ImageWithTitle img={types}>
+  <ol>
+    <li>填充模式字段</li>
+    <li>轮廓模式字段</li>
+  </ol>
+</ImageWithTitle>
+
+### 选择正确的文本字段 Choosing the right text field
+
+两种类型的文本字段提供一样的功能。所以仅从样式上做出选择即可。
+
+选择哪一种从以下角度考虑：
+
+- 与您的应用风格匹配
+- 适合您的 UI 目标
+- 与其他组件（如按钮）和周围内容形成对比
+
+import filled from './images/textfields-type-filled.png';
+import outlined from './images/textfields-type-stroke.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={filled}>使用填充模式字段的移动端表单</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={outlined}>使用轮廓模式字段的移动端表单</ImageWithTitle>
+  </Column>
+</Row>
+
+#### 在一个 UI 中同时使用两种类型字段 Both types of text fields in one UI
+
+如果在一个 UI 中同时使用两种类型输入框，它们应该被分开在不同的区域使用，不要在同一个区域混用。
+
+import mixDo from './images/textfields-type-mix-do.png';
+import mixDont from './images/textfields-type-mix-dont.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={mixDo} status="ok">
+      当在同一个UI中使用两种类型输入框，应将它们分开在不同区域。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={mixDont} status="no">
+      不要在同一个表单中使用两种类型的文本字段。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+## 设计解析 Anatomy
+
+import anatomy from './images/textfields-annotations-1.png';
+
+<ImageWithTitle img={anatomy}>
+  <ol>
+    <li>容器</li>
+    <li>前缀图标（可选）</li>
+    <li>标签文本</li>
+    <li>输入文本</li>
+    <li>后缀图标（可选）</li>
+    <li>激活指示器</li>
+    <li>帮助文本（可选）</li>
+  </ol>
+</ImageWithTitle>
+
+### 容器 Container
+
+import container from './images/textfields-anatomy-container.png';
+
+<Col2Section img={container} mediaTitle="文本字段的容器">
+  <p>容器通过在文本字段和周围内容之间建立对比来提高文本字段的可发现性。</p>
+  <h4>填充和描边 Fill and stroke</h4>
+  <p>
+    文本字段的容器有一个填充和一个描边（可能围绕着整个容器，或者在底部）。描边的颜色和粗细能够指示文本字段的状态。
+  </p>
+  <h4>圆角</h4>
+  <p>轮廓字段的容器有圆角，填充字段的容器有顶部圆角。</p>
+</Col2Section>
+
+### 标签文本 Label text
+
+标签文本是用来给用户指示文本字段需要输入哪些信息的。每个字段应有一个标签。
+
+标签文本应与输入行对齐，并始终可见。可以将其放在文本字段的中间，也可以放在容器顶部附近。
+
+import labelDo from './images/textfields-anatomy-label-text-do.mp4';
+import labelDont1 from './images/textfields-annotations-labels-dont-1.png';
+import labelDont2 from './images/textfields-annotations-labels-dont-2.png';
+
+<Row gutter={48}>
+  <Column xs={24}>
+    <ImageWithTitle video={labelDo} status="ok">
+      标签文本应一直可见，从文本字段的中间位置移到顶部（当字段获取焦点时）。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={labelDont1} status="no">
+      标签文本应不截断。让它保持简短、清晰，并完全可见。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={labelDont2} status="no">
+      标签文本不能是多行的。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+#### 必填文本指示 Required text indicator
+
+import required from './images/textfields-annotations-required.png';
+
+要指示必填字段，应在标签文本旁边显示一个星号（\*），并显示必填帮助文本。
+
+- 如果有一些字段是必填的，则指示所有这些字段必填
+- 如果大部分字段是必填的，请在可选字段的标签文本旁边的括号中显示“可选”来指示其可选
+- 如果必填字段被着色了，那么星号的颜色跟着变化
+
+<ImageWithTitle img={required}>使用星号指示的必填字段。</ImageWithTitle>
+
+### 输入文本 Input text
+
+import inputtext from './images/textfields-annotations-2.png';
+
+<Row gutter={24}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={inputtext} />
+  </Column>
+  <Column xs={24} sm={12}>
+    <p>输入文本是用户在文本字段中已输入的文本。</p>
+    <h4>1. 输入文本 Input text</h4>
+    <p>输入文本是用户输入的文本。</p>
+    <h4>2. 光标 Cursor</h4>
+    <p>光标指示输入文本在字段中的当前位置。</p>
+  </Column>
+</Row>
+
+### 辅助元素 Assistive elements
+
+import assistive from './images/textfields-annotations-3.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={assistive} />
+  </Column>
+  <Column xs={24} sm={12}>
+    <p>辅助元素为在文本字段中输入文本提供更多详细信息。</p>
+    <h4>1. 帮助文本 Helper text</h4>
+    <p>
+      帮助文本为文本字段提供额外的指导，如怎么使用。它应该只有一行，始终可见或者仅在聚焦时可见。
+    </p>
+    <h4>2. 错误信息 Error message</h4>
+    <p>
+      如果不接受输入的文本，则会显示一条错误消息，显示有关如何修正的说明。错误消息显示在输入行下方，替换辅助文本，直到修复。
+    </p>
+    <h4>3. 图标 Icons</h4>
+    <p>
+      图标也可以用来提示输入文本的错误，将它们与错误消息配对，以提供冗余警报，这对色盲用户非常有用。
+    </p>
+    <h4>4. 字符计数器 Character counter</h4>
+    <p>字符计数器应在有字数限制时使用。它们显示使用的字符比例和总字数限制。</p>
+  </Column>
+</Row>
+
+#### 错误文本 Error text
+
+需要验证内容的文本字段，应在验证出错时使用错误文本替换帮助文本。
+
+- 如果只有一个错误，则错误文本描述如何避免此错误
+- 如果有多个错误，则错误文本描述如何避免最可能的错误
+
+import errorDo from './images/textfields-anatomy-error.mp4';
+import errorDont from './images/textfields-anatomy-error-dont.mp4';
+import errorCaution from './images/textfields-anatomy-error-caution.png';
+
+<ImageWithTitle video={errorDo} status="ok">
+  使用错误文本替换帮助文本。
+</ImageWithTitle>
+<ImageWithTitle video={errorDont} status="no">
+  请勿在辅助文本下方放置错误文本，因为它们的出现改变了内容布局。
+</ImageWithTitle>
+<ImageWithTitle img={errorCaution} status="caution">
+  如果没有足够的空间来清楚地描述错误，则长错误可以包装成多行。在这种情况下，请确保输入框字段之间的填充足以防止多行错误引起布局内容冲突。
+</ImageWithTitle>
+
+### 图标 Icons
+
+文本字段中的图标是可选的。文本字段图标可以描述有效的输入方式（例如麦克风图标）、提供额外的功能（例如清除输入框内容）以及表达错误。
+
+前缀图标和后缀图标根据 LTR 和 RTL 上下文更改其位置。
+
+import inputicons from './images/textfields-annotations-4.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={inputicons} />
+  </Column>
+  <Column xs={24} sm={12}>
+    <h4>1. 图标指示符 Icon signifier</h4>
+    <p>
+      图标指示符可以描述文本字段的输入类型，并且可以作为嵌套组件的触摸目标。例如，可以点击日历图标以显示日期选择器。
+    </p>
+    <h4>2. 有效或错误图标 Valid or error icon</h4>
+    <p>
+      图标可以用来指示有效输入和无效输入，从而使色盲用户可以清楚地看到错误状态。
+    </p>
+    <h4>3. 清除图标 Clear icon</h4>
+    <p>用户点击清除图标，清除输入框的内容。它们仅在输入文本时出现。</p>
+    <h4>4. 语音输入图标 Voice input icon</h4>
+    <p>麦克风图标表示用户可以使用语音输入文本。</p>
+    <h4>5. 下拉图标 Dropdown icon</h4>
+    <p>下拉箭头指示文本字段具有嵌套的选择组件。</p>
+  </Column>
+</Row>
+
+## 填充文本字段 Filled text field
+
+### 使用 Usage
+
+填充文本字段比轮廓文本字段更具有视觉重点，使其在被其他内容和组件包围时脱颖而出。
+
+import filledMotion from './images/textfields-filled-motion2.mp4';
+
+<ImageWithTitle video={filledMotion}>填充文本字段</ImageWithTitle>
+
+import filledDont from './images/textfields-filled-dont.png';
+
+<ImageWithTitle img={filledDont} status="no">
+  不要将文本字段设计的与按钮类似，否则它们会被误认为是按钮。
+</ImageWithTitle>
+
+### 密集文本字段 Dense text fields
+
+密集的文本字段使用户可以扫描大量信息并采取措施。
+
+import filledDenseExample from './images/textfields-dense-filled-example.png';
+
+<ImageWithTitle img={filledDenseExample}>
+  由密集文本字段组成的表单。
+</ImageWithTitle>
+
+import filledDense from './images/textfields-filled-dense.png';
+
+<ImageWithTitle img={filledDense}>
+  <ol>
+    <li>带标签的密集文本字段</li>
+    <li>不带标签的密集文本字段</li>
+  </ol>
+</ImageWithTitle>
+
+### 不带标签的文本字段 Text fields without labels
+
+如果文本字段的意图由单独的相邻标签指示，则该文本字段不需要标签。
+
+import filledNoLabel from './images/textfields-filled-nolabel-example.png';
+
+<ImageWithTitle img={filledNoLabel}>带有相邻标签的文本字段。</ImageWithTitle>
+
+### 前缀和后缀文本 Prefix and subffix text
+
+import filledPrefix from './images/textfields-filled-prefix.png';
+import filledSuffixLeftInput from './images/textfields-filled-suffix-left-input.png';
+import filledSuffixRightInput from './images/textfields-filled-suffix-right-input.png';
+import filledSuffixEmail from './images/textfields-filled-suffix-right-input-flexible.png';
+
+<Row gutter={24}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={filledPrefix}>
+      带有货币符号文本前缀的文本字段。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={filledSuffixLeftInput}>
+      在后缀显示质量单位的文本字段。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={filledSuffixRightInput}>
+      带后缀的文本字段。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={filledSuffixEmail}>
+      带有邮件域地址后缀的文本字段。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 状态 States
+
+填充文本字段（标准）
+
+import filledStates from './images/textfields-filled-states.png';
+
+<ImageWithTitle img={filledStates}>
+  填充文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+不带标签的填充文本字段
+
+import filledNoLabelStates from './images/textfields-filled-nolabel-states.png';
+
+<ImageWithTitle img={filledNoLabelStates}>
+  不带标签的填充文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+带前缀文本的填充文本字段
+
+import filledPrefixStates from './images/textfields-filled-prefix-states.png';
+
+<ImageWithTitle img={filledPrefixStates}>
+  带前缀文本的填充文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+带后缀文本的文本字段
+
+import filledSuffixStates from './images/textfields-filled-suffix-states.png';
+
+<ImageWithTitle img={filledSuffixStates}>
+  带后缀文本的文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+## 轮廓文本字段 Outlined text field
+
+### 使用 Usage
+
+与填充文本字段相比，轮廓文本字段在视觉上的强调较少。当它们出现在由众多文字字段组合的表单中时，它们减少的强调会帮助简化布局。
+
+import outline from './images/textfields-outline-motion1.mp4';
+
+<ImageWithTitle video={outline}>轮廓文本字段</ImageWithTitle>
+
+### 密集文本字段 Dense text fields
+
+密集的文本字段使用户可以扫描大量信息并采取措施。
+
+import outlinedDenseExample from './images/textfields-dense-outlined-example.png';
+
+<ImageWithTitle img={outlinedDenseExample}>
+  由密集文本字段组成的表单。
+</ImageWithTitle>
+
+import outlinedDense from './images/textfields-outlined-dense.png';
+
+<ImageWithTitle img={outlinedDense}>密集文本字段，40px高度。</ImageWithTitle>
+
+### 不带标签的文本字段 Text fields without labels
+
+如果文本字段的意图由单独的相邻标签指示，则该文本字段不需要标签。
+
+import outlinedNolabel from './images/textfields-outlined-nolabel-example.png';
+
+<ImageWithTitle img={outlinedNolabel}>带有相邻标签的文本字段。</ImageWithTitle>
+
+### 前缀和后缀文本 Prefix and suffix text
+
+import outlinedPrefix from './images/textfields-outlined-prefix.png';
+import outlinedSuffixLeftInput from './images/textfields-outlined-suffix-left-input.png';
+import outlinedSuffixRightInput from './images/textfields-outlined-suffix-right-input.png';
+import outlinedSuffixEmail from './images/textfields-outlined-suffix-right-input-flexible.png';
+
+<Row gutter={24}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={outlinedPrefix}>
+      带有货币符号文本前缀的文本字段。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={outlinedSuffixLeftInput}>
+      在后缀显示质量单位的文本字段。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={outlinedSuffixRightInput}>
+      带后缀的文本字段。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={outlinedSuffixEmail}>
+      带有邮件域地址后缀的文本字段。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 状态 States
+
+轮廓文本字段（标准）
+
+import outlinedStates from './images/textfields-outline-states-enabled.png';
+
+<ImageWithTitle img={outlinedStates}>
+  轮廓文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+不带标签的轮廓文本字段
+
+import outlinedNoLabelStates from './images/textfields-outlined-states-nolabel.png';
+
+<ImageWithTitle img={outlinedNoLabelStates}>
+  不带标签的轮廓文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+带前缀文本的轮廓文本字段
+
+import outlinedPrefixStates from './images/textfields-filled-prefix-states.png';
+
+<ImageWithTitle img={outlinedPrefixStates}>
+  带前缀文本的轮廓文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+带后缀文本的文本字段
+
+import outlinedSuffixStates from './images/textfields-outlined-suffix-states.png';
+
+<ImageWithTitle img={outlinedSuffixStates}>
+  带后缀文本的文本字段可以显示以下状态：不活动（inactive）、激活（active）、聚焦（focused）、悬停（hover）、错误（error）和禁用（disabled）。
+</ImageWithTitle>
+
+## 输入类型 Input types
+
+文本字段有以下三种输入方式：
+
+- **单行文本字段**仅显示一行文本
+- **多行文本字段**增长以容纳多行文本
+- **文本域**是一个固定高度的字段
+
+import singleLine from './images/textfields-input-motion2.mp4';
+
+<ImageWithTitle video={singleLine}>
+  <h4>单行字段</h4>
+  <p>
+    在单行字段中，当光标到达字段的右边缘时，比字段更长的文本会自动向左滚动。
+  </p>
+  <p>单行字段不适用于长文本输入。可以使用多行文本字段或者文本域代替。</p>
+</ImageWithTitle>
+
+import multiline from './images/textfields-input-multiline.mp4';
+import textareas from './images/textfields-input-textareas.mp4';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={multiline}>
+      <h4>多行字段 Multi-line fields</h4>
+      <p>
+        多行文本字段显示所有用户输入的内容。文本字段会自动伸缩以容纳溢出的文本，并且文本会自动换行。
+      </p>
+      <p>
+        多行字段最初显示为单行字段，这对于需要能够容纳大量文本的紧凑型布局很有用。
+      </p>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={textareas}>
+      <h4>文本域 Text areas</h4>
+      <p>
+        文本域比文本字段更高，且溢出文本会自动换行。文本域有固定的高度，当文本超出文本域，出现垂直滚动条。
+      </p>
+      <p>较大的初始大小表示可能会输入更长的文本。</p>
+      <p>在Web上，应使用文本域代替多行字段。</p>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 只读字段 Read-only fields
+
+只读文本字段会显示之前输入的文本，但此文本不能被编辑。只读文本字段与常规文本字段有一样的样式，并且明确标记为只读。
+
+import filledReadOnly from './images/textfields-filled-read-only.png';
+import outlinedReadOnly from './images/textfields-outline-read-only.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={filledReadOnly}>只读的填充文本字段</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={outlinedReadOnly}>只读的轮廓文字字段</ImageWithTitle>
+  </Column>
+</Row>
+
+## 主题定制 Theming
+
+### Rally Material Theme
+
+这个个人理财应用程序的填充文本字段已使用 Material Theming 进行了自定义。定制的区域包括颜色和文字排版。
+
+import rallyAhero from './images/textfeildfilled-rally-ahero.png';
+
+<ImageWithTitle img={rallyAhero}>Rally 的自定义填充文本字段</ImageWithTitle>
+
+#### 颜色 Color
+
+Rally 的填充文本字段在五个元素上使用自定义颜色：标签文本、输入文本、后缀图标、激活指示器和容器。
+
+import rallyColor from './images/textfeildfilled-rally-color.png';
+
+<img src={rallyColor} alt="rally color" />
+
+| 元素                                   | 类别       | 属性               | 值                  |
+| -------------------------------------- | ---------- | ------------------ | ------------------- |
+| 标签文本 <br /> Label text             | Primary    | 颜色 <br /> 透明度 | #FFFFFF <br /> 100% |
+| 输入文本 <br /> Input text             | On Surface | 颜色 <br /> 透明度 | #FFFFFF <br /> 100% |
+| 后缀图标 <br /> Trailing icon          | On Surface | 颜色 <br /> 透明度 | #FFFFFF <br /> 100% |
+| 激活指示器 <br /> Activation indicator | Primary    | 颜色 <br /> 透明度 | #FFFFFF <br /> 100% |
+| 容器 <br /> Container                  | On Surface | 颜色 <br /> 透明度 | #FFFFFF <br /> 4%   |
+
+#### 文字排版 Typography
+
+Rally 的填充文本字段在输入文本和标签文本中使用自定义的文字排版。
+
+import rallyType from './images/textfeildfilled-rally-type.png';
+
+<img src={rallyType} alt="rally 文字排版" />
+
+| 元素                       | 类别       | 属性                                       | 值                                                          |
+| -------------------------- | ---------- | ------------------------------------------ | ----------------------------------------------------------- |
+| 输入文本 <br /> Input text | Subtitle 1 | 字体 <br /> 字重 <br /> 尺寸 <br /> 大小写 | Eczar <br /> Regular <br /> 16 <br /> Title case            |
+| 标签文本 <br /> Label text | Caption    | 字体 <br /> 字重 <br /> 尺寸 <br /> 大小写 | Roboto Condensed <br /> Regular <br /> 12 <br /> Title case |
+
+#### 形状 Shape
+
+Rally 的填充文本字段使用自定义的边角形状。
+
+import rallyShape from './images/textfeildfilled-rally-shape.png';
+
+<img src={rallyShape} alt="rally 形状" />
+
+| 元素 | 类别            | 属性             | 值                    |
+| ---- | --------------- | ---------------- | --------------------- |
+| 容器 | Small component | 类别 <br /> 大小 | Cut <br /> 0;0;0;0 dp |
+
+### Crane Material Theme
+
+这个旅行应用的轮廓文本字段使用 Material Theming 进行了自定义。定制区域包括颜色和文字排版。
+
+import craneAhero from './images/textfieldsoutlined-crane-ahero.png';
+
+<ImageWithTitle img={craneAhero}>Crane 的自定义轮廓文本字段</ImageWithTitle>
+
+#### 颜色 Color
+
+Crane 的轮廓文本字段有三个元素使用自定义颜色：输入文本、标签文本和容器。
+
+import craneColor from './images/textfieldsoutlined-crane-color.png';
+
+<img alt="crane 颜色" src={craneColor} />
+
+| 元素                       | 类别       | 属性               | 值                 |
+| -------------------------- | ---------- | ------------------ | ------------------ |
+| 标签文本 <br /> Label text | Primary    | 颜色 <br /> 透明度 | #000000 <br /> 60% |
+| 输入文本 <br /> Input text | On Surface | 颜色 <br /> 透明度 | #000000 <br /> 87% |
+| 容器 <br /> Container      | On Surface | 颜色 <br /> 透明度 | #000000 <br /> 12% |
+
+#### 文字排版 Typography
+
+Crane 的轮廓文本字段在输入文本和标签文本部分使用了自定义的文字排版。
+
+import craneType from './images/textfieldsoutlined-crane-type.png';
+
+<img alt="crane 文字排版" src={craneType} />
+
+| 元素                       | 类别       | 属性                                       | 值                                                  |
+| -------------------------- | ---------- | ------------------------------------------ | --------------------------------------------------- |
+| 输入文本 <br /> Input text | Subtitle 1 | 字体 <br /> 字重 <br /> 尺寸 <br /> 大小写 | Raleway <br /> Medium <br /> 16 <br /> Title case   |
+| 标签文本 <br /> Label text | Caption    | 字体 <br /> 字重 <br /> 尺寸 <br /> 大小写 | Raleway <br /> SemiBold <br /> 14 <br /> Title case |
+
+#### 形状 Shape
+
+Crane 的轮廓文本字段使用自定义的边角形状。
+
+import craneShape from './images/textfieldsoutlined-crane-shape.png';
+
+<img alt="crane 形状" src={craneShape} />
+
+| 元素                  | 类别            | 属性             | 值                    |
+| --------------------- | --------------- | ---------------- | --------------------- |
+| 容器 <br /> Container | Small component | 类别 <br /> 大小 | Cut <br /> 4;4;4;4 dp |
+
+## 研究 Research
+
+Material Design 发起了约 600 人参与的两项研究，来评估第一版文本字段设计。这项研究形成了当前这个版本的文本字段设计，包括以下最重要的可用性上的改进：
+
+- 带有矩形的封闭文字字段要优于带有线条的文本字段
+- 文本字段应该有半透明度填充和底部线条，或者全透明的填充和不透明的边框
+- 文本字段的线条或边框颜色与背景色应形成最小 3:1 的对比度
+- 标签文本应显示在文本字段框内部
+- 文本字段应有圆角
