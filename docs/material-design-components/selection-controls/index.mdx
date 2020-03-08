@@ -1,0 +1,304 @@
+---
+name: 组件/选择控件
+route: /md-components-selection-controls
+menu: Material Design
+---
+
+import Row from '@/Row';
+import Column from '@/Col';
+import ImageWithTitle from '@/ImageWithTitle';
+import Col2Section from '@/Col2Section';
+
+# 选择控件 Selection controls
+
+选择控件允许用户选择选项。
+
+## 使用 Usage
+
+选择控件使用户可以完成涉及选择的任务，例如选择选项或者打开、关闭设置。选择控件位于要求用户做出决定或声明诸如设置或对话框等首选项的屏幕上。
+
+### 原则 Principles
+
+import illos1 from './images/selection-controls-illos-01.png';
+import illos2 from './images/selection-controls-illos-02.png';
+import illos3 from './images/selection-controls-illos-03.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={illos1}>
+      <h4>熟悉 Familiar</h4>
+      <div>选择控件已经在用户界面中使用了很长时间，应该按预期使用。</div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={illos2}>
+      <h4>识别性 Scannable</h4>
+      <div>
+        如果选择了选择控件，则应该一目了然，并且所选项目应该比未选择的项目在视觉上更突出。
+      </div>
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={illos3}>
+      <h4>高效 Efficient</h4>
+      <div>选择控件可轻松识别可用选项。</div>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 类别 Types
+
+import radiobuttons from './images/radiobuttons.png';
+import checkboxes from './images/checkboxes.png';
+import switches from './images/switches.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={radiobuttons}>单选按钮</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={checkboxes}>复选框</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12} md={8}>
+    <ImageWithTitle img={switches}>开关</ImageWithTitle>
+  </Column>
+</Row>
+
+### 何时使用单选按钮 When to use radio buttons
+
+单选按钮可用于：
+
+- 从列表中选择一个选项
+- 公开所有可用选项
+
+如果可以折叠可用选项，请考虑使用下拉菜单代替，因为它占用更小的空间。
+
+import whentouseRadio from './images/selectioncontrols-usage-whentouse-radio.png';
+
+<ImageWithTitle img={whentouseRadio}>
+  单选按钮允许从可见列表中选择一个选项
+</ImageWithTitle>
+
+如果只能从列表中选择一项，则应使用单选按钮而不是复选框。
+
+import whentouseDontCheckbox from './images/selectioncontrols-usage-whentouse-dont-checkboxes.png';
+import whentouseDoRadio from './images/selectioncontrols-usage-whentouse-do-radio.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={whentouseDontCheckbox} status="no">
+      如果只能从列表中选择一项，则不应使用复选框。应使用单选按钮代替。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={whentouseDoRadio} status="ok">
+      当从列表中只能选择一项时，请使用单选按钮。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 何时使用开关 When to use switches
+
+开关可用于：
+
+- 在手机和平板电脑上开启或关闭单个项目
+- 立即激活或停用某物
+
+import whentouseSwitches from './images/selectioncontrols-usage-whentouse-switches.png';
+
+<ImageWithTitle img={whentouseSwitches}>开关</ImageWithTitle>
+
+如果可以独立控制一组中的每个项目，则应使用开关代替单选按钮。
+
+import whentouseDontRadio from './images/selectioncontrols-usage-whentouse-dont-radio.png';
+
+<ImageWithTitle img={whentouseDontRadio} status="no">
+  不用使用单选按钮来打开或关闭项目。单选按钮表示一组项目都是选项，且一次只能选择一个。
+</ImageWithTitle>
+
+import whentouseDoSwitches from './images/selectioncontrols-usage-whentouse-do-switches.png';
+
+<ImageWithTitle img={whentouseDoSwitches}>
+  使用开关而不是复选框来打开或关闭项目，尤其是在移动设备上。
+</ImageWithTitle>
+
+### 何时使用复选框 When to use checkboxes
+
+复选框可用于：
+
+- 从列表中选择一个或更多的选项
+- 显示包含子选择的列表
+- 在桌面环境中打开或关闭项目
+
+import whentouseCheckboxes from './images/selectioncontrols-checkboxes-usage-parentchild-1c.png';
+
+<ImageWithTitle img={whentouseCheckboxes}>复选框</ImageWithTitle>
+
+import whentouseDontSwitches from './images/selectioncontrols-usage-whentouse-dont-switches.png';
+
+<ImageWithTitle img={whentouseDontSwitches} status="no">
+  如果列表中包含了多个选项，请使用复选框而不是开关。复选框表示项目相关，并且占用较小的视觉空间。
+</ImageWithTitle>
+
+import whentouseDoCheckboxes from './images/selectioncontrols-usage-whentouse-do-checkboxes.png';
+
+<ImageWithTitle img={whentouseDoCheckboxes} status="ok">
+  复选框允许用户在列表中选择一个或多个选项。父选择框允许轻松选择或者取消选择所有项目。
+</ImageWithTitle>
+
+## 复选框 Checkboxes
+
+### 使用 Usage
+
+import checkboxesUsage from './images/selectioncontrols-checkboxes-usage.png';
+
+<Col2Section img={checkboxesUsage} mediaTitle="选中和未选中的复选框">
+  复选框允许用户在列表中选择一个或多个选项。复选框可用于打开或关闭选项。
+</Col2Section>
+
+import checkboxSelect from './images/slidercontrols-checkbox-v03.mp4';
+import checkboxToggle from './images/slidercontrols-checkbox-darkmode-v02.mp4';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={checkboxSelect}>
+      使用复选框在列表中选择多个选项。
+    </ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={checkboxToggle}>
+      使用复选框打开或者关闭选项。
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 父子关系复选框 Parent and child checkboxes
+
+复选框之间可以是父子关系：
+
+- 当父复选框被选中，则所有子复选框也被选中
+- 当父复选框取消选中时，则所有子复选框也被取消选中
+- 如果只是部分而不是全部子复选框被选中，那么父复选框将变为不确定复选框
+
+import parentchildCheckboxes from './images/slidercontrols-parent-child-v03.mp4';
+
+<ImageWithTitle video={parentchildCheckboxes}>
+  选中的、未选中的、不确定的复选框
+</ImageWithTitle>
+
+### 状态 States
+
+复选框可以被选中、取消选中、或者处于不确定状态。复选框有启用、悬停、聚焦和按下状态。
+
+// TODO: 缺复选框状态图
+
+## 单选按钮 Radio buttons
+
+### 使用 Usage
+
+单选按钮允许用户从列表中选择一个选项。在用户想看到所有选项时使用单选按钮。如果可以折叠可用选项，则考虑使用下来菜单代替，因为它占用空间更小。
+
+import radioUsage from './images/selectioncontrols-radio-usage.png';
+import radioSelect from './images/slidercontrols-radial-v01.mp4';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={radioUsage}>选中和未选中的单选按钮</ImageWithTitle>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle video={radioSelect}>
+      使用单选按钮选择单个项目
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+### 状态 States
+
+单选按钮可以被选中或者取消选中。复选框有启用、悬停、聚焦和按下状态。
+
+// TODO: 缺单选按钮状态图
+
+## 开关 Switches
+
+### 使用 Usage
+
+import switchesUsage from './images/selectioncontrols-switches-usage.png';
+
+<Row gutter={48}>
+  <Column xs={24} sm={12}>
+    <p>
+      开关可打开或关闭单个设置的状态。它们是在移动设备上调整设置的首选方法。
+    </p>
+    <h4>状态</h4>
+    <p>
+      当用户将开关指示器滑动到轨道的另一侧时，开关成功切换，并且开关的状态改变。
+    </p>
+    <h4>文本标签</h4>
+    <p>开关控制的选项及其所处的状态应从相应的内联标签中清楚看出。</p>
+    <p>避免在图形本身内创建包含文本“on”和“off”的开关。仅切换就足够了。</p>
+  </Column>
+  <Column xs={24} sm={12}>
+    <ImageWithTitle img={switchesUsage}>
+      <ol>
+        <li>指示器 Thumb</li>
+        <li>轨道 Track</li>
+      </ol>
+    </ImageWithTitle>
+  </Column>
+</Row>
+
+import switchesDarkmode from './images/slidercontrols-switches-darkmode-v02.mp4';
+
+<ImageWithTitle video={switchesDarkmode}>使用开关开启、关闭选项</ImageWithTitle>
+
+### Behavior 行为
+
+当用户切换开关时，其相应的动作将立即生效。如果无法打开开关，则开关将自动关闭。
+
+import switchesToggle from './images/slidercontrols-1a-v02.mp4';
+
+<ImageWithTitle video={switchesToggle}>无法打开的开关</ImageWithTitle>
+
+#### 显示处理进度 Display processing status
+
+因为开关显示事物的实际状态，有时候状态会有所延迟。在这种情况下，可以显示处理进度动画。
+
+处理进度是在开关指示器上的动画。例如，当控制硬件功能的开关在确认其最终状态之前经历延迟时，可以使用它。
+
+import switchesProcessing from './images/slidercontrols-1b-v02.mp4';
+
+<ImageWithTitle video={switchesProcessing}>处理进度动画</ImageWithTitle>
+
+### 状态 States
+
+开关可以打开或关闭。开关有启用、悬停、聚焦和按下状态。
+
+仅在使用触摸的形状上显示外部径向反应。
+
+对于台式机，不需要径向反应。
+
+import switchesStates from './images/selectioncontrols-switches-states.png';
+
+<ImageWithTitle img={switchesStates}>开关状态</ImageWithTitle>
+
+## 主题定制 Theming
+
+### Crane Material Theme
+
+这个旅行应用的选择控件已使用 Material Theming 进行了颜色自定义。
+
+import craneAhero from './images/selectioncontrols-crane-ahero.png';
+
+<ImageWithTitle img={craneAhero}>Crane的自定义选择控件</ImageWithTitle>
+
+#### 颜色 Color
+
+Crane 的选择控件使用了自定义的颜色。
+
+import craneColor from './images/selectioncontrols-crane-color.png';
+
+<img alt="crane color" src={craneColor} />
+
+| 元素     | 分类      | 属性               | 值                  |
+| -------- | --------- | ------------------ | ------------------- |
+| 选择控件 | Secondary | 颜色 <br /> 透明度 | #E30425 <br /> 100% |
