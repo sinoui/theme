@@ -40,7 +40,7 @@ const getStandardTypography = (
     subtitle2: buildStyle(fontWeightMedium, 14, 1.57, 0.1),
     body1: buildStyle(fontWeightRegular, 16, 1.5, 0.15),
     body2: buildStyle(fontWeightRegular, 14, 1.43, 0.15),
-    button: buildStyle(fontWeightMedium, 15, 1.75, 0.4, allCapsStyle),
+    button: buildStyle(fontWeightMedium, 14, 1.75, 0.4, allCapsStyle),
     caption: buildStyle(fontWeightRegular, 12, 1.66, 0.4),
     overline: buildStyle(fontWeightRegular, 12, 2.66, 1, allCapsStyle),
   };

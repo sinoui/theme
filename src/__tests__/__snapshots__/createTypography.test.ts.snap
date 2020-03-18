@@ -15,9 +15,9 @@ Object {
     "lineHeight": 1.43,
   },
   "button": Object {
-    "fontSize": "0.9375rem",
+    "fontSize": "0.875rem",
     "fontWeight": 500,
-    "letterSpacing": "0.02667em",
+    "letterSpacing": "0.02857em",
     "lineHeight": 1.75,
     "textTransform": "uppercase",
   },

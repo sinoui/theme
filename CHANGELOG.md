@@ -1,5 +1,9 @@
 # 版本变更说明
 
+## v1.0.0-beta.8 2020.3.18
+
+- fix(typography): 修复 button 字体字号不正确的 bug
+
 ## v1.0.0-beta.7 2020.3.5
 
 - fix(typography): 修复字体样式对象的类型声明不兼容 styled-components 的缺陷
